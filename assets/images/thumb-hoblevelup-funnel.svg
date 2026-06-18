@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Hoblevelup funnel hero thumbnail</title>
+  <desc id="desc">A compact hero section screenshot-style thumbnail for the Hoblevelup automation funnel.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#0050cb"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="#faf8ff"/>
+  <circle cx="790" cy="112" r="168" fill="#dae1ff" opacity=".62"/>
+  <circle cx="182" cy="444" r="156" fill="#d0e1fb" opacity=".42"/>
+  <rect x="78" y="56" width="804" height="428" rx="36" fill="#ffffff" stroke="#c2c6d8"/>
+  <rect x="78" y="56" width="804" height="58" rx="36" fill="#ffffff"/>
+  <text x="120" y="92" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#191b24">Hoblevelup</text>
+  <rect x="702" y="76" width="124" height="28" rx="14" fill="url(#blue)"/>
+  <text x="724" y="95" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800" fill="#ffffff">Book a Call</text>
+  <text x="120" y="190" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#191b24">Smart Sales</text>
+  <text x="120" y="238" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#0050cb">System</text>
+  <text x="120" y="280" font-family="Inter, Arial, sans-serif" font-size="17" fill="#424656">Follow-up and booking automation.</text>
+  <rect x="120" y="322" width="176" height="46" rx="23" fill="url(#blue)"/>
+  <text x="156" y="351" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff">Discovery Call</text>
+  <rect x="464" y="156" width="322" height="238" rx="30" fill="url(#panel)" stroke="#dae1ff"/>
+  <text x="500" y="205" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="1.4" fill="#727687">LIVE DASHBOARD</text>
+  <text x="500" y="262" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800" fill="#191b24">24.8%</text>
+  <rect x="500" y="294" width="220" height="12" rx="6" fill="#ecedfa"/>
+  <rect x="500" y="294" width="168" height="12" rx="6" fill="#0050cb"/>
+  <rect x="500" y="330" width="62" height="34" rx="17" fill="#ffffff"/>
+  <rect x="574" y="330" width="92" height="34" rx="17" fill="#0050cb"/>
+  <rect x="678" y="330" width="66" height="34" rx="17" fill="#ffffff"/>
+  <text x="590" y="352" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff">SMS</text>
+</svg>

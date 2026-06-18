@@ -1,0 +1,862 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Hoblevelup - Turn Chaotic Follow-Ups Into a Smart Sales System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed": "#dae1ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#a33200",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface": "#191b24",
+                        "secondary-container": "#d0e1fb",
+                        "secondary": "#505f76",
+                        "surface-container": "#ecedfa",
+                        "primary-container": "#0066ff",
+                        "inverse-primary": "#b3c5ff",
+                        "on-tertiary-fixed": "#390c00",
+                        "surface-dim": "#d8d9e6",
+                        "surface-container-highest": "#e1e2ee",
+                        "outline-variant": "#c2c6d8",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container-high": "#e6e7f4",
+                        "background": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e2ee",
+                        "surface-tint": "#0054d6",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary-fixed-variant": "#832600",
+                        "primary": "#0050cb",
+                        "surface-container-low": "#f2f3ff",
+                        "surface": "#faf8ff",
+                        "inverse-on-surface": "#eff0fd",
+                        "inverse-surface": "#2e303a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#424656",
+                        "on-tertiary-container": "#fff6f4",
+                        "outline": "#727687",
+                        "on-background": "#191b24",
+                        "on-primary-container": "#f8f7ff",
+                        "tertiary-container": "#cc4204",
+                        "on-primary-fixed": "#001849"
+                },
+                "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                },
+                "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                },
+                "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"]
+                },
+                "fontSize": {
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                }
+              }
+            }
+          }
+        </script>
+<style>
+        html {
+            scroll-behavior: smooth;
+        }
+        section[id] {
+            scroll-margin-top: 96px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.04);
+        }
+        .hero-gradient {
+            background:
+                radial-gradient(circle at 82% 18%, rgba(218, 225, 255, 0.65) 0%, rgba(218, 225, 255, 0.28) 28%, rgba(250, 248, 255, 0) 56%),
+                radial-gradient(circle at 12% 84%, rgba(208, 225, 251, 0.38) 0%, rgba(250, 248, 255, 0) 42%);
+        }
+        .offer-card-glow {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .offer-card-glow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 102, 255, 0.12), 0 0 0 1px rgba(0, 102, 255, 0.3);
+        }
+        .hero-asset {
+            filter: drop-shadow(0 30px 48px rgba(0, 24, 73, 0.14));
+            animation: heroFloat 7s ease-in-out infinite;
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] {
+    border-color: #0050cb33;
+    box-shadow: 0 10px 15px -3px rgba(0, 80, 203, 0.05);
+  }
+</style></head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 w-full z-50 shadow-sm transition-all duration-300 ease-in-out">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-[80px]">
+<a class="font-headline-lg text-headline-lg font-bold text-on-surface dark:text-surface-bright flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">insights</span>
+                Hoblevelup
+            </a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#offer">Services</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#results">Results</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#process">Process</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#about">About</a>
+</nav>
+<div class="hidden md:block">
+<a class="inline-flex items-center justify-center px-6 py-3 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-sm" href="https://buildwizshan.com/" target="_blank">
+                    Book a Discovery Call
+                </a>
+</div>
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<main class="relative pt-24 pb-32 overflow-hidden hero-gradient">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+<!-- Left Column: Copy & CTA -->
+<div class="flex flex-col items-start z-10">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-6 bg-primary-fixed/30 px-3 py-1 rounded-full border border-primary-fixed-dim">
+                        The System Your Business Actually Needs
+                    </span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">
+                        Turn Chaotic Follow-Ups Into a <span class="text-primary">Smart Sales System</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        Built for coaches, service providers, and business owners drowning in missed messages, forgotten follow-ups, and inconsistent sales processes that quietly kill revenue.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center gap-4 mb-8 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-[0_8px_16px_rgba(0,80,203,0.2)]" href="#">
+                            Book a Discovery Call
+                        </a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12">
+                        No complicated systems. Just smarter follow-up and more booked appointments.
+                    </p>
+<!-- Trust Indicators -->
+<div class="flex flex-wrap items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">bolt</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Faster Follow-Ups</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">event_available</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">More Booked Calls</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">group_add</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Better Lead Management<br></span>
+</div>
+</div>
+</div>
+<!-- Right Column: Dashboard Visual -->
+<div class="relative z-10 lg:h-[620px] flex items-center justify-center lg:justify-end">
+<div class="relative w-full max-w-[700px] lg:-mr-8 xl:-mr-12">
+<img alt="Smart sales automation dashboard with floating analytics" class="relative w-full h-auto hero-asset" src="assets/images/hero-dashboard.svg">
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<section class="py-32 bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-28 items-center">
+<!-- Left Column: Chaos Image -->
+<div class="relative flex justify-center lg:justify-start lg:-ml-14 xl:-ml-24">
+<div class="relative z-10 w-full max-w-[520px] transform lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+<img alt="Operational chaos mockup showing missed calls and unanswered emails" class="w-full h-auto block" src="assets/images/operational-chaos.svg">
+</div>
+<!-- Background decorative element -->
+<div class="absolute -bottom-6 -right-6 w-64 h-64 bg-error/5 rounded-full blur-3xl -z-10"></div>
+</div>
+<!-- Right Column: Content -->
+<div class="flex flex-col">
+<span class="text-primary font-semibold tracking-wide uppercase text-[12px] font-label-md">
+                    The Hidden Revenue Leak
+                </span>
+<h2 class="text-4xl md:text-5xl font-bold leading-tight mt-4 text-on-surface font-headline-xl">
+                    Your Leads Aren't The Problem. Your Follow-Up System Is.
+                </h2>
+<p class="text-lg text-on-surface-variant mt-6 font-body-lg">
+                    Most service businesses don’t lose leads because of bad marketing — they lose them because inquiries get missed, follow-ups happen too late, and conversations slip through the cracks.
+                </p>
+<ul class="mt-10 space-y-4">
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">error</span>
+<span class="text-on-surface font-body-md">Leads go cold before you respond</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">cancel_schedule_send</span>
+<span class="text-on-surface font-body-md">Missed messages cost booked appointments</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">sticky_note_2</span>
+<span class="text-on-surface font-body-md">Follow-ups rely on memory or sticky notes</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">grid_view</span>
+<span class="text-on-surface font-body-md">Conversations are scattered across platforms</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">history_toggle_off</span>
+<span class="text-on-surface font-body-md">Manual processes waste hours every week</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">visibility_off</span>
+<span class="text-on-surface font-body-md">Opportunities disappear without visibility</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-surface overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Section Header -->
+<div class="max-w-3xl mx-auto text-center mb-20">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">
+                The Solution
+            </span>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6">
+                A System That Works While You Sleep
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                We build automated systems that capture leads, follow up instantly, nurture conversations, and turn inquiries into booked appointments — without you manually chasing every lead.
+            </p>
+</div>
+<!-- Feature Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+<div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl">ads_click</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Lead Capture</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    High-converting forms and funnels designed to capture more inquiries.
+                </p>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+<div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl">speed</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Instant Follow-Up</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Automated SMS and email responses sent within seconds.
+                </p>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+<div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Smart Lead Nurturing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Multi-step follow-up workflows that keep leads engaged.
+                </p>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+<div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl">calendar_today</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Appointment Booking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Integrated calendars with reminders and confirmation systems.
+                </p>
+</div>
+<!-- Card 5 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+<div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl">contacts</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Contact Organization</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Keep leads, conversations, and customer details organized in one simple system.</p>
+</div>
+<!-- Card 6 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+<div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl">account_tree</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Pipeline Management</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Organized CRM pipelines that track every lead and conversation.
+                </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Section Header -->
+<div class="max-w-3xl mx-auto text-center mb-20">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">
+                why we're different</span>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6">
+                Stop Running Your Sales Process Like Manual Labor
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Most service businesses don’t need more tools — they need a system that organizes conversations, automates follow-ups, and keeps opportunities moving without relying on memory.
+            </p>
+</div>
+<!-- Comparison Graphic -->
+<div class="mb-16 flex justify-center">
+<div class="relative w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/30">
+<img alt="High-end SaaS comparison graphic: Manual Chaos vs Automated Flow" class="w-full h-auto" src="assets/images/manual-vs-automated.svg">
+</div>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
+<!-- Manual Way Card -->
+<div class="bg-surface-variant/40 rounded-3xl p-8 md:p-10 border border-outline-variant/50 flex flex-col">
+<h3 class="font-headline-lg text-2xl font-bold text-on-surface mb-8">The Manual Way</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-xl">close</span>
+<span class="font-body-md text-on-surface-variant">Leads get forgotten</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-xl">close</span>
+<span class="font-body-md text-on-surface-variant">Follow-ups happen too late</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-xl">close</span>
+<span class="font-body-md text-on-surface-variant">Messages are scattered everywhere</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-xl">close</span>
+<span class="font-body-md text-on-surface-variant">Everything depends on memory</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-xl">close</span>
+<span class="font-body-md text-on-surface-variant">Sales process feels inconsistent</span>
+</li>
+</ul>
+</div>
+<!-- Smart System Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 md:p-10 shadow-[0_20px_40px_rgba(0,80,203,0.08)] border-2 border-primary/20 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<h3 class="font-headline-lg text-2xl font-bold text-on-surface mb-8">The Smart System</h3>
+<ul class="space-y-4 relative z-10">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
+<span class="font-body-md text-on-surface">Every lead follows a process</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
+<span class="font-body-md text-on-surface">Follow-ups happen automatically</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
+<span class="font-body-md text-on-surface">Conversations stay organized</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
+<span class="font-body-md text-on-surface">Appointments get booked faster</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
+<span class="font-body-md text-on-surface">Your pipeline becomes predictable</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Section CTA -->
+<div class="mt-20 flex flex-col items-center">
+<a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-xl mb-6" href="#">
+                Book a Discovery Call
+            </a>
+<p class="font-body-md text-on-surface-variant">
+                Simple systems. Clear process. More booked appointments.
+            </p>
+</div>
+</div>
+</section>
+<section id="offer" class="py-32 bg-surface-container-lowest overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl mx-auto text-center mb-20">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">THE OFFER</span>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">Your Done-For-You Lead Follow-Up System</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">We build and organize the systems that capture leads, automate conversations, book appointments, and keep your sales process running smoothly — without relying on manual follow-up.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">ads_click</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Funnel &amp; Lead Capture</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">High-converting landing pages and forms designed to capture more inquiries.</p>
+</div>
+<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">CRM &amp; Pipeline Setup</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Organized pipelines that track every lead, stage, and conversation in one place.</p>
+</div>
+<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Automated Follow-Up</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Instant SMS and email workflows that respond to leads automatically.</p>
+</div>
+<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">event</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Appointment Booking System</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Integrated calendars, confirmations, reminders, and no-show reduction systems.</p>
+</div>
+<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">sync</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Lead Nurturing Workflows</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Multi-step automation sequences that keep leads engaged and moving forward.</p>
+</div>
+<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">support</span>
+</div>
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Optimization &amp; Support</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ongoing refinement, testing, support, and system improvements.</p>
+</div>
+</div>
+<div class="mt-20 pt-10 border-t border-outline-variant/30">
+<p class="text-center font-label-md text-label-md text-primary tracking-widest uppercase mb-8">What This Helps You Do</p>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
+<span class="font-body-md text-on-surface">Respond faster</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
+<span class="font-body-md text-on-surface">Stay organized</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
+<span class="font-body-md text-on-surface">Book more appointments</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
+<span class="font-body-md text-on-surface">Reduce manual work</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
+<span class="font-body-md text-on-surface">Improve lead visibility</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Refined How I Work Section -->
+<section id="process" class="py-32 bg-surface overflow-hidden border-t border-outline-variant/30">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Section Header -->
+<div class="max-w-3xl mx-auto text-center mb-20">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">How I Work</span>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">First the Blueprint. Then the Build.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">Every project starts with understanding how your business currently operates so the final system feels organized, efficient, and built around your actual workflow.</p>
+</div>
+<!-- 4-Step Process Visual -->
+<div class="relative">
+<!-- Horizontal Connector Line (Desktop Only) -->
+<div class="hidden lg:block absolute top-[52px] left-0 w-full h-[1px] bg-outline-variant/40 z-0"></div>
+<!-- Step Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+<!-- Step 1 -->
+<div class="group relative flex flex-col items-start">
+<!-- Phase Badge & Icon Node -->
+<div class="flex flex-col items-start gap-4 mb-8">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 01</span>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
+<span class="material-symbols-outlined text-2xl">phone_in_talk</span>
+</div>
+</div>
+<!-- Content -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/20 shadow-sm flex flex-col flex-1 w-full">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">Discovery Call</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">We uncover bottlenecks, missed opportunities, current workflows, and what success looks like so the right system gets built.</p>
+<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Workflow Review</span>
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Business Goals</span>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group relative flex flex-col items-start">
+<!-- Phase Badge & Icon Node -->
+<div class="flex flex-col items-start gap-4 mb-8">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 02</span>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
+<span class="material-symbols-outlined text-2xl">account_tree</span>
+</div>
+</div>
+<!-- Content -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/20 shadow-sm flex flex-col flex-1 w-full">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">System Architecture</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">I visually map the entire system before implementation begins so you clearly understand the process and customer journey.</p>
+<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Process Mapping</span>
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">System Planning</span>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group relative flex flex-col items-start">
+<!-- Phase Badge & Icon Node -->
+<div class="flex flex-col items-start gap-4 mb-8">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 03</span>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
+<span class="material-symbols-outlined text-2xl">construction</span>
+</div>
+</div>
+<!-- Content -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/20 shadow-sm flex flex-col flex-1 w-full">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">Build &amp; Implementation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">I build and configure the CRM, automations, workflows, and integrations based on the approved system plan.</p>
+<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">CRM Setup</span>
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Automations</span>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="group relative flex flex-col items-start">
+<!-- Phase Badge & Icon Node -->
+<div class="flex flex-col items-start gap-4 mb-8">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 04</span>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
+<span class="material-symbols-outlined text-2xl">rocket_launch</span>
+</div>
+</div>
+<!-- Content -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/20 shadow-sm flex flex-col flex-1 w-full">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">Launch &amp; Support</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">I test, optimize, and document the system to ensure your team understands how to use it confidently from day one.</p>
+<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Optimization</span>
+<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Support</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="results" class="py-32 bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Section Header -->
+<div class="max-w-3xl mx-auto text-center mb-20">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Project Showcase</span>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">Funnels &amp; Systems Built For Modern Service Businesses</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">From lead capture funnels to automated appointment booking systems, every build is designed to create a smoother customer journey and a more organized sales process.</p>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/20">
+<div class="aspect-video relative overflow-hidden bg-surface-container">
+<img alt="Gym Coach Funnel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/thumb-gym-coach-funnel.svg">
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">Demo Funnel Project</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Gym Coach Funnel</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Lead generation and appointment booking funnel designed for fitness coaches looking to automate lead follow-up and client booking.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/20">
+<div class="aspect-video relative overflow-hidden bg-surface-container">
+<img alt="Hoblevelup Funnel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/thumb-hoblevelup-funnel.svg">
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">Portfolio Funnel</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Hoblevelup Funnel</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The complete lead capture and booking funnel built by yours truly.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/20">
+<div class="aspect-video relative overflow-hidden bg-surface-container">
+<img alt="Coming Soon" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/thumb-coming-soon.svg">
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">Upcoming Build</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Coming Soon</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">More funnel systems and automation projects are currently being designed and added.</p>
+</div>
+</div>
+</div>
+<!-- Section CTA -->
+<div class="mt-20 flex flex-col items-center">
+<a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-xl mb-6" href="#">
+        Book a Discovery Call
+      </a>
+<p class="font-label-md text-label-md text-on-surface-variant text-center opacity-70 italic">Simple systems built for clarity, automation, and growth.</p>
+</div>
+</div>
+</section><section id="about" class="py-32 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<!-- Left Column: Visual Composition -->
+<div class="relative flex justify-center lg:justify-start">
+<div class="relative z-10 w-full max-w-lg transform hover:scale-[1.02] transition-transform duration-500">
+<div class="absolute inset-0 bg-primary/10 blur-[80px] -z-10 rounded-full scale-75 opacity-50"></div>
+<img alt="Founder visual composition" class="w-full h-auto block relative z-10" src="assets/images/founder-visual.png">
+</div>
+</div>
+<!-- Right Column: Content -->
+<div class="flex flex-col items-start">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase font-bold mb-4">
+                    The Builder
+                </span>
+<h2 class="font-headline-xl text-on-surface mb-8 max-w-xl">
+                    Built By Someone Who Understands Systems — Not Just Software
+                </h2>
+<div class="space-y-6 mb-12">
+<p class="font-body-lg text-on-surface-variant">
+                        Engineering graduate turned AI automation specialist helping service-based businesses streamline follow-ups, automate repetitive processes, and organize their sales systems using GoHighLevel CRM.
+                    </p>
+<p class="font-body-lg text-on-surface-variant">
+                        Built from a background in customer support and technical operations, I understand both the technical side of automation — and the customer experience behind it.
+                    </p>
+<p class="font-body-lg text-on-surface-variant">
+                        Today, I build funnels, workflows, and CRM systems designed to help businesses respond faster, stay organized, and operate with less manual work.
+                    </p>
+</div>
+<!-- Credibility Cards -->
+<div class="grid grid-cols-1 gap-4 w-full">
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center gap-5 hover:border-primary/30 transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Systems Thinking</h4>
+<p class="text-xs text-on-surface-variant">Built around workflow clarity and operational structure.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center gap-5 hover:border-primary/30 transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">person_celebrate</span>
+</div>
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Customer Experience</h4>
+<p class="text-xs text-on-surface-variant">Focused on smoother lead journeys and faster response times.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center gap-5 hover:border-primary/30 transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">auto_mode</span>
+</div>
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Automation Focused</h4>
+<p class="text-xs text-on-surface-variant">Funnels, CRM systems, workflows, and follow-up automation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-32 bg-surface overflow-hidden border-t border-outline-variant/10">
+<div class="absolute inset-0 opacity-5 -z-10">
+<img alt="" class="w-full h-full object-cover blur-sm" src="https://lh3.googleusercontent.com/aida/ADBb0uimxqEKbm08T7c-E3noQQ6lSe8hMtzS_GcRJpXx3NOsYl1WKaS_1_OIsL87h7DZ34XdgmsDJmZlNIqW9h_7D12FNmCZGpbgSgJFXn7RYI76S_BuW8_AADKzJqOItNhhXGRsx2L2RWttX68EmqnHdbBWX6GzaGvTDYlyZYuQsJU8wgKqy7ojXPolL7RMl894gSva-sRXxP8NPhs-TZY_AdyuW1msBeMpEsnOVUDA_wzvllVMNrUuqgJcHQ">
+<div class="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 font-bold">
+                Ready To Simplify Your Sales Process?
+            </span>
+<h2 class="font-headline-xl text-on-surface mb-6 font-bold leading-tight">
+                Let’s Build A System Your Business Can Actually Rely On.
+            </h2>
+<p class="font-body-lg text-on-surface-variant mb-12 max-w-2xl">
+                We’ll review your current workflow, identify bottlenecks, and map out the right automation system to help you respond faster, stay organized, and book more appointments.
+            </p>
+<div class="flex flex-col items-center gap-6">
+<a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:shadow-[0_0_30px_rgba(0,80,203,0.3)] transition-all duration-300 shadow-xl" href="#">
+                    Book a Discovery Call
+                </a>
+<p class="font-body-md text-on-surface-variant/80 text-sm italic">
+                    No pressure. No complicated tech talk. Just clarity on what’s slowing your system down.
+                </p>
+</div>
+<div class="mt-16 flex flex-wrap justify-center gap-x-12 gap-y-6 pt-10 border-t border-outline-variant/20 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">bolt</span>
+<span class="font-label-md text-on-surface font-semibold">Faster Follow-Ups</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">hub</span>
+<span class="font-label-md text-on-surface font-semibold">Organized Pipelines</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">event_available</span>
+<span class="font-label-md text-on-surface font-semibold">More Booked Calls</span>
+</div>
+</div>
+</div>
+</div>
+</section><section class="py-32 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl mx-auto text-center mb-20">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Frequently Asked Questions</span>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">Before Getting Started</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Some common questions to help you move forward with confidence.</p>
+</div>
+<div class="max-w-4xl mx-auto space-y-4"><div class="space-y-4">
+<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">Do I need a GoHighLevel account?</h3>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2">
+<p class="font-body-md text-on-surface-variant">Yes, I build all systems exclusively on GoHighLevel. If you don't have one, I can help you get set up with the right plan for your business.</p>
+</div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">What types of businesses do you work with?</h3>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2">
+<p class="font-body-md text-on-surface-variant">I specialize in helping high-ticket service providers, coaches, and consultants who manage a high volume of leads and appointments.</p>
+</div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">What exactly is included in the build?</h3>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2">
+<p class="font-body-md text-on-surface-variant">The scope includes funnel design, CRM architecture, automated follow-up sequences, appointment booking systems, and pipeline organization tailored to your workflow.</p>
+</div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">How long does a typical system build take?</h3>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2">
+<p class="font-body-md text-on-surface-variant">Most builds are completed within 2-4 weeks, depending on the complexity of your current workflows and required integrations.</p>
+</div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">What happens during the discovery call?</h3>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2">
+<p class="font-body-md text-on-surface-variant">It's a low-pressure conversation to audit your current lead process, identify where you're losing revenue, and see if a custom system is the right fit.</p>
+</div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">Do you provide support after the launch?</h3>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2">
+<p class="font-body-md text-on-surface-variant">Absolutely. I provide full documentation for your team and 30 days of post-launch support to ensure everything is running perfectly.</p>
+</div>
+</details>
+</div></div>
+</div>
+</section>
+<footer class="py-6 bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-8">
+<a class="font-headline-lg text-[20px] font-bold text-on-surface flex items-center gap-2 transition-transform hover:scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">insights</span>
+        Hoblevelup
+      </a>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#offer">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#results">Results</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#process">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#about">About</a>
+</nav>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<p class="font-label-md text-on-surface-variant/60 text-xs">
+        © 2026 Hoblevelup. All rights reserved.
+      </p>
+<div class="flex gap-4">
+<a class="font-label-md text-on-surface-variant/60 text-xs hover:text-primary transition-colors underline" href="#">Privacy Policy</a>
+<a class="font-label-md text-on-surface-variant/60 text-xs hover:text-primary transition-colors underline" href="#">Terms &amp; Conditions</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+
+
+</body></html>

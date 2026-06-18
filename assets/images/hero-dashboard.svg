@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Smart sales automation dashboard</title>
+  <desc id="desc">A premium CRM dashboard with floating analytics cards, lead pipeline metrics, and automated follow-up activity.</desc>
+  <defs>
+    <linearGradient id="panel" x1="188" y1="159" x2="925" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f3ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#0050cb"/>
+    </linearGradient>
+    <linearGradient id="soft" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#dae1ff"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".2"/>
+    </linearGradient>
+    <clipPath id="screenClip">
+      <rect x="216" y="154" width="768" height="576" rx="44"/>
+    </clipPath>
+  </defs>
+
+  <g>
+    <rect x="216" y="154" width="768" height="576" rx="44" fill="url(#panel)" stroke="#c2c6d8" stroke-opacity=".72"/>
+    <g clip-path="url(#screenClip)">
+      <rect x="216" y="154" width="768" height="70" fill="#ffffff"/>
+      <line x1="216" y1="224" x2="984" y2="224" stroke="#c2c6d8" stroke-opacity=".35"/>
+      <circle cx="270" cy="190" r="10" fill="#ffdad6"/>
+      <circle cx="304" cy="190" r="10" fill="#d0e1fb"/>
+      <circle cx="338" cy="190" r="10" fill="#0066ff"/>
+
+      <text x="390" y="195" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#191b24">Hoblevelup CRM</text>
+      <rect x="812" y="176" width="108" height="28" rx="14" fill="#dae1ff"/>
+      <circle cx="834" cy="190" r="5" fill="#0050cb">
+        <animate attributeName="opacity" values="1;.35;1" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="850" y="195" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#003fa4">Live</text>
+
+      <rect x="260" y="264" width="408" height="214" rx="28" fill="#ffffff" stroke="#c2c6d8" stroke-opacity=".42"/>
+      <text x="292" y="312" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="2" fill="#727687">REVENUE PIPELINE</text>
+      <text x="292" y="366" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#191b24">$42.8k</text>
+      <rect x="292" y="392" width="314" height="12" rx="6" fill="#ecedfa"/>
+      <rect x="292" y="392" width="244" height="12" rx="6" fill="url(#blue)">
+        <animate attributeName="width" values="206;244;232;244" dur="4.8s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="292" y="430" width="314" height="12" rx="6" fill="#ecedfa"/>
+      <rect x="292" y="430" width="184" height="12" rx="6" fill="#505f76">
+        <animate attributeName="width" values="160;184;174;184" dur="5.4s" repeatCount="indefinite"/>
+      </rect>
+
+      <rect x="700" y="264" width="240" height="214" rx="28" fill="#ffffff" stroke="#c2c6d8" stroke-opacity=".42"/>
+      <text x="732" y="312" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="2" fill="#727687">CONVERSION</text>
+      <text x="732" y="366" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800" fill="#191b24">24.8%</text>
+      <rect x="732" y="394" width="42" height="64" rx="10" fill="#dae1ff"/>
+      <rect x="786" y="364" width="42" height="94" rx="10" fill="#dae1ff"/>
+      <rect x="840" y="332" width="42" height="126" rx="10" fill="url(#blue)">
+        <animate attributeName="height" values="110;126;118;126" dur="3.6s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="348;332;340;332" dur="3.6s" repeatCount="indefinite"/>
+      </rect>
+
+      <rect x="260" y="508" width="308" height="166" rx="28" fill="#f2f3ff" stroke="#c2c6d8" stroke-opacity=".32"/>
+      <rect x="294" y="546" width="222" height="34" rx="17" fill="#ffffff"/>
+      <text x="334" y="568" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#424656">Lead captured</text>
+      <path d="M405 588v22" stroke="#0050cb" stroke-width="3" stroke-linecap="round"/>
+      <rect x="294" y="616" width="222" height="34" rx="17" fill="url(#blue)"/>
+      <text x="334" y="638" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#ffffff">Instant SMS sent</text>
+
+      <rect x="600" y="508" width="340" height="166" rx="28" fill="#ffffff" stroke="#c2c6d8" stroke-opacity=".42"/>
+      <text x="632" y="550" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="2" fill="#727687">TODAY</text>
+      <g font-family="Inter, Arial, sans-serif" font-size="15" fill="#424656">
+        <circle cx="650" cy="588" r="6" fill="#0050cb"/>
+        <text x="670" y="594">3 calls booked from follow-up</text>
+        <circle cx="650" cy="626" r="6" fill="#0050cb" opacity=".75"/>
+        <text x="670" y="632">12 leads moved to pipeline</text>
+      </g>
+    </g>
+  </g>
+
+  <g>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -12; 0 0" dur="5.2s" repeatCount="indefinite"/>
+      <rect x="122" y="514" width="230" height="110" rx="28" fill="#ffffff" stroke="#dae1ff"/>
+      <circle cx="170" cy="569" r="26" fill="#dae1ff"/>
+      <path d="M158 569l10 10 18-24" fill="none" stroke="#0050cb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="214" y="558" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="1.5" fill="#727687">RESPONSE</text>
+      <text x="214" y="588" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#191b24">12 sec</text>
+    </g>
+
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 10; 0 0" dur="5.8s" repeatCount="indefinite"/>
+      <rect x="850" y="312" width="230" height="118" rx="30" fill="#ffffff" stroke="#dae1ff"/>
+      <text x="882" y="360" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="1.5" fill="#727687">BOOKINGS</text>
+      <text x="882" y="394" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#191b24">+18%</text>
+      <path d="M1004 392c17-28 30-52 44-72" fill="none" stroke="#0050cb" stroke-width="7" stroke-linecap="round"/>
+    </g>
+
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 10 0; 0 0" dur="6.4s" repeatCount="indefinite"/>
+      <rect x="744" y="676" width="306" height="104" rx="28" fill="#ffffff" stroke="#dae1ff"/>
+      <rect x="784" y="711" width="46" height="46" rx="16" fill="url(#blue)"/>
+      <path d="M796 734h23m-11-11v22" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+      <text x="856" y="722" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="1.5" fill="#727687">PIPELINE</text>
+      <text x="856" y="752" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800" fill="#191b24">Lead advanced</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Gym coach funnel sample thumbnail</title>
+  <desc id="desc">A sample funnel design for a fitness coach with lead capture, booking, and follow-up panels.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f3ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#0050cb"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="#faf8ff"/>
+  <circle cx="156" cy="118" r="164" fill="#dae1ff" opacity=".55"/>
+  <circle cx="832" cy="450" r="170" fill="#ffdbd0" opacity=".36"/>
+  <rect x="86" y="58" width="788" height="424" rx="36" fill="#001849" opacity=".08"/>
+  <rect x="76" y="46" width="808" height="424" rx="36" fill="url(#bg)" stroke="#c2c6d8"/>
+  <rect x="112" y="86" width="332" height="352" rx="30" fill="#ffffff" stroke="#dae1ff"/>
+  <rect x="144" y="120" width="114" height="30" rx="15" fill="#dae1ff"/>
+  <text x="164" y="141" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#003fa4">FITNESS</text>
+  <text x="144" y="198" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#191b24">Book More</text>
+  <text x="144" y="236" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0050cb">Coaching Calls</text>
+  <text x="144" y="274" font-family="Inter, Arial, sans-serif" font-size="16" fill="#424656">Lead capture, booking, and follow-up.</text>
+  <rect x="144" y="318" width="190" height="46" rx="23" fill="url(#blue)"/>
+  <text x="184" y="347" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff">Start Assessment</text>
+  <rect x="480" y="86" width="340" height="116" rx="28" fill="#ffffff" stroke="#dae1ff"/>
+  <text x="514" y="126" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="1.5" fill="#727687">LEAD FORM</text>
+  <rect x="514" y="148" width="244" height="14" rx="7" fill="#ecedfa"/>
+  <rect x="514" y="174" width="176" height="14" rx="7" fill="#dae1ff"/>
+  <rect x="480" y="232" width="340" height="82" rx="24" fill="#ffffff" stroke="#dae1ff"/>
+  <circle cx="524" cy="273" r="21" fill="#dae1ff"/>
+  <path d="M512 273h24m-12-12v24" stroke="#0050cb" stroke-width="5" stroke-linecap="round"/>
+  <text x="564" y="268" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#191b24">Auto SMS follow-up</text>
+  <text x="564" y="292" font-family="Inter, Arial, sans-serif" font-size="14" fill="#424656">Sent in seconds</text>
+  <rect x="480" y="344" width="340" height="94" rx="24" fill="#ffffff" stroke="#dae1ff"/>
+  <text x="514" y="384" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#191b24">Calendar booking</text>
+  <rect x="514" y="402" width="54" height="14" rx="7" fill="#0050cb"/>
+  <rect x="584" y="402" width="54" height="14" rx="7" fill="#b3c5ff"/>
+  <rect x="654" y="402" width="54" height="14" rx="7" fill="#b3c5ff"/>
+</svg>

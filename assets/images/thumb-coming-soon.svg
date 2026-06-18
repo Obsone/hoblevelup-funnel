@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Coming soon project thumbnail</title>
+  <desc id="desc">A polished placeholder visual for an upcoming automation funnel project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f3ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#0050cb"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="#faf8ff"/>
+  <circle cx="248" cy="126" r="170" fill="#dae1ff" opacity=".5"/>
+  <circle cx="784" cy="438" r="184" fill="#ffdbd0" opacity=".32"/>
+  <rect x="168" y="94" width="624" height="352" rx="40" fill="#001849" opacity=".08"/>
+  <rect x="152" y="78" width="656" height="352" rx="40" fill="url(#bg)" stroke="#c2c6d8"/>
+  <rect x="394" y="146" width="172" height="38" rx="19" fill="#dae1ff"/>
+  <text x="424" y="171" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#003fa4">UPCOMING BUILD</text>
+  <text x="300" y="254" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="800" fill="#191b24">Coming Soon</text>
+  <text x="298" y="300" font-family="Inter, Arial, sans-serif" font-size="18" fill="#424656">New funnel system currently being designed.</text>
+  <rect x="312" y="346" width="336" height="20" rx="10" fill="#ecedfa"/>
+  <rect x="312" y="346" width="214" height="20" rx="10" fill="url(#blue)"/>
+  <circle cx="250" cy="270" r="34" fill="#ffffff" stroke="#dae1ff"/>
+  <path d="M236 270h28m-14-14v28" stroke="#0050cb" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="710" cy="270" r="34" fill="#ffffff" stroke="#dae1ff"/>
+  <path d="M696 270h28m-14-14v28" stroke="#0050cb" stroke-width="6" stroke-linecap="round"/>
+</svg>
