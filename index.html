@@ -124,6 +124,20 @@
             filter: drop-shadow(0 30px 48px rgba(0, 24, 73, 0.14));
             animation: heroFloat 7s ease-in-out infinite;
         }
+        .brand-logo {
+            display: block;
+            width: 178px;
+            height: 48px;
+            object-fit: contain;
+            object-position: left center;
+        }
+        .footer-logo {
+            display: block;
+            width: 142px;
+            height: 38px;
+            object-fit: contain;
+            object-position: left center;
+        }
         @keyframes heroFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -142,9 +156,8 @@
 <!-- TopNavBar -->
 <header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 w-full z-50 shadow-sm transition-all duration-300 ease-in-out">
 <div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-[80px]">
-<a class="font-headline-lg text-headline-lg font-bold text-on-surface dark:text-surface-bright flex items-center gap-2" href="#">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">insights</span>
-                Hoblevelup
+<a class="flex items-center transition-transform hover:scale-[0.98]" href="#" aria-label="Hoblevelup home">
+<img alt="Hoblevelup" class="brand-logo" src="assets/images/hoblevelup-logo.png">
             </a>
 <nav class="hidden md:flex items-center gap-8">
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#offer">Services</a>
@@ -842,9 +855,8 @@
 <footer class="py-6 bg-surface-container-lowest border-t border-outline-variant/20">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
 <div class="flex items-center gap-8">
-<a class="font-headline-lg text-[20px] font-bold text-on-surface flex items-center gap-2 transition-transform hover:scale-[0.98]" href="#">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">insights</span>
-        Hoblevelup
+<a class="flex items-center transition-transform hover:scale-[0.98]" href="#" aria-label="Hoblevelup home">
+<img alt="Hoblevelup" class="footer-logo" src="assets/images/hoblevelup-logo.png">
       </a>
 <nav class="hidden lg:flex items-center gap-6">
 <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#offer">Services</a>
