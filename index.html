@@ -797,51 +797,50 @@
 </div>
 </div>
 </section>
-<section class="relative py-32 bg-surface overflow-hidden border-t border-outline-variant/10">
-<div class="absolute inset-0 cta-ambient opacity-80 -z-10"></div>
+<section class="relative py-24 lg:py-28 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
+<div class="absolute inset-0 cta-ambient opacity-70 -z-10"></div>
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-14 lg:gap-16 items-start">
+<div class="flex flex-col items-center text-center lg:items-start lg:text-left lg:pr-10">
 <span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 font-bold">
                 Ready To Simplify Your Sales Process?
             </span>
-<h2 class="font-headline-xl text-on-surface mb-6 font-bold leading-tight">
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold leading-tight">
                 Let's Build A System Your Business Can Actually Rely On.
             </h2>
-<p class="font-body-lg text-on-surface-variant mb-12 max-w-2xl">
+<p class="font-body-lg text-on-surface-variant mb-10 max-w-xl">
                 We'll review your current workflow, identify bottlenecks, and map out the right automation system to help you respond faster, stay organized, and book more appointments.
             </p>
-<div class="flex flex-col items-center gap-6">
-<a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:shadow-[0_0_30px_rgba(0,80,203,0.3)] transition-all duration-300 shadow-xl" href="https://links.hoblevelup.work/widget/booking/slX8fzBKx0dTqBkgJSnM" target="_blank" rel="noopener noreferrer">
+<div class="flex flex-col items-center lg:items-start gap-5">
+<a class="inline-flex items-center justify-center px-9 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:shadow-[0_0_30px_rgba(0,80,203,0.3)] transition-all duration-300 shadow-xl" href="https://links.hoblevelup.work/widget/booking/slX8fzBKx0dTqBkgJSnM" target="_blank" rel="noopener noreferrer">
                     Book a Discovery Call
                 </a>
-<p class="font-body-md text-on-surface-variant/80 text-sm italic">
+<p class="font-body-md text-on-surface-variant/80 text-sm italic max-w-md">
                     No pressure. No complicated tech talk. Just clarity on what's slowing your system down.
                 </p>
 </div>
-<div class="mt-16 flex flex-wrap justify-center gap-x-12 gap-y-6 pt-10 border-t border-outline-variant/20 w-full">
-<div class="flex items-center gap-2">
+<div class="mt-12 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4 pt-8 border-t border-outline-variant/20 w-full max-w-2xl">
+<div class="flex items-center justify-center lg:justify-start gap-2">
 <span class="material-symbols-outlined text-primary text-lg">bolt</span>
 <span class="font-label-md text-on-surface font-semibold">Faster Follow-Ups</span>
 </div>
-<div class="flex items-center gap-2">
+<div class="flex items-center justify-center lg:justify-start gap-2">
 <span class="material-symbols-outlined text-primary text-lg">hub</span>
 <span class="font-label-md text-on-surface font-semibold">Organized Pipelines</span>
 </div>
-<div class="flex items-center gap-2">
+<div class="flex items-center justify-center lg:justify-start gap-2">
 <span class="material-symbols-outlined text-primary text-lg">event_available</span>
 <span class="font-label-md text-on-surface font-semibold">More Booked Calls</span>
 </div>
 </div>
 </div>
-</div>
-</section><section class="py-32 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="max-w-3xl mx-auto text-center mb-20">
+<div class="pt-12 lg:pt-0 lg:pl-16 border-t lg:border-t-0 lg:border-l border-outline-variant/20">
+<div class="mb-10 text-center lg:text-left">
 <span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Frequently Asked Questions</span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">Before Getting Started</h2>
+<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-5 font-bold">Before Getting Started</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant">Some common questions to help you move forward with confidence.</p>
 </div>
-<div class="max-w-4xl mx-auto space-y-4"><div class="space-y-4">
+<div class="space-y-4" data-faq-list>
 <details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
 <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
 <h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">Do I need a GoHighLevel account?</h3>
@@ -905,7 +904,8 @@
 <p class="font-body-md text-on-surface-variant">I still encourage you to book a call. From there, I can understand what kind of support you need, point you toward the right specialist or tool if needed, and make sure any outside work fits into your system instead of adding more confusion.</p>
 </div>
 </details>
-</div></div>
+</div>
+</div>
 </div>
 </section>
 <footer class="py-6 bg-surface-container-lowest border-t border-outline-variant/20">
@@ -934,5 +934,21 @@
 </footer>
 
 
+<script>
+  document.querySelectorAll('[data-faq-list]').forEach((faqList) => {
+    const items = faqList.querySelectorAll('details');
 
+    items.forEach((item) => {
+      item.addEventListener('toggle', () => {
+        if (!item.open) return;
+
+        items.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.open = false;
+          }
+        });
+      });
+    });
+  });
+</script>
 </body></html>
