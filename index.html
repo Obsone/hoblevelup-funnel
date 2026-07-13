@@ -184,6 +184,24 @@
             object-fit: contain;
             object-position: left center;
         }
+        .social-link {
+            display: inline-flex;
+            width: 34px;
+            height: 34px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .social-link:hover {
+            transform: translateY(-1px) scale(0.98);
+            background-color: rgba(0, 80, 203, 0.08);
+        }
+        .social-link img {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
         @keyframes heroFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -921,13 +939,22 @@
 <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#about">About</a>
 </nav>
 </div>
-<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="flex flex-col md:flex-row items-center gap-5 md:gap-6">
 <p class="font-label-md text-on-surface-variant/60 text-xs">
         &copy; 2026 Hoblevelup. All rights reserved.
       </p>
-<div class="flex gap-4">
+<div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
 <a class="font-label-md text-on-surface-variant/60 text-xs hover:text-primary transition-colors underline" href="#">Privacy Policy</a>
 <a class="font-label-md text-on-surface-variant/60 text-xs hover:text-primary transition-colors underline" href="#">Terms &amp; Conditions</a>
+<div class="h-4 w-px bg-outline-variant/30 hidden sm:block" aria-hidden="true"></div>
+<div class="flex items-center gap-2">
+<a class="social-link" href="https://www.facebook.com/hob.automation" target="_blank" rel="noopener noreferrer" aria-label="Hoblevelup on Facebook">
+<img alt="" src="assets/images/icon-facebook.svg">
+</a>
+<a class="social-link" href="https://www.linkedin.com/in/jobdchavez-dev/" target="_blank" rel="noopener noreferrer" aria-label="Job D. Chavez on LinkedIn">
+<img alt="" src="assets/images/icon-linkedin.svg">
+</a>
+</div>
 </div>
 </div>
 </div>
