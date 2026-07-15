@@ -648,6 +648,263 @@
             height: 18px;
             display: block;
         }
+        .problem-section {
+            position: relative;
+            isolation: isolate;
+            padding: clamp(88px, 8vw, 128px) 0;
+            overflow: hidden;
+            background: #f2f3ff;
+        }
+        .problem-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: linear-gradient(115deg, rgba(255, 255, 255, 0.52), transparent 42%, rgba(218, 225, 255, 0.2));
+            pointer-events: none;
+        }
+        .problem-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(56px, 7vw, 112px);
+        }
+        .problem-visual {
+            position: relative;
+            width: min(100%, 600px);
+            min-width: 0;
+            margin-inline: auto;
+            padding: clamp(14px, 2.4vw, 28px);
+            isolation: isolate;
+        }
+        .problem-signal-field {
+            position: absolute;
+            inset: 2% -8% -3%;
+            z-index: -1;
+            width: 116%;
+            height: 101%;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .problem-signal-path {
+            fill: none;
+            stroke: rgba(186, 26, 26, 0.2);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 7 12;
+            vector-effect: non-scaling-stroke;
+        }
+        .problem-signal-path--active {
+            stroke: rgba(186, 26, 26, 0.65);
+            stroke-width: 2.3;
+            stroke-dasharray: 0.06 0.94;
+            filter: drop-shadow(0 0 5px rgba(186, 26, 26, 0.24));
+            animation: problemSignalTravel 5.8s linear infinite;
+        }
+        .problem-signal-node {
+            fill: rgba(255, 255, 255, 0.92);
+            stroke: rgba(186, 26, 26, 0.32);
+            stroke-width: 1.2;
+            vector-effect: non-scaling-stroke;
+        }
+        .problem-signal-node-core {
+            fill: #ba1a1a;
+        }
+        .problem-art-frame {
+            position: relative;
+            z-index: 1;
+            transform: rotate(-2deg);
+            transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .problem-art-frame::after {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 24%;
+            height: 3px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #ba1a1a, #ff5449 34%, transparent);
+            box-shadow: 0 0 12px rgba(186, 26, 26, 0.78), 0 0 28px rgba(186, 26, 26, 0.38);
+            animation: problemEdgeGlow 1.9s ease-in-out infinite;
+        }
+        .problem-art {
+            display: block;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 28px 34px rgba(25, 27, 36, 0.12));
+        }
+        .problem-edge-alert {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid rgba(255, 255, 255, 0.94);
+            border-radius: 9999px;
+            background: #ba1a1a;
+            color: #ffffff;
+            box-shadow: 0 0 0 1px rgba(147, 0, 10, 0.18), 0 0 18px rgba(186, 26, 26, 0.72), 0 0 42px rgba(186, 26, 26, 0.34);
+            transform: translate(-50%, -50%);
+            animation: problemBeaconPulse 1.9s ease-in-out infinite;
+        }
+        .problem-edge-alert::before,
+        .problem-edge-alert::after {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            z-index: -1;
+            border: 1px solid rgba(186, 26, 26, 0.42);
+            border-radius: inherit;
+            animation: problemBeaconRing 1.9s ease-out infinite;
+        }
+        .problem-edge-alert::after {
+            animation-delay: 0.65s;
+        }
+        .problem-edge-alert .material-symbols-outlined {
+            font-size: 20px;
+            font-variation-settings: "FILL" 1, "wght" 700;
+        }
+        .problem-alert-slot {
+            position: absolute;
+            z-index: 3;
+        }
+        .problem-alert-slot--missed {
+            top: 9%;
+            right: 0;
+        }
+        .problem-alert-slot--unread {
+            top: 43%;
+            left: 0;
+        }
+        .problem-alert-slot--overdue {
+            right: 2%;
+            bottom: 8%;
+        }
+        .problem-alert-card {
+            display: flex;
+            min-width: 158px;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border: 1px solid rgba(186, 26, 26, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 16px 36px -22px rgba(25, 27, 36, 0.5);
+        }
+        .problem-alert-card .material-symbols-outlined {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            flex: 0 0 32px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            background: #ffdad6;
+            color: #93000a;
+            font-size: 18px;
+        }
+        .problem-alert-card span:last-child {
+            display: grid;
+            gap: 1px;
+        }
+        .problem-alert-card small {
+            color: #727687;
+            font-size: 9px;
+            font-weight: 700;
+            line-height: 12px;
+            text-transform: uppercase;
+        }
+        .problem-alert-card strong {
+            color: #191b24;
+            font-size: 12px;
+            line-height: 16px;
+            white-space: nowrap;
+        }
+        .problem-alert-slot--missed .problem-alert-card {
+            animation: problemAlertFloat 4.8s ease-in-out infinite;
+        }
+        .problem-alert-slot--unread .problem-alert-card {
+            animation: problemAlertFloat 5.4s -1.6s ease-in-out infinite;
+        }
+        .problem-alert-slot--overdue .problem-alert-card {
+            animation: problemAlertFloat 5.1s -3.1s ease-in-out infinite;
+        }
+        .problem-section.is-motion-ready:not(.is-visible) .problem-art-frame {
+            opacity: 0;
+            transform: translateY(24px) rotate(-4deg) scale(0.97);
+        }
+        .problem-section.is-motion-ready:not(.is-visible) .problem-alert-slot {
+            opacity: 0;
+            transform: translateY(18px) scale(0.96);
+        }
+        .problem-section.is-visible .problem-alert-slot {
+            animation: problemAlertReveal 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .problem-section.is-visible .problem-alert-slot--missed {
+            animation-delay: 0.26s;
+        }
+        .problem-section.is-visible .problem-alert-slot--unread {
+            animation-delay: 0.4s;
+        }
+        .problem-section.is-visible .problem-alert-slot--overdue {
+            animation-delay: 0.54s;
+        }
+        .problem-copy {
+            width: 100%;
+            max-width: 610px;
+        }
+        .problem-title {
+            max-width: 620px;
+            font-family: Inter, sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
+        .problem-points {
+            margin-top: 34px;
+            border-top: 1px solid rgba(114, 118, 135, 0.2);
+        }
+        .problem-point {
+            display: grid;
+            grid-template-columns: 42px minmax(0, 1fr);
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(114, 118, 135, 0.2);
+        }
+        .problem-point-icon {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(186, 26, 26, 0.14);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.72);
+            color: #ba1a1a;
+        }
+        .problem-point-icon .material-symbols-outlined {
+            font-size: 21px;
+        }
+        .problem-point h3 {
+            margin-bottom: 4px;
+            color: #191b24;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .problem-point p {
+            color: #424656;
+            font-size: 15px;
+            line-height: 23px;
+        }
         @keyframes heroReveal {
             to { opacity: 1; transform: translateY(0); }
         }
@@ -677,6 +934,30 @@
             95% { opacity: 1; }
             100% { left: 100%; opacity: 0; }
         }
+        @keyframes problemSignalTravel {
+            from { stroke-dashoffset: 1; }
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes problemAlertReveal {
+            from { opacity: 0; transform: translateY(18px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes problemAlertFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+        @keyframes problemEdgeGlow {
+            0%, 100% { opacity: 0.62; }
+            50% { opacity: 1; }
+        }
+        @keyframes problemBeaconPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(0.94); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes problemBeaconRing {
+            0% { opacity: 0.72; transform: scale(0.72); }
+            80%, 100% { opacity: 0; transform: scale(1.65); }
+        }
         @media (prefers-reduced-motion: reduce) {
             .process-signal,
             .hero-eyebrow-dot,
@@ -704,11 +985,51 @@
                 opacity: 0.2;
                 filter: none;
             }
+            .problem-art-frame,
+            .problem-alert-slot,
+            .problem-alert-card,
+            .problem-art-frame::after,
+            .problem-edge-alert,
+            .problem-edge-alert::before,
+            .problem-edge-alert::after,
+            .problem-signal-path--active {
+                animation: none !important;
+                opacity: 1 !important;
+                transition: none !important;
+            }
+            .problem-art-frame,
+            .problem-alert-slot,
+            .problem-alert-card {
+                transform: none !important;
+            }
+            .problem-edge-alert {
+                transform: translate(-50%, -50%) !important;
+            }
+            .problem-edge-alert::before,
+            .problem-edge-alert::after {
+                display: none;
+            }
+            .problem-signal-path--active {
+                stroke-dasharray: none;
+                opacity: 0.24;
+                filter: none;
+            }
         }
         @media (min-width: 1100px) {
             .hero-layout {
                 grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
                 gap: clamp(64px, 6vw, 96px);
+            }
+            .problem-layout {
+                grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+            }
+            .problem-copy {
+                justify-self: end;
+            }
+        }
+        @media (min-width: 1440px) {
+            .problem-visual {
+                margin-left: -24px;
             }
         }
         @media (min-width: 1600px) {
@@ -750,6 +1071,9 @@
                 width: 112%;
                 height: 52%;
                 opacity: 0.62;
+            }
+            .problem-title {
+                font-size: 46px;
             }
         }
         @media (max-width: 767px) {
@@ -836,6 +1160,81 @@
                 padding: 7px 4px;
                 font-size: 9px;
             }
+            .problem-section {
+                padding: 80px 0 88px;
+            }
+            .problem-layout {
+                gap: 48px;
+            }
+            .problem-visual {
+                width: calc(100% + 8px);
+                margin-left: -4px;
+                padding: 8px 0 18px;
+            }
+            .problem-signal-field {
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0.7;
+            }
+            .problem-alert-slot--missed {
+                top: 6%;
+                right: 0;
+            }
+            .problem-alert-slot--unread {
+                top: 43%;
+                left: 0;
+            }
+            .problem-alert-slot--overdue {
+                right: 0;
+                bottom: 7%;
+            }
+            .problem-alert-card {
+                min-width: 126px;
+                gap: 7px;
+                padding: 7px 8px;
+            }
+            .problem-alert-card .material-symbols-outlined {
+                width: 27px;
+                height: 27px;
+                flex-basis: 27px;
+                font-size: 16px;
+            }
+            .problem-alert-card small {
+                font-size: 8px;
+                line-height: 10px;
+            }
+            .problem-alert-card strong {
+                font-size: 10px;
+                line-height: 13px;
+            }
+            .problem-art-frame::after {
+                top: -1px;
+                width: 28%;
+                height: 3px;
+            }
+            .problem-edge-alert {
+                left: 34px;
+                width: 34px;
+                height: 34px;
+                border-width: 4px;
+            }
+            .problem-edge-alert .material-symbols-outlined {
+                font-size: 17px;
+            }
+            .problem-title {
+                font-size: 36px;
+                line-height: 1.12;
+            }
+            .problem-point {
+                grid-template-columns: 38px minmax(0, 1fr);
+                gap: 13px;
+                padding: 18px 0;
+            }
+            .problem-point-icon {
+                width: 38px;
+                height: 38px;
+            }
         }
     </style>
 <style>
@@ -863,7 +1262,7 @@
 </nav>
 <div class="hidden md:block">
 <a class="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-label-md text-label-md text-on-primary shadow-sm transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-primary-container hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-Book a Discovery Call
+Book a Strategy Call
 </a>
 </div>
 <button class="mobile-menu-toggle md:hidden" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu" data-menu-toggle>
@@ -876,7 +1275,7 @@ Book a Discovery Call
 <a class="font-label-md" href="#results">Results</a>
 <a class="font-label-md" href="#process">Process</a>
 <a class="font-label-md" href="#about">About</a>
-<a class="mobile-menu-cta my-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-5 py-3 font-label-md text-on-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
+<a class="mobile-menu-cta my-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-5 py-3 font-label-md text-on-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
 </nav>
 </header>
 <!-- Hero Section -->
@@ -918,7 +1317,7 @@ Built for coaches, service providers, and business owners drowning in missed mes
 </p>
 <div class="hero-reveal flex flex-col sm:flex-row items-center gap-4 mb-5 w-full sm:w-auto" style="--hero-delay: 0.32s;">
 <a class="hero-primary-cta inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 font-label-md text-label-md text-on-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-Book a Discovery Call
+Book a Strategy Call
 <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
 </a>
 </div>
@@ -963,54 +1362,81 @@ No complicated systems. Just smarter follow-up and more booked appointments.
 </div>
 </div>
 </main>
-<section class="py-32 bg-surface-container-low overflow-hidden">
+<section class="problem-section" id="problem" data-problem-section>
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-28 items-center">
-<!-- Left Column: Chaos Image -->
-<div class="relative flex justify-center lg:justify-start lg:-ml-14 xl:-ml-24">
-<div class="relative z-10 w-full max-w-[520px] transform lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
-<img alt="Operational chaos mockup showing missed calls and unanswered emails" class="w-full h-auto block" src="assets/images/operational-chaos.svg">
+<div class="problem-layout">
+<!-- Left Column: Controlled Chaos Visual -->
+<div class="problem-visual">
+<svg class="problem-signal-field" viewBox="0 0 640 520" preserveAspectRatio="none" aria-hidden="true">
+<path class="problem-signal-path" d="M8 116 H126 Q142 116 142 132 V206 Q142 222 158 222 H276"></path>
+<path class="problem-signal-path problem-signal-path--active" pathLength="1" d="M8 116 H126 Q142 116 142 132 V206 Q142 222 158 222 H276"></path>
+<path class="problem-signal-path" d="M350 64 H496 Q512 64 512 80 V150 Q512 166 528 166 H632"></path>
+<path class="problem-signal-path" d="M22 418 H210 Q226 418 226 402 V350 Q226 334 242 334 H376"></path>
+<path class="problem-signal-path problem-signal-path--active" pathLength="1" d="M22 418 H210 Q226 418 226 402 V350"></path>
+<circle class="problem-signal-node" cx="142" cy="222" r="8"></circle>
+<circle class="problem-signal-node-core" cx="142" cy="222" r="2.8"></circle>
+<circle class="problem-signal-node" cx="512" cy="166" r="8"></circle>
+<circle class="problem-signal-node-core" cx="512" cy="166" r="2.8"></circle>
+<circle class="problem-signal-node" cx="226" cy="334" r="8"></circle>
+<circle class="problem-signal-node-core" cx="226" cy="334" r="2.8"></circle>
+</svg>
+<div class="problem-art-frame">
+<img alt="Scattered sticky notes, missed calls, unread emails, and disconnected follow-up tasks" class="problem-art" src="assets/images/operational-chaos.svg" width="1000" height="760" loading="lazy">
+<span class="problem-edge-alert" aria-hidden="true"><span class="material-symbols-outlined">priority_high</span></span>
 </div>
-<!-- Background decorative element -->
-<div class="absolute -bottom-6 -right-6 w-64 h-64 bg-error/5 rounded-full blur-3xl -z-10"></div>
+<div class="problem-alert-slot problem-alert-slot--missed" aria-hidden="true">
+<div class="problem-alert-card">
+<span class="material-symbols-outlined">phone_missed</span>
+<span><small>Missed calls</small><strong>3 need a reply</strong></span>
+</div>
+</div>
+<div class="problem-alert-slot problem-alert-slot--unread" aria-hidden="true">
+<div class="problem-alert-card">
+<span class="material-symbols-outlined">mark_email_unread</span>
+<span><small>Inbox</small><strong>12 unread</strong></span>
+</div>
+</div>
+<div class="problem-alert-slot problem-alert-slot--overdue" aria-hidden="true">
+<div class="problem-alert-card">
+<span class="material-symbols-outlined">notification_important</span>
+<span><small>Follow-up</small><strong>Overdue again</strong></span>
+</div>
+</div>
 </div>
 <!-- Right Column: Content -->
-<div class="flex flex-col">
+<div class="problem-copy flex flex-col">
 <span class="text-primary font-semibold tracking-wide uppercase text-[12px] font-label-md">
                     The Hidden Revenue Leak
                 </span>
-<h2 class="text-4xl md:text-5xl font-bold leading-tight mt-4 text-on-surface font-headline-xl">
+<h2 class="problem-title mt-4 text-on-surface">
                     Your Leads Aren't The Problem. Your Follow-Up System Is.
                 </h2>
-<p class="text-lg text-on-surface-variant mt-6 font-body-lg">
+<p class="text-lg text-on-surface-variant mt-6 font-body-lg max-w-[62ch]">
                     Most service businesses don't lose leads because of bad marketing - they lose them because inquiries get missed, follow-ups happen too late, and conversations slip through the cracks.
                 </p>
-<ul class="mt-10 space-y-4">
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">error</span>
-<span class="text-on-surface font-body-md">Leads go cold before you respond</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">cancel_schedule_send</span>
-<span class="text-on-surface font-body-md">Missed messages cost booked appointments</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">sticky_note_2</span>
-<span class="text-on-surface font-body-md">Follow-ups rely on memory or sticky notes</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">grid_view</span>
-<span class="text-on-surface font-body-md">Conversations are scattered across platforms</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">history_toggle_off</span>
-<span class="text-on-surface font-body-md">Manual processes waste hours every week</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-error bg-error/10 p-1.5 rounded-full text-lg">visibility_off</span>
-<span class="text-on-surface font-body-md">Opportunities disappear without visibility</span>
-</li>
-</ul>
+<div class="problem-points">
+<div class="problem-point">
+<span class="problem-point-icon" aria-hidden="true"><span class="material-symbols-outlined">phone_missed</span></span>
+<div>
+<h3>Slow responses lose warm leads</h3>
+<p>Missed calls, emails, and DMs go cold before you have time to respond.</p>
+</div>
+</div>
+<div class="problem-point">
+<span class="problem-point-icon" aria-hidden="true"><span class="material-symbols-outlined">splitscreen</span></span>
+<div>
+<h3>Every conversation lives somewhere else</h3>
+<p>Inboxes, notes, chats, and spreadsheets split the context across platforms.</p>
+</div>
+</div>
+<div class="problem-point">
+<span class="problem-point-icon" aria-hidden="true"><span class="material-symbols-outlined">visibility_off</span></span>
+<div>
+<h3>There is no reliable next step</h3>
+<p>Manual follow-ups rely on memory, waste hours, and let opportunities disappear without visibility.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1170,7 +1596,7 @@ No complicated systems. Just smarter follow-up and more booked appointments.
 <!-- Section CTA -->
 <div class="mt-20 flex flex-col items-center">
 <a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-xl mb-6" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-                Book a Discovery Call
+                Book a Strategy Call
             </a>
 <p class="font-body-md text-on-surface-variant">
                 Simple systems. Clear process. More booked appointments.
@@ -1403,7 +1829,7 @@ No complicated systems. Just smarter follow-up and more booked appointments.
 <!-- Section CTA -->
 <div class="mt-20 flex flex-col items-center">
 <a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-xl mb-6" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-        Book a Discovery Call
+        Book a Strategy Call
       </a>
 <p class="font-label-md text-label-md text-on-surface-variant text-center opacity-70 italic">Simple systems built for clarity, automation, and growth.</p>
 </div>
@@ -1487,7 +1913,7 @@ No complicated systems. Just smarter follow-up and more booked appointments.
             </p>
 <div class="flex flex-col items-center lg:items-start gap-5">
 <a class="inline-flex items-center justify-center px-9 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:shadow-[0_0_30px_rgba(0,80,203,0.3)] transition-all duration-300 shadow-xl" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-                    Book a Discovery Call
+                    Book a Strategy Call
                 </a>
 <p class="font-body-md text-on-surface-variant/80 text-sm italic max-w-md">
                     No pressure. No complicated tech talk. Just clarity on what's slowing your system down.
@@ -1622,6 +2048,7 @@ No complicated systems. Just smarter follow-up and more booked appointments.
   const menuToggle = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.querySelector('[data-mobile-menu]');
   const heroVisual = document.querySelector('[data-hero-visual]');
+  const problemSection = document.querySelector('[data-problem-section]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const setMenuOpen = (isOpen) => {
@@ -1674,6 +2101,25 @@ No complicated systems. Just smarter follow-up and more booked appointments.
       heroVisual.style.setProperty('--hero-rotate-x', '0deg');
       heroVisual.style.setProperty('--hero-rotate-y', '0deg');
     });
+  }
+
+  if (problemSection) {
+    const revealProblemSection = () => problemSection.classList.add('is-visible');
+
+    if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+      revealProblemSection();
+    } else {
+      problemSection.classList.add('is-motion-ready');
+
+      const problemObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+
+        revealProblemSection();
+        observer.disconnect();
+      }, { rootMargin: '0px 0px -14% 0px', threshold: 0.18 });
+
+      problemObserver.observe(problemSection);
+    }
   }
 
   document.querySelectorAll('[data-faq-list]').forEach((faqList) => {
