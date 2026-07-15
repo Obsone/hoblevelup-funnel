@@ -7,59 +7,79 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+  (() => {
+    const storageKey = 'hoblevelup-theme';
+    let savedTheme = null;
+
+    try {
+      savedTheme = localStorage.getItem(storageKey);
+    } catch (error) {
+      savedTheme = null;
+    }
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme === 'light' || savedTheme === 'dark'
+      ? savedTheme
+      : prefersDark ? 'dark' : 'light';
+
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>
 <script id="tailwind-config">
           tailwind.config = {
             darkMode: "class",
             theme: {
               extend: {
                 "colors": {
-                        "error-container": "#ffdad6",
-                        "surface-bright": "#faf8ff",
-                        "primary-fixed": "#dae1ff",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#54647a",
-                        "tertiary-fixed-dim": "#ffb59d",
-                        "on-primary-fixed-variant": "#003fa4",
-                        "on-primary": "#ffffff",
-                        "tertiary": "#a33200",
-                        "secondary-fixed": "#d3e4fe",
-                        "on-surface": "#191b24",
-                        "secondary-container": "#d0e1fb",
-                        "secondary": "#505f76",
-                        "surface-container": "#ecedfa",
-                        "primary-container": "#0066ff",
-                        "inverse-primary": "#b3c5ff",
-                        "on-tertiary-fixed": "#390c00",
-                        "surface-dim": "#d8d9e6",
-                        "surface-container-highest": "#e1e2ee",
-                        "outline-variant": "#c2c6d8",
-                        "on-secondary-fixed": "#0b1c30",
-                        "surface-container-high": "#e6e7f4",
-                        "background": "#faf8ff",
-                        "surface-container-lowest": "#ffffff",
-                        "on-error-container": "#93000a",
-                        "surface-variant": "#e1e2ee",
-                        "surface-tint": "#0054d6",
-                        "error": "#ba1a1a",
-                        "on-tertiary": "#ffffff",
-                        "primary-fixed-dim": "#b3c5ff",
-                        "on-secondary-fixed-variant": "#38485d",
-                        "on-tertiary-fixed-variant": "#832600",
-                        "primary": "#0050cb",
-                        "surface-container-low": "#f2f3ff",
-                        "surface": "#faf8ff",
-                        "inverse-on-surface": "#eff0fd",
-                        "inverse-surface": "#2e303a",
-                        "secondary-fixed-dim": "#b7c8e1",
-                        "tertiary-fixed": "#ffdbd0",
-                        "on-error": "#ffffff",
-                        "on-surface-variant": "#424656",
-                        "on-tertiary-container": "#fff6f4",
-                        "outline": "#727687",
-                        "on-background": "#191b24",
-                        "on-primary-container": "#f8f7ff",
-                        "tertiary-container": "#cc4204",
-                        "on-primary-fixed": "#001849"
+                        "error-container": "rgb(var(--color-error-container) / <alpha-value>)",
+                        "surface-bright": "rgb(var(--color-surface-bright) / <alpha-value>)",
+                        "primary-fixed": "rgb(var(--color-primary-fixed) / <alpha-value>)",
+                        "on-secondary": "rgb(var(--color-on-secondary) / <alpha-value>)",
+                        "on-secondary-container": "rgb(var(--color-on-secondary-container) / <alpha-value>)",
+                        "tertiary-fixed-dim": "rgb(var(--color-tertiary-fixed-dim) / <alpha-value>)",
+                        "on-primary-fixed-variant": "rgb(var(--color-on-primary-fixed-variant) / <alpha-value>)",
+                        "on-primary": "rgb(var(--color-on-primary) / <alpha-value>)",
+                        "tertiary": "rgb(var(--color-tertiary) / <alpha-value>)",
+                        "secondary-fixed": "rgb(var(--color-secondary-fixed) / <alpha-value>)",
+                        "on-surface": "rgb(var(--color-on-surface) / <alpha-value>)",
+                        "secondary-container": "rgb(var(--color-secondary-container) / <alpha-value>)",
+                        "secondary": "rgb(var(--color-secondary) / <alpha-value>)",
+                        "surface-container": "rgb(var(--color-surface-container) / <alpha-value>)",
+                        "primary-container": "rgb(var(--color-primary-container) / <alpha-value>)",
+                        "inverse-primary": "rgb(var(--color-inverse-primary) / <alpha-value>)",
+                        "on-tertiary-fixed": "rgb(var(--color-on-tertiary-fixed) / <alpha-value>)",
+                        "surface-dim": "rgb(var(--color-surface-dim) / <alpha-value>)",
+                        "surface-container-highest": "rgb(var(--color-surface-container-highest) / <alpha-value>)",
+                        "outline-variant": "rgb(var(--color-outline-variant) / <alpha-value>)",
+                        "on-secondary-fixed": "rgb(var(--color-on-secondary-fixed) / <alpha-value>)",
+                        "surface-container-high": "rgb(var(--color-surface-container-high) / <alpha-value>)",
+                        "background": "rgb(var(--color-background) / <alpha-value>)",
+                        "surface-container-lowest": "rgb(var(--color-surface-container-lowest) / <alpha-value>)",
+                        "on-error-container": "rgb(var(--color-on-error-container) / <alpha-value>)",
+                        "surface-variant": "rgb(var(--color-surface-variant) / <alpha-value>)",
+                        "surface-tint": "rgb(var(--color-surface-tint) / <alpha-value>)",
+                        "error": "rgb(var(--color-error) / <alpha-value>)",
+                        "on-tertiary": "rgb(var(--color-on-tertiary) / <alpha-value>)",
+                        "primary-fixed-dim": "rgb(var(--color-primary-fixed-dim) / <alpha-value>)",
+                        "on-secondary-fixed-variant": "rgb(var(--color-on-secondary-fixed-variant) / <alpha-value>)",
+                        "on-tertiary-fixed-variant": "rgb(var(--color-on-tertiary-fixed-variant) / <alpha-value>)",
+                        "primary": "rgb(var(--color-primary) / <alpha-value>)",
+                        "surface-container-low": "rgb(var(--color-surface-container-low) / <alpha-value>)",
+                        "surface": "rgb(var(--color-surface) / <alpha-value>)",
+                        "inverse-on-surface": "rgb(var(--color-inverse-on-surface) / <alpha-value>)",
+                        "inverse-surface": "rgb(var(--color-inverse-surface) / <alpha-value>)",
+                        "secondary-fixed-dim": "rgb(var(--color-secondary-fixed-dim) / <alpha-value>)",
+                        "tertiary-fixed": "rgb(var(--color-tertiary-fixed) / <alpha-value>)",
+                        "on-error": "rgb(var(--color-on-error) / <alpha-value>)",
+                        "on-surface-variant": "rgb(var(--color-on-surface-variant) / <alpha-value>)",
+                        "on-tertiary-container": "rgb(var(--color-on-tertiary-container) / <alpha-value>)",
+                        "outline": "rgb(var(--color-outline) / <alpha-value>)",
+                        "on-background": "rgb(var(--color-on-background) / <alpha-value>)",
+                        "on-primary-container": "rgb(var(--color-on-primary-container) / <alpha-value>)",
+                        "tertiary-container": "rgb(var(--color-tertiary-container) / <alpha-value>)",
+                        "on-primary-fixed": "rgb(var(--color-on-primary-fixed) / <alpha-value>)"
                 },
                 "borderRadius": {
                         "DEFAULT": "1rem",
@@ -97,8 +117,109 @@
           }
         </script>
 <style>
+        :root {
+            color-scheme: light;
+            --color-error-container: 255 218 214;
+            --color-surface-bright: 250 248 255;
+            --color-primary-fixed: 218 225 255;
+            --color-on-secondary: 255 255 255;
+            --color-on-secondary-container: 84 100 122;
+            --color-tertiary-fixed-dim: 255 181 157;
+            --color-on-primary-fixed-variant: 0 63 164;
+            --color-on-primary: 255 255 255;
+            --color-tertiary: 163 50 0;
+            --color-secondary-fixed: 211 228 254;
+            --color-on-surface: 25 27 36;
+            --color-secondary-container: 208 225 251;
+            --color-secondary: 80 95 118;
+            --color-surface-container: 236 237 250;
+            --color-primary-container: 0 102 255;
+            --color-inverse-primary: 179 197 255;
+            --color-on-tertiary-fixed: 57 12 0;
+            --color-surface-dim: 216 217 230;
+            --color-surface-container-highest: 225 226 238;
+            --color-outline-variant: 194 198 216;
+            --color-on-secondary-fixed: 11 28 48;
+            --color-surface-container-high: 230 231 244;
+            --color-background: 250 248 255;
+            --color-surface-container-lowest: 255 255 255;
+            --color-on-error-container: 147 0 10;
+            --color-surface-variant: 225 226 238;
+            --color-surface-tint: 0 84 214;
+            --color-error: 186 26 26;
+            --color-on-tertiary: 255 255 255;
+            --color-primary-fixed-dim: 179 197 255;
+            --color-on-secondary-fixed-variant: 56 72 93;
+            --color-on-tertiary-fixed-variant: 131 38 0;
+            --color-primary: 0 80 203;
+            --color-surface-container-low: 242 243 255;
+            --color-surface: 250 248 255;
+            --color-inverse-on-surface: 239 240 253;
+            --color-inverse-surface: 46 48 58;
+            --color-secondary-fixed-dim: 183 200 225;
+            --color-tertiary-fixed: 255 219 208;
+            --color-on-error: 255 255 255;
+            --color-on-surface-variant: 66 70 86;
+            --color-on-tertiary-container: 255 246 244;
+            --color-outline: 114 118 135;
+            --color-on-background: 25 27 36;
+            --color-on-primary-container: 248 247 255;
+            --color-tertiary-container: 204 66 4;
+            --color-on-primary-fixed: 0 24 73;
+        }
+        html.dark {
+            color-scheme: dark;
+            --color-error-container: 110 28 29;
+            --color-surface-bright: 34 46 66;
+            --color-primary-fixed: 26 55 102;
+            --color-on-secondary: 10 18 31;
+            --color-on-secondary-container: 215 225 239;
+            --color-tertiary-fixed-dim: 255 181 157;
+            --color-on-primary-fixed-variant: 201 216 255;
+            --color-on-primary: 7 20 40;
+            --color-tertiary: 255 181 157;
+            --color-secondary-fixed: 44 60 82;
+            --color-on-surface: 242 245 251;
+            --color-secondary-container: 42 57 79;
+            --color-secondary: 184 198 219;
+            --color-surface-container: 23 34 52;
+            --color-primary-container: 44 111 215;
+            --color-inverse-primary: 0 76 193;
+            --color-on-tertiary-fixed: 57 12 0;
+            --color-surface-dim: 9 15 26;
+            --color-surface-container-highest: 36 50 73;
+            --color-outline-variant: 52 65 88;
+            --color-on-secondary-fixed: 226 235 247;
+            --color-surface-container-high: 28 41 64;
+            --color-background: 12 18 32;
+            --color-surface-container-lowest: 21 31 48;
+            --color-on-error-container: 255 218 214;
+            --color-surface-variant: 36 50 73;
+            --color-surface-tint: 120 169 255;
+            --color-error: 255 180 171;
+            --color-on-tertiary: 57 12 0;
+            --color-primary-fixed-dim: 116 158 235;
+            --color-on-secondary-fixed-variant: 190 204 224;
+            --color-on-tertiary-fixed-variant: 131 38 0;
+            --color-primary: 120 169 255;
+            --color-surface-container-low: 17 26 42;
+            --color-surface: 15 23 38;
+            --color-inverse-on-surface: 25 27 36;
+            --color-inverse-surface: 239 240 248;
+            --color-secondary-fixed-dim: 159 178 204;
+            --color-tertiary-fixed: 255 219 208;
+            --color-on-error: 61 0 3;
+            --color-on-surface-variant: 184 194 211;
+            --color-on-tertiary-container: 57 12 0;
+            --color-outline: 130 144 166;
+            --color-on-background: 242 245 251;
+            --color-on-primary-container: 244 247 255;
+            --color-tertiary-container: 255 181 157;
+            --color-on-primary-fixed: 225 232 255;
+        }
         html {
             scroll-behavior: smooth;
+            background: rgb(var(--color-background));
         }
         section[id] {
             scroll-margin-top: 96px;
@@ -210,6 +331,47 @@
         .mobile-menu-toggle:focus-visible {
             outline: 2px solid #0050cb;
             outline-offset: 2px;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theme-toggle {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(114, 118, 135, 0.24);
+            border-radius: 9999px;
+            background: rgba(242, 243, 255, 0.72);
+            color: #424656;
+            cursor: pointer;
+            transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+        .theme-toggle:hover {
+            color: #0050cb;
+            border-color: rgba(0, 80, 203, 0.32);
+            background: rgba(0, 80, 203, 0.08);
+            transform: translateY(-1px);
+        }
+        .theme-toggle:focus-visible {
+            outline: 2px solid #0050cb;
+            outline-offset: 2px;
+        }
+        .theme-toggle .material-symbols-outlined {
+            font-size: 21px;
+        }
+        .theme-toggle .theme-icon-light {
+            display: none;
+        }
+        html.dark .theme-toggle .theme-icon-dark {
+            display: none;
+        }
+        html.dark .theme-toggle .theme-icon-light {
+            display: inline-block;
         }
         .mobile-menu-toggle .menu-close-icon {
             display: none;
@@ -869,8 +1031,10 @@
             text-wrap: balance;
         }
         .problem-points {
+            width: 100%;
             margin-top: 34px;
             border-top: 1px solid rgba(114, 118, 135, 0.2);
+            text-align: left;
         }
         .problem-point {
             display: grid;
@@ -1236,6 +1400,169 @@
         .solution-orbit-card.is-active {
             border-color: var(--stage-accent);
             box-shadow: 0 0 0 4px color-mix(in srgb, var(--stage-accent) 10%, transparent), 0 18px 42px -22px color-mix(in srgb, var(--stage-accent) 72%, transparent);
+        }
+        html.dark .site-header::before {
+            background: linear-gradient(180deg, rgba(12, 18, 32, 0.98), rgba(12, 18, 32, 0));
+        }
+        html.dark .nav-shell,
+        html.dark .mobile-menu {
+            border-color: rgba(130, 144, 166, 0.28);
+            background: rgba(21, 31, 48, 0.92);
+            box-shadow: 0 18px 52px -32px rgba(0, 0, 0, 0.72);
+        }
+        html.dark .site-header.is-scrolled .nav-shell {
+            background: rgba(21, 31, 48, 0.97);
+            box-shadow: 0 16px 42px -28px rgba(0, 0, 0, 0.82);
+        }
+        html.dark .nav-link,
+        html.dark .mobile-menu a:not(.mobile-menu-cta),
+        html.dark .mobile-menu-toggle {
+            color: rgb(var(--color-on-surface-variant));
+        }
+        html.dark .nav-link:hover,
+        html.dark .nav-link:focus-visible,
+        html.dark .mobile-menu-toggle:hover,
+        html.dark .mobile-menu-toggle:focus-visible {
+            color: rgb(var(--color-primary));
+        }
+        html.dark .mobile-menu a:not(.mobile-menu-cta) {
+            border-color: rgba(130, 144, 166, 0.2);
+        }
+        html.dark .theme-toggle {
+            border-color: rgba(130, 144, 166, 0.3);
+            background: rgba(36, 50, 73, 0.76);
+            color: rgb(var(--color-primary));
+        }
+        html.dark .brand-logo,
+        html.dark .footer-logo {
+            filter: brightness(0) invert(1) brightness(1.18) saturate(0.55) drop-shadow(0 0 12px rgba(120, 169, 255, 0.12));
+        }
+        html.dark .hero-stage {
+            background: linear-gradient(120deg, rgba(12, 18, 32, 0.99) 0%, rgba(15, 23, 38, 0.96) 48%, rgba(17, 26, 42, 0.92) 100%);
+        }
+        html.dark .hero-stage::after {
+            border-color: rgba(120, 169, 255, 0.14);
+            background: linear-gradient(135deg, rgba(36, 50, 73, 0.44), rgba(26, 55, 102, 0.12));
+        }
+        html.dark .signal-map-path {
+            stroke: rgba(120, 169, 255, 0.2);
+        }
+        html.dark .signal-map-path--soft {
+            stroke: rgba(184, 194, 211, 0.12);
+        }
+        html.dark .signal-map-path--active {
+            stroke: #78a9ff;
+            filter: drop-shadow(0 0 6px rgba(120, 169, 255, 0.55));
+        }
+        html.dark .signal-map-node {
+            fill: rgba(21, 31, 48, 0.96);
+            stroke: rgba(120, 169, 255, 0.38);
+        }
+        html.dark .hero-eyebrow,
+        html.dark .hero-status-card,
+        html.dark .hero-flow-rail {
+            border-color: rgba(120, 169, 255, 0.24);
+            background: rgba(21, 31, 48, 0.86);
+            box-shadow: 0 20px 42px -24px rgba(0, 0, 0, 0.78);
+        }
+        html.dark .hero-eyebrow {
+            color: #b9d0ff;
+        }
+        html.dark .hero-title .hero-accent {
+            color: rgb(var(--color-primary));
+        }
+        html.dark .hero-status-card small {
+            color: rgb(var(--color-outline));
+        }
+        html.dark .hero-status-card strong,
+        html.dark .hero-proof-item,
+        html.dark .hero-flow-step {
+            color: rgb(var(--color-on-surface));
+        }
+        html.dark .hero-flow-step {
+            background: rgba(36, 50, 73, 0.76);
+        }
+        html.dark .hero-proof-row {
+            border-color: rgba(130, 144, 166, 0.24);
+        }
+        html.dark .hero-proof-item + .hero-proof-item {
+            border-color: rgba(130, 144, 166, 0.2);
+        }
+        html.dark .problem-section {
+            background: rgb(var(--color-surface-container-low));
+        }
+        html.dark .problem-section::before {
+            background: linear-gradient(115deg, rgba(36, 50, 73, 0.34), transparent 42%, rgba(26, 55, 102, 0.2));
+        }
+        html.dark .problem-signal-node {
+            fill: rgba(21, 31, 48, 0.96);
+        }
+        html.dark .problem-edge-alert {
+            border-color: rgba(21, 31, 48, 0.96);
+        }
+        html.dark .problem-alert-card,
+        html.dark .problem-point-icon {
+            background: rgba(21, 31, 48, 0.94);
+        }
+        html.dark .problem-point-icon {
+            color: rgb(var(--color-error));
+        }
+        html.dark .problem-alert-card small {
+            color: rgb(var(--color-outline));
+        }
+        html.dark .problem-alert-card strong,
+        html.dark .problem-point h3 {
+            color: rgb(var(--color-on-surface));
+        }
+        html.dark .problem-point p {
+            color: rgb(var(--color-on-surface-variant));
+        }
+        html.dark .solution-orbit-section {
+            background: rgb(var(--color-surface));
+        }
+        html.dark .solution-intro h2,
+        html.dark .solution-stage-button:hover,
+        html.dark .solution-detail h3,
+        html.dark .solution-outcome-list li,
+        html.dark .solution-hub strong,
+        html.dark .solution-orbit-card-copy strong {
+            color: rgb(var(--color-on-surface));
+        }
+        html.dark .solution-intro p,
+        html.dark .solution-detail > p,
+        html.dark .solution-hub-status {
+            color: rgb(var(--color-on-surface-variant));
+        }
+        html.dark .solution-stage-button,
+        html.dark .solution-hub small,
+        html.dark .solution-orbit-card-copy small {
+            color: rgb(var(--color-outline));
+        }
+        html.dark .solution-detail:nth-child(1) {
+            --stage-accent: #78a9ff !important;
+        }
+        html.dark .solution-detail:nth-child(2) {
+            --stage-accent: #5fd3df !important;
+        }
+        html.dark .solution-detail:nth-child(3) {
+            --stage-accent: #ffc064 !important;
+        }
+        html.dark .solution-detail:nth-child(4) {
+            --stage-accent: #75c891 !important;
+        }
+        html.dark .solution-stage-button-icon,
+        html.dark .solution-hub,
+        html.dark .solution-orbit-card {
+            border-color: rgba(130, 144, 166, 0.28);
+            background: rgba(21, 31, 48, 0.9);
+            box-shadow: 0 18px 42px -24px rgba(0, 0, 0, 0.74);
+        }
+        html.dark .solution-orbit-track::before {
+            border-color: rgba(130, 144, 166, 0.22);
+        }
+        html.dark details[open] {
+            border-color: rgba(120, 169, 255, 0.34);
+            box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.7);
         }
         @keyframes solutionSignalPulse {
             0%, 100% { opacity: 0.55; transform: translate(-50%, 8px) scale(0.82); }
@@ -1686,7 +2013,7 @@
                 height: 38px;
             }
             .solution-intro {
-                text-align: left;
+                text-align: center;
             }
             .solution-intro h2 {
                 font-size: 36px;
@@ -1824,21 +2151,27 @@
 <a class="flex items-center transition-transform duration-200 hover:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="#" aria-label="Hoblevelup home">
 <img alt="Hoblevelup" class="brand-logo" src="assets/images/hoblevelup-logo.png" width="640" height="140">
 </a>
-<nav class="hidden md:flex items-center gap-8" aria-label="Primary navigation">
+<nav class="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
 <a class="nav-link font-label-md text-label-md" href="#offer">Services</a>
 <a class="nav-link font-label-md text-label-md" href="#results">Results</a>
 <a class="nav-link font-label-md text-label-md" href="#process">Process</a>
 <a class="nav-link font-label-md text-label-md" href="#about">About</a>
 </nav>
-<div class="hidden md:block">
+<div class="nav-actions">
+<div class="hidden lg:block">
 <a class="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-label-md text-label-md text-on-primary shadow-sm transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-primary-container hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
 Book a Strategy Call
 </a>
 </div>
-<button class="mobile-menu-toggle md:hidden" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu" data-menu-toggle>
+<button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" data-theme-toggle>
+<span class="material-symbols-outlined theme-icon-dark" aria-hidden="true">dark_mode</span>
+<span class="material-symbols-outlined theme-icon-light" aria-hidden="true">light_mode</span>
+</button>
+<button class="mobile-menu-toggle lg:hidden" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu" data-menu-toggle>
 <span class="material-symbols-outlined menu-open-icon" aria-hidden="true">menu</span>
 <span class="material-symbols-outlined menu-close-icon" aria-hidden="true">close</span>
 </button>
+</div>
 </div>
 <nav class="mobile-menu px-4" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu data-open="false">
 <a class="font-label-md" href="#offer">Services</a>
@@ -1874,7 +2207,7 @@ Book a Strategy Call
 <div class="hero-inner mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="hero-layout">
 <!-- Left Column: Copy & CTA -->
-<div class="hero-copy flex flex-col items-start">
+<div class="hero-copy flex flex-col items-center text-center md:items-start md:text-left">
 <span class="hero-eyebrow hero-reveal font-label-md text-label-md uppercase mb-6" style="--hero-delay: 0.08s;">
 <span class="hero-eyebrow-dot" aria-hidden="true"></span>
 The System Your Business Actually Needs
@@ -1974,7 +2307,7 @@ No complicated systems. Just smarter follow-up and more booked appointments.
 </div>
 </div>
 <!-- Right Column: Content -->
-<div class="problem-copy flex flex-col">
+<div class="problem-copy flex flex-col items-center text-center md:items-stretch md:text-left">
 <span class="text-primary font-semibold tracking-wide uppercase text-[12px] font-label-md">
                     The Hidden Revenue Leak
                 </span>
@@ -2643,7 +2976,33 @@ No complicated systems. Just smarter follow-up and more booked appointments.
   const heroVisual = document.querySelector('[data-hero-visual]');
   const problemSection = document.querySelector('[data-problem-section]');
   const solutionOrbit = document.querySelector('[data-solution-orbit]');
+  const themeToggle = document.querySelector('[data-theme-toggle]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const setTheme = (theme, persist = true) => {
+    const isDark = theme === 'dark';
+
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+
+    const nextThemeLabel = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    themeToggle?.setAttribute('aria-label', nextThemeLabel);
+    themeToggle?.setAttribute('title', nextThemeLabel);
+
+    if (!persist) return;
+
+    try {
+      localStorage.setItem('hoblevelup-theme', isDark ? 'dark' : 'light');
+    } catch (error) {
+      // The selected theme still applies when browser storage is unavailable.
+    }
+  };
+
+  setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light', false);
+
+  themeToggle?.addEventListener('click', () => {
+    setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
+  });
 
   const setMenuOpen = (isOpen) => {
     if (!menuToggle || !mobileMenu) return;
@@ -2659,6 +3018,10 @@ No complicated systems. Just smarter follow-up and more booked appointments.
 
   mobileMenu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => setMenuOpen(false));
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) setMenuOpen(false);
   });
 
   document.addEventListener('click', (event) => {
