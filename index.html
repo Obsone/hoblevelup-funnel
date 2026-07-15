@@ -110,10 +110,460 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.04);
         }
-        .hero-gradient {
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 20px;
+            z-index: 100;
+            padding: 10px 16px;
+            border-radius: 6px;
+            background: #191b24;
+            color: #ffffff;
+            transform: translateY(-160%);
+            transition: transform 0.2s ease;
+        }
+        .skip-link:focus-visible {
+            transform: translateY(0);
+        }
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 12px 20px 0;
+            transition: padding 0.25s ease;
+        }
+        .site-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(250, 248, 255, 0.96), rgba(250, 248, 255, 0));
+            pointer-events: none;
+        }
+        .nav-shell,
+        .mobile-menu {
+            width: min(100%, 1280px);
+            margin: 0 auto;
+            border: 1px solid rgba(114, 118, 135, 0.18);
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 50px -34px rgba(0, 24, 73, 0.35);
+        }
+        .nav-shell {
+            display: flex;
+            min-height: 72px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 0 18px 0 22px;
+            border-radius: 8px;
+            transition: min-height 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+        }
+        .site-header.is-scrolled {
+            padding-top: 8px;
+        }
+        .site-header.is-scrolled .nav-shell {
+            min-height: 64px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 16px 40px -28px rgba(0, 24, 73, 0.48);
+        }
+        .nav-link {
+            position: relative;
+            color: #424656;
+            transition: color 0.2s ease;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -8px;
+            left: 0;
+            height: 2px;
+            border-radius: 9999px;
+            background: #0050cb;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.2s ease;
+        }
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            color: #0050cb;
+        }
+        .nav-link:hover::after,
+        .nav-link:focus-visible::after {
+            transform: scaleX(1);
+        }
+        .mobile-menu-toggle {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #191b24;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .mobile-menu-toggle:hover,
+        .mobile-menu-toggle:focus-visible {
+            color: #0050cb;
+            background: rgba(0, 80, 203, 0.08);
+        }
+        .mobile-menu-toggle:focus-visible {
+            outline: 2px solid #0050cb;
+            outline-offset: 2px;
+        }
+        .mobile-menu-toggle .menu-close-icon {
+            display: none;
+        }
+        .mobile-menu-toggle[aria-expanded="true"] .menu-open-icon {
+            display: none;
+        }
+        .mobile-menu-toggle[aria-expanded="true"] .menu-close-icon {
+            display: inline-block;
+        }
+        .mobile-menu {
+            max-height: 0;
+            margin-top: 8px;
+            overflow: hidden;
+            border-radius: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: max-height 0.3s ease, opacity 0.2s ease, transform 0.3s ease;
+        }
+        .mobile-menu[data-open="true"] {
+            max-height: 420px;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .mobile-menu a:not(.mobile-menu-cta) {
+            display: flex;
+            min-height: 48px;
+            align-items: center;
+            border-bottom: 1px solid rgba(194, 198, 216, 0.35);
+            color: #424656;
+        }
+        .hero-stage {
+            position: relative;
+            isolation: isolate;
+            min-height: calc(100dvh - 84px);
+            padding: 52px 0 72px;
+            overflow: hidden;
             background:
-                radial-gradient(circle at 82% 18%, rgba(218, 225, 255, 0.65) 0%, rgba(218, 225, 255, 0.28) 28%, rgba(250, 248, 255, 0) 56%),
-                radial-gradient(circle at 12% 84%, rgba(208, 225, 251, 0.38) 0%, rgba(250, 248, 255, 0) 42%);
+                linear-gradient(120deg, rgba(250, 248, 255, 0.98) 0%, rgba(250, 248, 255, 0.88) 44%, rgba(242, 243, 255, 0.78) 100%);
+        }
+        .hero-stage::after {
+            content: "";
+            position: absolute;
+            top: 11%;
+            right: -3%;
+            z-index: 1;
+            width: 56%;
+            height: 74%;
+            border: 1px solid rgba(0, 80, 203, 0.1);
+            border-right: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.48), rgba(218, 225, 255, 0.12));
+            transform: skewY(-5deg);
+            pointer-events: none;
+        }
+        .hero-inner {
+            width: min(100%, 1440px);
+        }
+        .hero-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-signal-map {
+            position: absolute;
+            top: 7%;
+            right: -3%;
+            z-index: 0;
+            width: min(69%, 980px);
+            height: 84%;
+            overflow: visible;
+            opacity: 0.78;
+            pointer-events: none;
+        }
+        .signal-map-path {
+            fill: none;
+            stroke: rgba(0, 80, 203, 0.17);
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            vector-effect: non-scaling-stroke;
+        }
+        .signal-map-path--soft {
+            stroke: rgba(80, 95, 118, 0.11);
+        }
+        .signal-map-path--active {
+            fill: none;
+            stroke: #0066ff;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-dasharray: 0.055 0.945;
+            filter: drop-shadow(0 0 5px rgba(0, 102, 255, 0.48));
+            vector-effect: non-scaling-stroke;
+            animation: signalMapTravel 6.5s linear infinite;
+        }
+        .signal-map-path--active-lower {
+            display: none;
+            animation-delay: -0.8s;
+            animation-duration: 4.8s;
+        }
+        .signal-map-node {
+            fill: rgba(255, 255, 255, 0.92);
+            stroke: rgba(0, 80, 203, 0.24);
+            stroke-width: 1.2;
+            vector-effect: non-scaling-stroke;
+        }
+        .signal-map-node-core {
+            fill: #0066ff;
+            opacity: 0.78;
+        }
+        .hero-copy {
+            position: relative;
+            z-index: 10;
+            max-width: 650px;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 12px;
+            border: 1px solid rgba(0, 80, 203, 0.2);
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.68);
+            color: #003fa4;
+            box-shadow: 0 10px 24px -20px rgba(0, 80, 203, 0.45);
+        }
+        .hero-eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background: #0066ff;
+            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+            animation: heroPulse 2.4s ease-in-out infinite;
+        }
+        .hero-title {
+            max-width: 720px;
+            font-family: Inter, sans-serif;
+            font-size: clamp(52px, 4vw, 62px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
+        .hero-title .hero-accent {
+            position: relative;
+            display: inline;
+            color: #0050cb;
+            background-image: linear-gradient(90deg, #0050cb, #0066ff 62%, #003fa4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+        .hero-supporting-copy {
+            max-width: 590px;
+            text-wrap: pretty;
+        }
+        .hero-primary-cta {
+            min-height: 54px;
+            gap: 10px;
+            border: 1px solid #0050cb;
+            box-shadow: 0 14px 28px -14px rgba(0, 80, 203, 0.58);
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hero-primary-cta:hover {
+            transform: translateY(-2px);
+            background: #0066ff;
+            box-shadow: 0 18px 34px -14px rgba(0, 80, 203, 0.68);
+        }
+        .hero-primary-cta .material-symbols-outlined {
+            font-size: 19px;
+            transition: transform 0.2s ease;
+        }
+        .hero-primary-cta:hover .material-symbols-outlined {
+            transform: translateX(3px);
+        }
+        .hero-proof-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            width: min(100%, 620px);
+            border-top: 1px solid rgba(114, 118, 135, 0.18);
+        }
+        .hero-proof-item {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 14px 0 0;
+            color: #191b24;
+        }
+        .hero-proof-item + .hero-proof-item {
+            padding-left: 14px;
+            border-left: 1px solid rgba(114, 118, 135, 0.14);
+        }
+        .hero-proof-icon {
+            display: inline-flex;
+            width: 34px;
+            height: 34px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: rgba(0, 80, 203, 0.08);
+            color: #0050cb;
+        }
+        .hero-proof-icon .material-symbols-outlined {
+            font-size: 19px;
+        }
+        .hero-reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            animation: heroReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: var(--hero-delay, 0s);
+        }
+        .hero-visual-column {
+            position: relative;
+            z-index: 10;
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            perspective: 1200px;
+        }
+        .hero-visual-stage {
+            position: relative;
+            width: min(100%, 720px);
+            margin-right: -24px;
+            transform: perspective(1200px) rotateX(var(--hero-rotate-x, 0deg)) rotateY(var(--hero-rotate-y, 0deg));
+            transform-style: preserve-3d;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hero-dashboard {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 36px 54px rgba(0, 24, 73, 0.16));
+            animation: heroDashboardFloat 7s ease-in-out infinite;
+        }
+        .hero-status-card {
+            position: absolute;
+            z-index: 4;
+            display: flex;
+            min-width: 174px;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border: 1px solid rgba(0, 80, 203, 0.16);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 18px 36px -22px rgba(0, 24, 73, 0.46);
+            animation: heroStatusFloat 5.4s ease-in-out infinite;
+        }
+        .hero-status-card .material-symbols-outlined {
+            display: inline-flex;
+            width: 34px;
+            height: 34px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: rgba(0, 80, 203, 0.09);
+            color: #0050cb;
+            font-size: 19px;
+        }
+        .hero-status-card small,
+        .hero-status-card strong {
+            display: block;
+            letter-spacing: 0;
+        }
+        .hero-status-card small {
+            margin-bottom: 2px;
+            color: #727687;
+            font-size: 10px;
+            line-height: 14px;
+            text-transform: uppercase;
+        }
+        .hero-status-card strong {
+            color: #191b24;
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 600;
+        }
+        .hero-status-card--lead {
+            top: 19%;
+            left: 2%;
+            animation-delay: -1.4s;
+        }
+        .hero-status-card--followup {
+            top: 48%;
+            right: 0;
+            animation-delay: -3.1s;
+        }
+        .hero-flow-rail {
+            position: absolute;
+            right: 8%;
+            bottom: 3%;
+            left: 8%;
+            z-index: 5;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            padding: 11px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 80, 203, 0.15);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 22px 42px -26px rgba(0, 24, 73, 0.5);
+        }
+        .hero-flow-rail::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 90px;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.12), transparent);
+            animation: heroFlowSweep 4.8s linear infinite;
+        }
+        .hero-flow-step {
+            position: relative;
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            gap: 7px;
+            padding: 8px;
+            border-radius: 6px;
+            background: rgba(242, 243, 255, 0.72);
+            color: #424656;
+            font-size: 11px;
+            line-height: 16px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .hero-flow-step::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex: 0 0 auto;
+            border-radius: 9999px;
+            background: #0066ff;
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+        .hero-flow-step:not(:last-child)::after {
+            content: "arrow_forward";
+            position: absolute;
+            right: -12px;
+            z-index: 2;
+            color: #0050cb;
+            font-family: "Material Symbols Outlined";
+            font-size: 15px;
+            font-weight: normal;
         }
         .cta-ambient {
             background:
@@ -166,14 +616,10 @@
             border-color: rgba(0, 80, 203, 0.38);
             box-shadow: 0 20px 34px -22px rgba(0, 80, 203, 0.48), 0 0 28px rgba(0, 80, 203, 0.15);
         }
-        .hero-asset {
-            filter: drop-shadow(0 30px 48px rgba(0, 24, 73, 0.14));
-            animation: heroFloat 7s ease-in-out infinite;
-        }
         .brand-logo {
             display: block;
-            width: 238px;
-            height: 52px;
+            width: 210px;
+            height: 46px;
             object-fit: contain;
             object-position: left center;
         }
@@ -202,9 +648,28 @@
             height: 18px;
             display: block;
         }
-        @keyframes heroFloat {
+        @keyframes heroReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.65; transform: scale(0.82); }
+        }
+        @keyframes heroDashboardFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-9px); }
+        }
+        @keyframes heroStatusFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes heroFlowSweep {
+            from { left: -110px; }
+            to { left: calc(100% + 20px); }
+        }
+        @keyframes signalMapTravel {
+            from { stroke-dashoffset: 1; }
+            to { stroke-dashoffset: 0; }
         }
         @keyframes processSignal {
             0% { left: 0%; opacity: 0; }
@@ -213,10 +678,163 @@
             100% { left: 100%; opacity: 0; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .process-signal {
+            .process-signal,
+            .hero-eyebrow-dot,
+            .hero-dashboard,
+            .hero-status-card,
+            .hero-flow-rail::before,
+            .signal-map-path--active,
+            .hero-reveal {
                 animation: none;
+            }
+            .process-signal {
                 left: 50%;
                 opacity: 1;
+            }
+            .hero-reveal {
+                opacity: 1;
+                transform: none;
+            }
+            .hero-visual-stage {
+                transform: none;
+                transition: none;
+            }
+            .signal-map-path--active {
+                stroke-dasharray: none;
+                opacity: 0.2;
+                filter: none;
+            }
+        }
+        @media (min-width: 1100px) {
+            .hero-layout {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                gap: clamp(64px, 6vw, 96px);
+            }
+        }
+        @media (min-width: 1600px) {
+            .hero-stage::after {
+                right: -8%;
+                width: 54%;
+                transform: skewX(-5deg) skewY(-4deg);
+            }
+            .signal-map-path--active-lower {
+                display: block;
+            }
+        }
+        @media (max-width: 1023px) {
+            .hero-stage {
+                padding-top: 64px;
+            }
+            .hero-stage::after {
+                top: 48%;
+                right: -18%;
+                width: 100%;
+                height: 48%;
+            }
+            .hero-copy {
+                margin: 0 auto;
+            }
+            .hero-visual-column {
+                min-height: 560px;
+                justify-content: center;
+            }
+            .hero-title .hero-accent {
+                white-space: normal;
+            }
+            .hero-visual-stage {
+                margin-right: 0;
+            }
+            .hero-signal-map {
+                top: 43%;
+                right: -18%;
+                width: 112%;
+                height: 52%;
+                opacity: 0.62;
+            }
+        }
+        @media (max-width: 767px) {
+            .site-header {
+                padding: 8px 12px 0;
+            }
+            .nav-shell {
+                min-height: 64px;
+                padding: 0 8px 0 14px;
+            }
+            .brand-logo {
+                width: 174px;
+                height: 40px;
+            }
+            .hero-stage {
+                min-height: 0;
+                padding: 60px 0 72px;
+            }
+            .hero-signal-map {
+                display: none;
+            }
+            .hero-eyebrow {
+                max-width: 100%;
+                padding: 7px 10px;
+                font-size: 11px;
+                line-height: 16px;
+            }
+            .hero-title {
+                font-size: clamp(38px, 11vw, 48px);
+                line-height: 1.12;
+            }
+            .hero-supporting-copy {
+                font-size: 17px;
+                line-height: 27px;
+            }
+            .hero-primary-cta {
+                width: 100%;
+            }
+            .hero-proof-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .hero-proof-item,
+            .hero-proof-item + .hero-proof-item {
+                min-height: 48px;
+                padding: 10px 0;
+                border-left: 0;
+            }
+            .hero-proof-item + .hero-proof-item {
+                border-top: 1px solid rgba(114, 118, 135, 0.1);
+            }
+            .hero-visual-column {
+                min-height: 360px;
+            }
+            .hero-visual-stage {
+                width: calc(100% + 24px);
+                margin-left: -12px;
+            }
+            .hero-status-card {
+                min-width: 144px;
+                padding: 9px 10px;
+            }
+            .hero-status-card .material-symbols-outlined {
+                width: 30px;
+                height: 30px;
+            }
+            .hero-status-card--lead {
+                top: 15%;
+                left: 0;
+            }
+            .hero-status-card--followup {
+                top: 47%;
+                right: 0;
+            }
+            .hero-flow-rail {
+                right: 2%;
+                bottom: 3%;
+                left: 2%;
+                gap: 5px;
+                padding: 7px;
+            }
+            .hero-flow-step {
+                justify-content: center;
+                padding: 7px 4px;
+                font-size: 9px;
             }
         }
     </style>
@@ -230,77 +848,115 @@
   }
 </style></head>
 <body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<a class="skip-link font-label-md" href="#main-content">Skip to main content</a>
 <!-- TopNavBar -->
-<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 w-full z-50 shadow-sm transition-all duration-300 ease-in-out">
-<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-[80px]">
-<a class="flex items-center transition-transform hover:scale-[0.98]" href="#" aria-label="Hoblevelup home">
-<img alt="Hoblevelup" class="brand-logo" src="assets/images/hoblevelup-logo.png">
-            </a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#offer">Services</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#results">Results</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#process">Process</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary hover:scale-[0.98] transition-transform duration-200 font-label-md text-label-md" href="#about">About</a>
+<header class="site-header" data-site-header>
+<div class="nav-shell">
+<a class="flex items-center transition-transform duration-200 hover:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="#" aria-label="Hoblevelup home">
+<img alt="Hoblevelup" class="brand-logo" src="assets/images/hoblevelup-logo.png" width="640" height="140">
+</a>
+<nav class="hidden md:flex items-center gap-8" aria-label="Primary navigation">
+<a class="nav-link font-label-md text-label-md" href="#offer">Services</a>
+<a class="nav-link font-label-md text-label-md" href="#results">Results</a>
+<a class="nav-link font-label-md text-label-md" href="#process">Process</a>
+<a class="nav-link font-label-md text-label-md" href="#about">About</a>
 </nav>
 <div class="hidden md:block">
-<a class="inline-flex items-center justify-center px-6 py-3 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-sm" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-                    Book a Discovery Call
-                </a>
+<a class="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-label-md text-label-md text-on-primary shadow-sm transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-primary-container hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
+Book a Discovery Call
+</a>
 </div>
-<button class="md:hidden text-on-surface p-2">
-<span class="material-symbols-outlined">menu</span>
+<button class="mobile-menu-toggle md:hidden" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu" data-menu-toggle>
+<span class="material-symbols-outlined menu-open-icon" aria-hidden="true">menu</span>
+<span class="material-symbols-outlined menu-close-icon" aria-hidden="true">close</span>
 </button>
 </div>
+<nav class="mobile-menu px-4" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu data-open="false">
+<a class="font-label-md" href="#offer">Services</a>
+<a class="font-label-md" href="#results">Results</a>
+<a class="font-label-md" href="#process">Process</a>
+<a class="font-label-md" href="#about">About</a>
+<a class="mobile-menu-cta my-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-5 py-3 font-label-md text-on-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
+</nav>
 </header>
 <!-- Hero Section -->
-<main class="relative pt-24 pb-32 overflow-hidden hero-gradient">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+<main class="hero-stage" id="main-content">
+<svg class="hero-signal-map" viewBox="0 0 920 640" preserveAspectRatio="none" aria-hidden="true">
+<path class="signal-map-path" d="M192 96 H238 Q254 96 254 112 V192 Q254 208 270 208 H548 Q564 208 564 192 V132 Q564 116 580 116 H872"></path>
+<path class="signal-map-path signal-map-path--active" pathLength="1" d="M192 96 H238 Q254 96 254 112 V192 Q254 208 270 208 H548 Q564 208 564 192 V132 Q564 116 580 116 H872"></path>
+<path class="signal-map-path signal-map-path--soft" d="M184 522 H306 Q322 522 322 506 V414 Q322 398 338 398 H660 Q676 398 676 414 V474 Q676 490 692 490 H902"></path>
+<path class="signal-map-path--active signal-map-path--active-lower" pathLength="1" d="M184 522 H306 Q322 522 322 506 V414"></path>
+<path class="signal-map-path" d="M188 318 H404 Q420 318 420 302 V258 Q420 242 436 242 H742 Q758 242 758 258 V332 Q758 348 774 348 H910"></path>
+<g>
+<circle class="signal-map-node" cx="254" cy="208" r="9"></circle>
+<circle class="signal-map-node-core" cx="254" cy="208" r="3"></circle>
+<circle class="signal-map-node" cx="564" cy="116" r="9"></circle>
+<circle class="signal-map-node-core" cx="564" cy="116" r="3"></circle>
+<circle class="signal-map-node" cx="420" cy="242" r="9"></circle>
+<circle class="signal-map-node-core" cx="420" cy="242" r="3"></circle>
+<circle class="signal-map-node" cx="758" cy="348" r="9"></circle>
+<circle class="signal-map-node-core" cx="758" cy="348" r="3"></circle>
+<circle class="signal-map-node" cx="322" cy="398" r="9"></circle>
+<circle class="signal-map-node-core" cx="322" cy="398" r="3"></circle>
+<circle class="signal-map-node" cx="676" cy="490" r="9"></circle>
+<circle class="signal-map-node-core" cx="676" cy="490" r="3"></circle>
+</g>
+</svg>
+<div class="hero-inner mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="hero-layout">
 <!-- Left Column: Copy & CTA -->
-<div class="flex flex-col items-start z-10">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-6 bg-primary-fixed/30 px-3 py-1 rounded-full border border-primary-fixed-dim">
-                        The System Your Business Actually Needs
-                    </span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">
-                        Turn Chaotic Follow-Ups Into a <span class="text-primary">Smart Sales System</span>
+<div class="hero-copy flex flex-col items-start">
+<span class="hero-eyebrow hero-reveal font-label-md text-label-md uppercase mb-6" style="--hero-delay: 0.08s;">
+<span class="hero-eyebrow-dot" aria-hidden="true"></span>
+The System Your Business Actually Needs
+</span>
+<h1 class="hero-title hero-reveal text-on-surface mb-6" style="--hero-delay: 0.16s;">
+Turn Chaotic Follow-Ups Into a <span class="hero-accent">Smart Sales System</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
-                        Built for coaches, service providers, and business owners drowning in missed messages, forgotten follow-ups, and inconsistent sales processes that quietly kill revenue.
-                    </p>
-<div class="flex flex-col sm:flex-row items-center gap-4 mb-8 w-full sm:w-auto">
-<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-[0_8px_16px_rgba(0,80,203,0.2)]" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-                            Book a Discovery Call
-                        </a>
+<p class="hero-supporting-copy hero-reveal font-body-lg text-body-lg text-on-surface-variant mb-8" style="--hero-delay: 0.24s;">
+Built for coaches, service providers, and business owners drowning in missed messages, forgotten follow-ups, and inconsistent sales processes that quietly kill revenue.
+</p>
+<div class="hero-reveal flex flex-col sm:flex-row items-center gap-4 mb-5 w-full sm:w-auto" style="--hero-delay: 0.32s;">
+<a class="hero-primary-cta inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 font-label-md text-label-md text-on-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
+Book a Discovery Call
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</a>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-12">
-                        No complicated systems. Just smarter follow-up and more booked appointments.
-                    </p>
+<p class="hero-reveal font-body-md text-body-md text-on-surface-variant mb-8" style="--hero-delay: 0.4s;">
+No complicated systems. Just smarter follow-up and more booked appointments.
+</p>
 <!-- Trust Indicators -->
-<div class="flex flex-wrap items-center gap-8">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-xl">bolt</span>
+<div class="hero-proof-row hero-reveal" style="--hero-delay: 0.48s;">
+<div class="hero-proof-item">
+<span class="hero-proof-icon"><span class="material-symbols-outlined" aria-hidden="true">bolt</span></span>
+<span class="font-label-md text-sm font-semibold">Faster Follow-Ups</span>
 </div>
-<span class="font-label-md text-label-md text-on-surface">Faster Follow-Ups</span>
+<div class="hero-proof-item">
+<span class="hero-proof-icon"><span class="material-symbols-outlined" aria-hidden="true">event_available</span></span>
+<span class="font-label-md text-sm font-semibold">More Booked Calls</span>
 </div>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-xl">event_available</span>
-</div>
-<span class="font-label-md text-label-md text-on-surface">More Booked Calls</span>
-</div>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-xl">group_add</span>
-</div>
-<span class="font-label-md text-label-md text-on-surface">Better Lead Management<br></span>
+<div class="hero-proof-item">
+<span class="hero-proof-icon"><span class="material-symbols-outlined" aria-hidden="true">hub</span></span>
+<span class="font-label-md text-sm font-semibold">Organized Pipeline</span>
 </div>
 </div>
 </div>
 <!-- Right Column: Dashboard Visual -->
-<div class="relative z-10 lg:h-[620px] flex items-center justify-center lg:justify-end">
-<div class="relative w-full max-w-[700px] lg:-mr-8 xl:-mr-12">
-<img alt="Smart sales automation dashboard with floating analytics" class="relative w-full h-auto hero-asset" src="assets/images/hero-dashboard.svg">
+<div class="hero-visual-column hero-reveal" style="--hero-delay: 0.24s;">
+<div class="hero-visual-stage" data-hero-visual>
+<img alt="Smart sales automation dashboard with pipeline analytics" class="hero-dashboard" src="assets/images/hero-dashboard.svg" width="1200" height="900" fetchpriority="high">
+<div class="hero-status-card hero-status-card--lead" aria-hidden="true">
+<span class="material-symbols-outlined">person_add</span>
+<span><small>Lead activity</small><strong>New lead captured</strong></span>
+</div>
+<div class="hero-status-card hero-status-card--followup" aria-hidden="true">
+<span class="material-symbols-outlined">mark_email_read</span>
+<span><small>Automation</small><strong>Follow-up delivered</strong></span>
+</div>
+<div class="hero-flow-rail" aria-hidden="true">
+<span class="hero-flow-step">Captured</span>
+<span class="hero-flow-step">Followed Up</span>
+<span class="hero-flow-step">Call Booked</span>
 </div>
 </div>
 </div>
@@ -962,6 +1618,64 @@
 
 
 <script>
+  const siteHeader = document.querySelector('[data-site-header]');
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const mobileMenu = document.querySelector('[data-mobile-menu]');
+  const heroVisual = document.querySelector('[data-hero-visual]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const setMenuOpen = (isOpen) => {
+    if (!menuToggle || !mobileMenu) return;
+
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    mobileMenu.dataset.open = String(isOpen);
+  };
+
+  menuToggle?.addEventListener('click', () => {
+    setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!siteHeader?.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setMenuOpen(false);
+      menuToggle?.focus();
+    }
+  });
+
+  const updateHeader = () => {
+    siteHeader?.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  if (heroVisual && !reducedMotion.matches && window.matchMedia('(pointer: fine)').matches) {
+    heroVisual.addEventListener('pointermove', (event) => {
+      const bounds = heroVisual.getBoundingClientRect();
+      const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const vertical = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+      heroVisual.style.setProperty('--hero-rotate-x', `${vertical * -3}deg`);
+      heroVisual.style.setProperty('--hero-rotate-y', `${horizontal * 4}deg`);
+    });
+
+    heroVisual.addEventListener('pointerleave', () => {
+      heroVisual.style.setProperty('--hero-rotate-x', '0deg');
+      heroVisual.style.setProperty('--hero-rotate-y', '0deg');
+    });
+  }
+
   document.querySelectorAll('[data-faq-list]').forEach((faqList) => {
     const items = faqList.querySelectorAll('details');
 
