@@ -733,6 +733,471 @@
                 radial-gradient(circle at 78% 68%, rgba(0, 80, 203, 0.12), rgba(0, 80, 203, 0) 38%),
                 linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(242, 243, 255, 0.58));
         }
+        .comparison-section {
+            padding: clamp(88px, 9vw, 136px) 0;
+            overflow: hidden;
+            background: rgb(var(--color-surface-container-low));
+        }
+        .comparison-shell {
+            width: min(100% - 40px, 1280px);
+            margin: 0 auto;
+        }
+        .comparison-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
+            gap: clamp(48px, 8vw, 112px);
+            align-items: end;
+            margin-bottom: clamp(48px, 6vw, 76px);
+        }
+        .comparison-kicker {
+            display: block;
+            margin-bottom: 16px;
+            color: rgb(var(--color-primary));
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 18px;
+            text-transform: uppercase;
+        }
+        .comparison-intro h2 {
+            max-width: 720px;
+            color: rgb(var(--color-on-surface));
+            font-size: clamp(40px, 4.2vw, 58px);
+            font-weight: 700;
+            line-height: 1.08;
+            text-wrap: balance;
+        }
+        .comparison-intro p {
+            padding-left: clamp(28px, 4vw, 52px);
+            border-left: 1px solid rgb(var(--color-outline-variant) / 0.64);
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 18px;
+            line-height: 29px;
+        }
+        .comparison-stage {
+            border: 1px solid rgb(var(--color-outline-variant) / 0.62);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container-lowest) / 0.78);
+            box-shadow: 0 28px 70px -52px rgb(var(--color-on-surface) / 0.42);
+            overflow: hidden;
+        }
+        .comparison-stage-bar {
+            display: flex;
+            min-height: 58px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.52);
+            background: rgb(var(--color-surface-container) / 0.55);
+        }
+        .comparison-stage-title {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            gap: 10px;
+            color: rgb(var(--color-on-surface));
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 18px;
+            text-transform: uppercase;
+        }
+        .comparison-stage-title::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 0 4px rgb(var(--color-primary) / 0.12), 0 0 16px rgb(var(--color-primary) / 0.4);
+        }
+        .comparison-legend {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: rgb(var(--color-outline));
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .comparison-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .comparison-legend i {
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: rgb(var(--color-primary));
+        }
+        .comparison-legend .is-manual i {
+            background: repeating-linear-gradient(90deg, rgb(var(--color-error)) 0 5px, transparent 5px 8px);
+        }
+        .comparison-track {
+            padding: clamp(30px, 4vw, 48px);
+        }
+        .comparison-track + .comparison-track {
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.46);
+        }
+        .comparison-track-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        .comparison-track-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .comparison-track-name > span {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.62);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container));
+        }
+        .comparison-track--manual .comparison-track-name > span {
+            color: rgb(var(--color-error));
+        }
+        .comparison-track--system .comparison-track-name > span {
+            color: rgb(var(--color-primary));
+        }
+        .comparison-track-name .material-symbols-outlined {
+            font-size: 21px;
+        }
+        .comparison-track-name h3 {
+            color: rgb(var(--color-on-surface));
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 28px;
+        }
+        .comparison-track-name p {
+            color: rgb(var(--color-outline));
+            font-size: 13px;
+            line-height: 19px;
+        }
+        .comparison-track-status {
+            display: inline-flex;
+            min-height: 30px;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 11px;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.6);
+            border-radius: 999px;
+            color: rgb(var(--color-outline));
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 18px;
+        }
+        .comparison-track-status::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+        .comparison-track--manual .comparison-track-status {
+            color: rgb(var(--color-error));
+        }
+        .comparison-track--system .comparison-track-status {
+            color: rgb(var(--color-primary));
+        }
+        .journey-map,
+        .journey-steps {
+            position: relative;
+        }
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+            list-style: none;
+        }
+        .journey-steps::before {
+            content: "";
+            position: absolute;
+            top: 23px;
+            left: 23px;
+            right: 23px;
+            height: 2px;
+            background: rgb(var(--color-outline-variant) / 0.54);
+        }
+        .comparison-track--manual .journey-steps::before {
+            background: repeating-linear-gradient(90deg, rgb(var(--color-error) / 0.42) 0 34px, transparent 34px 54px);
+        }
+        .comparison-track--system .journey-steps::before {
+            background: linear-gradient(90deg, rgb(var(--color-primary) / 0.25), rgb(var(--color-primary) / 0.62));
+        }
+        .journey-step {
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+        }
+        .journey-node {
+            position: relative;
+            display: inline-flex;
+            width: 46px;
+            height: 46px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.72);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container-lowest));
+            box-shadow: 0 10px 24px -18px rgb(var(--color-on-surface) / 0.5);
+            transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+        }
+        .journey-step:hover .journey-node {
+            transform: translateY(-3px);
+        }
+        .comparison-track--manual .journey-node {
+            color: rgb(var(--color-error));
+        }
+        .comparison-track--manual .journey-step:hover .journey-node {
+            border-color: rgb(var(--color-error) / 0.54);
+            box-shadow: 0 0 0 4px rgb(var(--color-error) / 0.08), 0 14px 28px -18px rgb(var(--color-error) / 0.5);
+        }
+        .comparison-track--system .journey-node {
+            color: rgb(var(--color-primary));
+        }
+        .comparison-track--system .journey-step:hover .journey-node {
+            border-color: rgb(var(--color-primary) / 0.58);
+            box-shadow: 0 0 0 4px rgb(var(--color-primary) / 0.08), 0 14px 28px -18px rgb(var(--color-primary) / 0.55);
+        }
+        .journey-node .material-symbols-outlined {
+            font-size: 21px;
+        }
+        .comparison-track--manual .journey-step:nth-child(3) .journey-node::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border: 1px solid rgb(var(--color-error) / 0.72);
+            border-radius: 8px;
+            animation: manualAlert 2.2s ease-out infinite;
+        }
+        .journey-step small {
+            display: block;
+            margin-bottom: 5px;
+            color: rgb(var(--color-outline));
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 16px;
+            text-transform: uppercase;
+        }
+        .journey-step strong {
+            display: block;
+            margin-bottom: 6px;
+            color: rgb(var(--color-on-surface));
+            font-size: 15px;
+            line-height: 21px;
+        }
+        .journey-step p {
+            max-width: 24ch;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 13px;
+            line-height: 20px;
+        }
+        .journey-signal {
+            position: absolute;
+            top: 21px;
+            left: 23px;
+            z-index: 2;
+            width: 76px;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, rgb(var(--color-primary) / 0.22) 38%, rgb(var(--color-primary)) 100%);
+            filter: drop-shadow(0 0 7px rgb(var(--color-primary) / 0.64));
+            pointer-events: none;
+            animation: comparisonSignal 4.8s linear infinite;
+        }
+        .journey-signal::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 0 4px rgb(var(--color-primary) / 0.12), 0 0 16px rgb(var(--color-primary) / 0.72);
+            transform: translateY(-50%);
+        }
+        .comparison-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 24px clamp(30px, 4vw, 48px);
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.52);
+            background: rgb(var(--color-surface-container) / 0.42);
+        }
+        .comparison-cta p {
+            max-width: 650px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 15px;
+            line-height: 23px;
+        }
+        .comparison-cta strong {
+            color: rgb(var(--color-on-surface));
+        }
+        .comparison-cta a {
+            display: inline-flex;
+            min-height: 48px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgb(var(--color-primary));
+            color: rgb(var(--color-on-primary));
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 20px;
+            box-shadow: 0 14px 30px -20px rgb(var(--color-primary) / 0.72);
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .comparison-cta a:hover {
+            transform: translateY(-2px);
+            background: rgb(var(--color-primary-container));
+            box-shadow: 0 18px 34px -18px rgb(var(--color-primary) / 0.78);
+        }
+        .comparison-cta a:focus-visible {
+            outline: 2px solid rgb(var(--color-primary));
+            outline-offset: 4px;
+        }
+        @keyframes comparisonSignal {
+            from { left: 23px; }
+            to { left: calc(100% - 99px); }
+        }
+        @keyframes manualAlert {
+            0% { opacity: 0.72; transform: scale(1); }
+            72%, 100% { opacity: 0; transform: scale(1.36); }
+        }
+        @media (max-width: 899px) {
+            .comparison-intro {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+            .comparison-intro h2 {
+                margin-inline: auto;
+            }
+            .comparison-intro p {
+                max-width: 640px;
+                margin-inline: auto;
+                padding: 0;
+                border-left: 0;
+            }
+        }
+        @media (max-width: 699px) {
+            .journey-steps {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                row-gap: 32px;
+            }
+            .journey-steps::before,
+            .journey-signal {
+                display: none;
+            }
+        }
+        @media (max-width: 599px) {
+            .comparison-shell {
+                width: min(100% - 24px, 1280px);
+            }
+            .comparison-intro {
+                margin-bottom: 38px;
+            }
+            .comparison-intro h2 {
+                font-size: 36px;
+                line-height: 1.12;
+            }
+            .comparison-intro p {
+                font-size: 16px;
+                line-height: 25px;
+            }
+            .comparison-stage-bar {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 15px 16px;
+            }
+            .comparison-legend {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .comparison-track {
+                padding: 26px 18px 30px;
+            }
+            .comparison-track-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+            }
+            .comparison-track-status {
+                align-self: flex-start;
+            }
+            .journey-steps {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding-left: 0;
+            }
+            .journey-steps::before {
+                display: block;
+                top: 23px;
+                right: auto;
+                bottom: 23px;
+                left: 22px;
+                width: 2px;
+                height: auto;
+            }
+            .journey-step {
+                display: grid;
+                grid-template-columns: 46px minmax(0, 1fr);
+                column-gap: 15px;
+                min-height: 104px;
+            }
+            .journey-node {
+                grid-row: 1 / span 3;
+                margin-bottom: 0;
+            }
+            .journey-step small {
+                padding-top: 1px;
+            }
+            .journey-step p {
+                max-width: none;
+            }
+            .journey-signal {
+                display: block;
+                top: 23px;
+                left: 19px;
+                width: 6px;
+                height: 70px;
+                background: linear-gradient(180deg, transparent, rgb(var(--color-primary) / 0.22) 38%, rgb(var(--color-primary)) 100%);
+                animation-name: comparisonSignalMobile;
+            }
+            .journey-signal::after {
+                top: auto;
+                right: 50%;
+                bottom: 0;
+                transform: translate(50%, 50%);
+            }
+            .comparison-cta {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 22px 18px 24px;
+                text-align: center;
+            }
+            .comparison-cta a {
+                width: 100%;
+            }
+        }
+        @keyframes comparisonSignalMobile {
+            from { top: 23px; }
+            to { top: calc(100% - 93px); }
+        }
         .offer-card-glow {
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
@@ -1623,6 +2088,8 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .process-signal,
+            .journey-signal,
+            .comparison-track--manual .journey-step:nth-child(3) .journey-node::after,
             .hero-eyebrow-dot,
             .hero-dashboard,
             .hero-status-card,
@@ -2444,89 +2911,95 @@ No complicated systems. Just smarter follow-up and more booked appointments.
 </div>
 </div>
 </section>
-<section class="py-32 bg-surface-container-low overflow-hidden">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<!-- Section Header -->
-<div class="max-w-3xl mx-auto text-center mb-20">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">
-                why we're different</span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6">
-                Stop Running Your Sales Process Like Manual Labor
-            </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-                Most service businesses don't need more tools - they need a system that organizes conversations, automates follow-ups, and keeps opportunities moving without relying on memory.
-            </p>
+<section class="comparison-section" id="comparison" aria-labelledby="comparison-title">
+<div class="comparison-shell">
+<div class="comparison-intro">
+<div>
+<span class="comparison-kicker">The Difference</span>
+<h2 id="comparison-title">Same leads. A completely different follow-up experience.</h2>
 </div>
-<!-- Comparison Graphic -->
-<div class="mb-16 flex justify-center">
-<div class="relative w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/30">
-<img alt="High-end SaaS comparison graphic: Manual Chaos vs Automated Flow" class="w-full h-auto" src="assets/images/manual-vs-automated.svg">
+<p>The difference isn't another tool. It's what happens after someone reaches out: every inquiry is captured, answered, and moved toward a clear next step.</p>
+</div>
+<div class="comparison-stage" aria-label="Manual and automated lead journey comparison">
+<div class="comparison-stage-bar">
+<div class="comparison-stage-title">Lead journey process view</div>
+<div class="comparison-legend" aria-hidden="true">
+<span class="is-manual"><i></i>Disconnected</span>
+<span><i></i>Connected</span>
 </div>
 </div>
-<!-- Cards Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
-<!-- Manual Way Card -->
-<div class="bg-surface-variant/40 rounded-3xl p-8 md:p-10 border border-outline-variant/50 flex flex-col">
-<h3 class="font-headline-lg text-2xl font-bold text-on-surface mb-8">The Manual Way</h3>
-<ul class="space-y-4">
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-error text-xl">close</span>
-<span class="font-body-md text-on-surface-variant">Leads get forgotten</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-error text-xl">close</span>
-<span class="font-body-md text-on-surface-variant">Follow-ups happen too late</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-error text-xl">close</span>
-<span class="font-body-md text-on-surface-variant">Messages are scattered everywhere</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-error text-xl">close</span>
-<span class="font-body-md text-on-surface-variant">Everything depends on memory</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-error text-xl">close</span>
-<span class="font-body-md text-on-surface-variant">Sales process feels inconsistent</span>
-</li>
-</ul>
-</div>
-<!-- Smart System Card -->
-<div class="bg-surface-container-lowest rounded-3xl p-8 md:p-10 shadow-[0_20px_40px_rgba(0,80,203,0.08)] border-2 border-primary/20 flex flex-col relative overflow-hidden">
-<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
-<h3 class="font-headline-lg text-2xl font-bold text-on-surface mb-8">The Smart System</h3>
-<ul class="space-y-4 relative z-10">
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
-<span class="font-body-md text-on-surface">Every lead follows a process</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
-<span class="font-body-md text-on-surface">Follow-ups happen automatically</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
-<span class="font-body-md text-on-surface">Conversations stay organized</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
-<span class="font-body-md text-on-surface">Appointments get booked faster</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-xl font-bold">check</span>
-<span class="font-body-md text-on-surface">Your pipeline becomes predictable</span>
-</li>
-</ul>
+<article class="comparison-track comparison-track--manual">
+<div class="comparison-track-header">
+<div class="comparison-track-name">
+<span aria-hidden="true"><span class="material-symbols-outlined">warning_amber</span></span>
+<div>
+<h3>Manual follow-up</h3>
+<p>Every step depends on someone remembering.</p>
 </div>
 </div>
-<!-- Section CTA -->
-<div class="mt-20 flex flex-col items-center">
-<a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-xl mb-6" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-                Book a Strategy Call
-            </a>
-<p class="font-body-md text-on-surface-variant">
-                Simple systems. Clear process. More booked appointments.
-            </p>
+<span class="comparison-track-status">Disconnected</span>
+</div>
+<div class="journey-map">
+<ol class="journey-steps">
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">mark_email_unread</span></span>
+<div><small>Step 01</small><strong>Inquiry received</strong><p>Arrives in one of several inboxes.</p></div>
+</li>
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">splitscreen</span></span>
+<div><small>Step 02</small><strong>Context scattered</strong><p>Notes and messages live apart.</p></div>
+</li>
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">schedule</span></span>
+<div><small>Step 03</small><strong>Follow-up delayed</strong><p>Depends on memory and availability.</p></div>
+</li>
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">block</span></span>
+<div><small>Step 04</small><strong>Opportunity stalls</strong><p>No reliable next step is visible.</p></div>
+</li>
+</ol>
+</div>
+</article>
+<article class="comparison-track comparison-track--system">
+<div class="comparison-track-header">
+<div class="comparison-track-name">
+<span aria-hidden="true"><span class="material-symbols-outlined">account_tree</span></span>
+<div>
+<h3>The Hoblevelup system</h3>
+<p>Every inquiry moves through a defined path.</p>
+</div>
+</div>
+<span class="comparison-track-status">Connected</span>
+</div>
+<div class="journey-map">
+<span class="journey-signal" aria-hidden="true"></span>
+<ol class="journey-steps">
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">person_add</span></span>
+<div><small>Step 01</small><strong>Captured</strong><p>A lead record is created.</p></div>
+</li>
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">quickreply</span></span>
+<div><small>Step 02</small><strong>Responded</strong><p>SMS or email acknowledges the inquiry.</p></div>
+</li>
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">repeat</span></span>
+<div><small>Step 03</small><strong>Nurtured</strong><p>Helpful follow-ups keep momentum.</p></div>
+</li>
+<li class="journey-step">
+<span class="journey-node" aria-hidden="true"><span class="material-symbols-outlined">event_available</span></span>
+<div><small>Step 04</small><strong>Booked</strong><p>Calendar and pipeline stay in sync.</p></div>
+</li>
+</ol>
+</div>
+</article>
+<div class="comparison-cta">
+<p><strong>The real upgrade is reliability.</strong> Every lead has a place, a response, and a visible next step.</p>
+<a href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
+Book a Strategy Call
+<span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
+</a>
+</div>
 </div>
 </div>
 </section>
