@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Hoblevelup - Turn Chaotic Follow-Ups Into a Smart Sales System</title>
+<title>Hoblevelup</title>
 <link rel="icon" type="image/png" href="assets/images/hobi-favicon.png">
 <link rel="apple-touch-icon" href="assets/images/hobi-favicon.png">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -1695,30 +1695,315 @@
             object-fit: contain;
             object-position: left center;
         }
-        .footer-logo {
-            display: block;
-            width: 190px;
-            height: 42px;
-            object-fit: contain;
-            object-position: left center;
+        .site-footer {
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(120, 169, 255, 0.22);
+            background: #0f1726;
+            color: #f2f5fb;
         }
-        .social-link {
+        .site-footer-inner {
+            width: min(calc(100% - 40px), 1280px);
+            margin: 0 auto;
+        }
+        .footer-main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.18fr) minmax(180px, 0.48fr) minmax(300px, 0.72fr);
+            align-items: start;
+            gap: clamp(48px, 6vw, 92px);
+            padding: 72px 0 58px;
+        }
+        .footer-brand-lockup {
             display: inline-flex;
-            width: 34px;
-            height: 34px;
+            min-height: 48px;
+            align-items: center;
+            gap: 12px;
+            color: #f2f5fb;
+        }
+        .footer-brand-lockup:focus-visible,
+        .footer-link:focus-visible,
+        .footer-social-link:focus-visible,
+        .footer-back-to-top:focus-visible {
+            border-radius: 6px;
+            outline: 2px solid #78a9ff;
+            outline-offset: 4px;
+        }
+        .footer-brand-icon {
+            display: block;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+        .footer-brand-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .footer-description {
+            max-width: 520px;
+            margin-top: 22px;
+            color: #b8c2d3;
+            font-size: 16px;
+            line-height: 1.65;
+        }
+        .footer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 24px;
+            color: #8fa0ba;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .footer-status::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background: #78a9ff;
+            box-shadow: 0 0 10px rgba(120, 169, 255, 0.48);
+            content: "";
+        }
+        .footer-group-title {
+            display: block;
+            margin-bottom: 20px;
+            color: #8fa0ba;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .footer-link {
+            position: relative;
+            color: #dce5f2;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .footer-link::after {
+            position: absolute;
+            right: 0;
+            bottom: -4px;
+            left: 0;
+            height: 1px;
+            background: #78a9ff;
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s ease;
+        }
+        .footer-link:hover {
+            color: #78a9ff;
+            transform: translateX(2px);
+        }
+        .footer-link:hover::after,
+        .footer-link:focus-visible::after {
+            transform: scaleX(1);
+        }
+        .footer-action {
+            padding-left: clamp(34px, 4vw, 58px);
+            border-left: 1px solid rgba(143, 160, 186, 0.2);
+        }
+        .footer-action p {
+            max-width: 330px;
+            margin-bottom: 24px;
+            color: #f2f5fb;
+            font-size: clamp(21px, 2vw, 28px);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .footer-cta {
+            display: inline-flex;
+            min-height: 50px;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            padding: 13px 22px;
             border-radius: 9999px;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            background: #78a9ff;
+            color: #071428;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 16px 34px -22px rgba(120, 169, 255, 0.9);
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .social-link:hover {
-            transform: translateY(-1px) scale(0.98);
-            background-color: rgba(0, 80, 203, 0.08);
+        .footer-cta:hover {
+            background: #93baff;
+            box-shadow: 0 18px 40px -20px rgba(120, 169, 255, 0.92);
+            transform: translateY(-2px);
         }
-        .social-link img {
-            width: 18px;
-            height: 18px;
+        .footer-cta:focus-visible {
+            outline: 2px solid #f2f5fb;
+            outline-offset: 4px;
+        }
+        .footer-connect {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 24px 0;
+            border-top: 1px solid rgba(143, 160, 186, 0.17);
+        }
+        .footer-connect-label {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            margin-right: 8px;
+            color: #8fa0ba;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .footer-social-link {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 12px 8px 9px;
+            border: 1px solid rgba(143, 160, 186, 0.24);
+            border-radius: 9999px;
+            color: #dce5f2;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+        }
+        .footer-social-link:hover {
+            border-color: rgba(120, 169, 255, 0.55);
+            background: rgba(120, 169, 255, 0.08);
+            color: #78a9ff;
+            transform: translateY(-1px);
+        }
+        .footer-social-link img {
             display: block;
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        .footer-meta {
+            display: flex;
+            min-height: 78px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            border-top: 1px solid rgba(143, 160, 186, 0.17);
+            color: #8fa0ba;
+            font-size: 12px;
+        }
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-legal a {
+            color: #aab7ca;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        .footer-legal a:hover,
+        .footer-legal a:focus-visible {
+            color: #78a9ff;
+        }
+        .footer-back-to-top {
+            display: inline-flex;
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(143, 160, 186, 0.26);
+            border-radius: 9999px;
+            color: #dce5f2;
+            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+        .footer-back-to-top:hover {
+            border-color: #78a9ff;
+            color: #78a9ff;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 899px) {
+            .footer-main {
+                grid-template-columns: minmax(0, 1fr) minmax(180px, 0.48fr);
+                gap: 48px;
+            }
+            .footer-action {
+                grid-column: 1 / -1;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 32px;
+                padding: 32px 0 0;
+                border-top: 1px solid rgba(143, 160, 186, 0.2);
+                border-left: 0;
+            }
+            .footer-action p {
+                margin-bottom: 0;
+            }
+        }
+        @media (max-width: 599px) {
+            .site-footer-inner {
+                width: calc(100% - 40px);
+            }
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 58px 0 42px;
+                text-align: center;
+            }
+            .footer-brand-lockup {
+                justify-content: center;
+            }
+            .footer-description {
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .footer-status {
+                justify-content: center;
+            }
+            .footer-nav {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                justify-items: center;
+                gap: 16px 24px;
+            }
+            .footer-action {
+                grid-column: auto;
+                align-items: stretch;
+                flex-direction: column;
+                gap: 24px;
+                padding-top: 36px;
+            }
+            .footer-action p {
+                max-width: 300px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .footer-cta {
+                width: 100%;
+            }
+            .footer-connect {
+                align-items: center;
+                justify-content: center;
+            }
+            .footer-connect-label {
+                width: 100%;
+                justify-content: center;
+                margin-right: 0;
+            }
+            .footer-meta {
+                min-height: 0;
+                align-items: center;
+                flex-direction: column;
+                padding: 28px 0 34px;
+                text-align: center;
+            }
+            .footer-legal {
+                justify-content: center;
+            }
         }
         .problem-section {
             position: relative;
@@ -2343,8 +2628,7 @@
             background: rgba(36, 50, 73, 0.76);
             color: rgb(var(--color-primary));
         }
-        html.dark .brand-logo,
-        html.dark .footer-logo {
+        html.dark .brand-logo {
             filter: brightness(0) invert(1) brightness(1.18) saturate(0.55) drop-shadow(0 0 12px rgba(120, 169, 255, 0.12));
         }
         html.dark .hero-stage {
@@ -3864,36 +4148,54 @@ Book a Strategy Call
 </div>
 </div>
 </section>
-<footer class="py-6 bg-surface-container-lowest border-t border-outline-variant/20">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="flex items-center gap-8">
-<a class="flex items-center transition-transform hover:scale-[0.98]" href="#" aria-label="Hoblevelup home">
-<img alt="Hoblevelup" class="footer-logo" src="assets/images/hoblevelup-logo.png">
-      </a>
-<nav class="hidden lg:flex items-center gap-6">
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#offer">Services</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#results">Results</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#process">Process</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-xs" href="#about">About</a>
+<footer class="site-footer" id="footer" aria-label="Hoblevelup footer">
+<div class="site-footer-inner">
+<div class="footer-main">
+<div>
+<a class="footer-brand-lockup" href="#main-content" aria-label="Hoblevelup home">
+<img alt="" class="footer-brand-icon" src="assets/images/hobi-favicon.png">
+<span class="footer-brand-name">Hoblevelup</span>
+</a>
+<p class="footer-description">Practical GoHighLevel systems for service businesses that need faster follow-up, clearer pipelines, and a smoother path to booked appointments.</p>
+<span class="footer-status">Built for clearer follow-up</span>
+</div>
+<div>
+<span class="footer-group-title">Explore</span>
+<nav class="footer-nav" aria-label="Footer navigation">
+<a class="footer-link" href="#offer">Services</a>
+<a class="footer-link" href="#results">Results</a>
+<a class="footer-link" href="#process">Process</a>
+<a class="footer-link" href="#about">About</a>
 </nav>
 </div>
-<div class="flex flex-col md:flex-row items-center gap-5 md:gap-6">
-<p class="font-label-md text-on-surface-variant/60 text-xs">
-        &copy; 2026 Hoblevelup. All rights reserved.
-      </p>
-<div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
-<a class="font-label-md text-on-surface-variant/60 text-xs hover:text-primary transition-colors underline" href="#">Privacy Policy</a>
-<a class="font-label-md text-on-surface-variant/60 text-xs hover:text-primary transition-colors underline" href="#">Terms &amp; Conditions</a>
-<div class="h-4 w-px bg-outline-variant/30 hidden sm:block" aria-hidden="true"></div>
-<div class="flex items-center gap-2">
-<a class="social-link" href="https://www.facebook.com/hob.automation" target="_blank" rel="noopener noreferrer" aria-label="Hoblevelup on Facebook">
+<div class="footer-action">
+<p>A clearer sales system starts with one conversation.</p>
+<a class="footer-cta" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
+Book a Strategy Call
+<span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="footer-connect">
+<span class="footer-connect-label">Connect with Hoblevelup</span>
+<a class="footer-social-link" href="https://www.facebook.com/hob.automation" target="_blank" rel="noopener noreferrer">
 <img alt="" src="assets/images/icon-facebook.svg">
+<span>Facebook</span>
 </a>
-<a class="social-link" href="https://www.linkedin.com/in/jobdchavez-dev/" target="_blank" rel="noopener noreferrer" aria-label="Job D. Chavez on LinkedIn">
+<a class="footer-social-link" href="https://www.linkedin.com/in/jobdchavez-dev/" target="_blank" rel="noopener noreferrer">
 <img alt="" src="assets/images/icon-linkedin.svg">
+<span>LinkedIn</span>
 </a>
 </div>
+<div class="footer-meta">
+<div class="footer-legal">
+<span>&copy; 2026 Hoblevelup. All rights reserved.</span>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms &amp; Conditions</a>
 </div>
+<a class="footer-back-to-top" href="#main-content" aria-label="Back to top" title="Back to top">
+<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+</a>
 </div>
 </div>
 </footer>
