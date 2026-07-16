@@ -1198,12 +1198,457 @@
             from { top: 23px; }
             to { top: calc(100% - 93px); }
         }
-        .offer-card-glow {
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .offer-system-section {
+            position: relative;
+            padding: 128px 0;
+            overflow: hidden;
+            background: rgb(var(--color-surface-container-lowest));
         }
-        .offer-card-glow:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(0, 102, 255, 0.12), 0 0 0 1px rgba(0, 102, 255, 0.3);
+        .offer-system-inner {
+            width: min(calc(100% - 40px), 1280px);
+            margin: 0 auto;
+        }
+        .offer-system-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.72fr);
+            align-items: end;
+            gap: clamp(48px, 8vw, 120px);
+            margin-bottom: 64px;
+        }
+        .offer-system-intro h2 {
+            max-width: 760px;
+            margin-top: 16px;
+            color: rgb(var(--color-on-surface));
+            font-size: clamp(40px, 4.4vw, 64px);
+            font-weight: 700;
+            line-height: 1.08;
+        }
+        .offer-system-intro-copy {
+            padding: 6px 0 6px 48px;
+            border-left: 1px solid rgb(var(--color-outline-variant) / 0.55);
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 18px;
+            line-height: 1.65;
+        }
+        .offer-system-shell {
+            overflow: hidden;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.62);
+            border-radius: 8px;
+            background: rgb(var(--color-surface));
+            box-shadow: 0 30px 80px -54px rgb(var(--color-primary) / 0.42);
+        }
+        .offer-system-bar {
+            display: flex;
+            min-height: 58px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 12px 22px;
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            background: rgb(var(--color-surface-container-low) / 0.64);
+        }
+        .offer-system-bar strong,
+        .offer-system-bar span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgb(var(--color-on-surface));
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .offer-system-bar span {
+            color: rgb(var(--color-on-surface-variant));
+            font-weight: 600;
+        }
+        .offer-system-bar strong::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 0 5px rgb(var(--color-primary) / 0.1);
+            content: "";
+        }
+        .offer-system-body {
+            display: grid;
+            grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+            min-height: 650px;
+        }
+        .offer-module-tabs {
+            display: flex;
+            flex-direction: column;
+            padding: 18px;
+            border-right: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            background: rgb(var(--color-surface-container-low) / 0.38);
+        }
+        .offer-module-tab {
+            position: relative;
+            display: grid;
+            grid-template-columns: 38px minmax(0, 1fr) 24px;
+            min-height: 86px;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            padding: 14px 14px;
+            border-radius: 6px;
+            color: rgb(var(--color-on-surface-variant));
+            text-align: left;
+            transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .offer-module-tab + .offer-module-tab {
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.28);
+        }
+        .offer-module-tab[aria-selected="false"]:hover {
+            color: rgb(var(--color-on-surface));
+            background: rgb(var(--color-surface-container) / 0.42);
+        }
+        .offer-module-tab:focus-visible {
+            z-index: 1;
+            outline: 2px solid rgb(var(--color-primary));
+            outline-offset: 2px;
+        }
+        .offer-module-tab[aria-selected="true"] {
+            color: rgb(var(--color-on-surface));
+            background: rgb(var(--color-primary) / 0.13);
+            box-shadow: inset 0 0 0 1px rgb(var(--color-primary) / 0.34);
+        }
+        .offer-module-index {
+            color: rgb(var(--color-outline));
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .offer-module-tab[aria-selected="true"] .offer-module-index {
+            color: rgb(var(--color-primary));
+        }
+        .offer-module-tab[aria-selected="true"] .offer-module-label strong {
+            color: rgb(var(--color-primary));
+        }
+        .offer-module-label strong,
+        .offer-module-label small {
+            display: block;
+        }
+        .offer-module-label strong {
+            color: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .offer-module-label small {
+            margin-top: 4px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 12px;
+            line-height: 1.35;
+        }
+        .offer-module-tab .material-symbols-outlined {
+            color: rgb(var(--color-outline));
+            font-size: 20px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .offer-module-tab[aria-selected="true"] .material-symbols-outlined {
+            color: rgb(var(--color-primary));
+            transform: translateX(2px);
+        }
+        .offer-module-panel {
+            position: relative;
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: clamp(34px, 5vw, 64px);
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, rgb(var(--color-surface)) 0%, rgb(var(--color-surface-container-low) / 0.56) 100%);
+        }
+        .offer-panel-heading {
+            display: grid;
+            grid-template-columns: 64px minmax(0, 1fr);
+            align-items: center;
+            gap: 20px;
+        }
+        .offer-panel-icon {
+            display: inline-flex;
+            width: 64px;
+            height: 64px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgb(var(--color-primary) / 0.24);
+            border-radius: 8px;
+            background: rgb(var(--color-primary) / 0.08);
+            color: rgb(var(--color-primary));
+            box-shadow: 0 14px 30px -22px rgb(var(--color-primary) / 0.7);
+        }
+        .offer-panel-icon .material-symbols-outlined {
+            font-size: 30px;
+        }
+        .offer-panel-kicker {
+            display: block;
+            margin-bottom: 5px;
+            color: rgb(var(--color-primary));
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .offer-panel-heading h3 {
+            color: rgb(var(--color-on-surface));
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 700;
+            line-height: 1.16;
+        }
+        .offer-panel-summary {
+            max-width: 720px;
+            margin-top: 24px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 17px;
+            line-height: 1.65;
+        }
+        .offer-flow {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1.18fr) 40px minmax(0, 1fr);
+            align-items: center;
+            margin: 58px 0;
+        }
+        .offer-flow-node {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            min-height: 116px;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.58);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container-lowest) / 0.94);
+            color: rgb(var(--color-on-surface));
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.45;
+            text-align: center;
+            box-shadow: 0 16px 30px -26px rgb(var(--color-on-surface) / 0.36);
+        }
+        .offer-flow-node--active {
+            border-color: rgb(var(--color-primary) / 0.42);
+            background: rgb(var(--color-primary) / 0.08);
+            color: rgb(var(--color-primary));
+        }
+        .offer-flow-arrow {
+            position: relative;
+            z-index: 2;
+            color: rgb(var(--color-primary));
+            text-align: center;
+        }
+        .offer-flow-arrow .material-symbols-outlined {
+            animation: offerArrowGlow 3.2s ease-in-out infinite;
+        }
+        .offer-flow-arrow--delayed .material-symbols-outlined {
+            animation-delay: 0.14s;
+        }
+        .offer-panel-details {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+            gap: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.38);
+        }
+        .offer-panel-details h4 {
+            margin-bottom: 14px;
+            color: rgb(var(--color-on-surface));
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .offer-panel-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .offer-panel-tags span {
+            display: inline-flex;
+            min-height: 34px;
+            align-items: center;
+            padding: 7px 12px;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.54);
+            border-radius: 9999px;
+            background: rgb(var(--color-surface-container-low) / 0.7);
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .offer-panel-impact p {
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .offer-outcomes {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            background: rgb(var(--color-surface-container-low) / 0.54);
+        }
+        .offer-outcome {
+            display: flex;
+            min-height: 74px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            color: rgb(var(--color-on-surface));
+            font-size: 13px;
+            font-weight: 650;
+            text-align: center;
+        }
+        .offer-outcome + .offer-outcome {
+            border-left: 1px solid rgb(var(--color-outline-variant) / 0.36);
+        }
+        .offer-outcome .material-symbols-outlined {
+            color: rgb(var(--color-primary));
+            font-size: 18px;
+        }
+        @keyframes offerArrowGlow {
+            0%, 52%, 100% {
+                opacity: 0.72;
+                filter: drop-shadow(0 0 0 rgb(var(--color-primary) / 0));
+                transform: translateX(0) scale(1);
+            }
+            18%, 30% {
+                opacity: 1;
+                filter: drop-shadow(0 0 8px rgb(var(--color-primary) / 0.72));
+                transform: translateX(2px) scale(1.08);
+            }
+        }
+        @media (max-width: 959px) {
+            .offer-system-section {
+                padding: 104px 0;
+            }
+            .offer-system-inner {
+                width: min(calc(100% - 40px), 900px);
+            }
+            .offer-system-intro {
+                display: block;
+                max-width: 760px;
+                margin-right: auto;
+                margin-bottom: 52px;
+                margin-left: auto;
+                text-align: center;
+            }
+            .offer-system-intro-copy {
+                max-width: 680px;
+                margin: 24px auto 0;
+                padding: 0;
+                border-left: 0;
+            }
+            .offer-system-body {
+                display: block;
+                min-height: 0;
+            }
+            .offer-module-tabs {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 8px;
+                border-right: 0;
+                border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            }
+            .offer-module-tab + .offer-module-tab {
+                border-top: 0;
+            }
+            .offer-module-panel {
+                min-height: 620px;
+            }
+            .offer-outcomes {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .offer-outcome:nth-child(4),
+            .offer-outcome:nth-child(5) {
+                border-top: 1px solid rgb(var(--color-outline-variant) / 0.36);
+            }
+            .offer-outcome:nth-child(4) {
+                border-left: 0;
+            }
+        }
+        @media (max-width: 599px) {
+            .offer-system-section {
+                padding: 88px 0;
+            }
+            .offer-system-inner {
+                width: calc(100% - 24px);
+            }
+            .offer-system-intro {
+                margin-bottom: 40px;
+                padding: 0 8px;
+            }
+            .offer-system-intro h2 {
+                font-size: clamp(36px, 10.5vw, 44px);
+            }
+            .offer-system-intro-copy {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            .offer-system-bar {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 16px;
+            }
+            .offer-module-tabs {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            .offer-module-tab {
+                min-height: 68px;
+                grid-template-columns: 32px minmax(0, 1fr) 22px;
+                padding: 10px 12px;
+            }
+            .offer-module-label small {
+                display: none;
+            }
+            .offer-module-panel {
+                min-height: 0;
+                padding: 28px 18px 30px;
+            }
+            .offer-panel-heading {
+                grid-template-columns: 52px minmax(0, 1fr);
+                gap: 14px;
+            }
+            .offer-panel-icon {
+                width: 52px;
+                height: 52px;
+            }
+            .offer-panel-heading h3 {
+                font-size: 26px;
+            }
+            .offer-panel-summary {
+                margin-top: 20px;
+                font-size: 15px;
+            }
+            .offer-flow {
+                grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) 22px minmax(0, 1fr);
+                margin: 38px 0;
+            }
+            .offer-flow-node {
+                min-height: 102px;
+                padding: 10px 7px;
+                font-size: 11px;
+            }
+            .offer-flow-arrow .material-symbols-outlined {
+                font-size: 16px;
+            }
+            .offer-panel-details {
+                grid-template-columns: 1fr;
+                gap: 26px;
+            }
+            .offer-outcomes {
+                grid-template-columns: 1fr;
+            }
+            .offer-outcome {
+                min-height: 56px;
+                justify-content: flex-start;
+                padding: 12px 20px;
+            }
+            .offer-outcome + .offer-outcome,
+            .offer-outcome:nth-child(4),
+            .offer-outcome:nth-child(5) {
+                border-top: 1px solid rgb(var(--color-outline-variant) / 0.36);
+                border-left: 0;
+            }
         }
         .process-connector {
             background: rgba(194, 198, 216, 0.55);
@@ -2089,6 +2534,7 @@
         @media (prefers-reduced-motion: reduce) {
             .process-signal,
             .journey-signal,
+            .offer-flow-arrow .material-symbols-outlined,
             .comparison-track--manual .journey-step:nth-child(3) .journey-node::after,
             .hero-eyebrow-dot,
             .hero-dashboard,
@@ -3003,80 +3449,91 @@ Book a Strategy Call
 </div>
 </div>
 </section>
-<section id="offer" class="py-32 bg-surface-container-lowest overflow-hidden">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="max-w-3xl mx-auto text-center mb-20">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">THE OFFER</span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">Your Done-For-You Lead Follow-Up System</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">We build and organize the systems that capture leads, automate conversations, book appointments, and keep your sales process running smoothly - without relying on manual follow-up.</p>
+<section class="offer-system-section" id="offer" aria-labelledby="offer-title" data-offer-system>
+<div class="offer-system-inner">
+<div class="offer-system-intro">
+<div>
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">The Offer</span>
+<h2 id="offer-title">One connected system, built around how your business follows up.</h2>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
-<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
-<span class="material-symbols-outlined">ads_click</span>
+<p class="offer-system-intro-copy">I build and organize the pieces that capture inquiries, automate conversations, book appointments, and keep your sales process visible without relying on constant manual follow-up.</p>
 </div>
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Funnel &amp; Lead Capture</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">High-converting landing pages and forms designed to capture more inquiries.</p>
+<div class="offer-system-shell">
+<div class="offer-system-bar">
+<strong>System Build Map</strong>
+<span><span class="material-symbols-outlined text-base" aria-hidden="true">deployed_code</span> 6 connected modules</span>
 </div>
-<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
-<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
-<span class="material-symbols-outlined">hub</span>
+<div class="offer-system-body">
+<div class="offer-module-tabs" role="tablist" aria-label="System build modules">
+<button class="offer-module-tab" id="offer-tab-capture" type="button" role="tab" aria-selected="true" aria-controls="offer-module-panel" tabindex="0" data-offer-tab data-icon="ads_click" data-kicker="Module 01 / Entry point" data-title="Funnel &amp; Lead Capture" data-summary="Landing pages and forms give the right prospects a clear way to raise their hand and enter your system." data-input="New inquiry" data-process="Landing page + form" data-output="Captured lead" data-handles="Landing pages|Lead forms|Clear entry points" data-impact="Make it easier for the right prospects to take the next step.">
+<span class="offer-module-index">01</span>
+<span class="offer-module-label"><strong>Funnel &amp; Lead Capture</strong><small>Turn interest into a trackable inquiry.</small></span>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
+<button class="offer-module-tab" id="offer-tab-crm" type="button" role="tab" aria-selected="false" aria-controls="offer-module-panel" tabindex="-1" data-offer-tab data-icon="hub" data-kicker="Module 02 / Organization" data-title="CRM &amp; Pipeline Setup" data-summary="Organized pipelines keep each contact, stage, and conversation visible in one place instead of scattered across tools." data-input="New lead" data-process="CRM + pipeline" data-output="Visible next step" data-handles="Contact records|Deal stages|Conversation history" data-impact="Know where every lead stands and what should happen next.">
+<span class="offer-module-index">02</span>
+<span class="offer-module-label"><strong>CRM &amp; Pipeline Setup</strong><small>Give every lead a visible next step.</small></span>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
+<button class="offer-module-tab" id="offer-tab-followup" type="button" role="tab" aria-selected="false" aria-controls="offer-module-panel" tabindex="-1" data-offer-tab data-icon="bolt" data-kicker="Module 03 / Response" data-title="Automated Follow-Up" data-summary="SMS and email workflows acknowledge new inquiries promptly and continue the conversation without depending on memory." data-input="New inquiry" data-process="SMS + email workflow" data-output="Timely response" data-handles="SMS follow-up|Email follow-up|Response timing" data-impact="Respond faster while keeping communication consistent.">
+<span class="offer-module-index">03</span>
+<span class="offer-module-label"><strong>Automated Follow-Up</strong><small>Keep response timing consistent.</small></span>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
+<button class="offer-module-tab" id="offer-tab-booking" type="button" role="tab" aria-selected="false" aria-controls="offer-module-panel" tabindex="-1" data-offer-tab data-icon="event" data-kicker="Module 04 / Conversion" data-title="Appointment Booking System" data-summary="Connected calendars, confirmations, and reminders remove friction between a qualified conversation and a booked appointment." data-input="Qualified lead" data-process="Calendar + reminders" data-output="Booked appointment" data-handles="Calendar setup|Confirmations|Reminders" data-impact="Make booking clearer for the lead and easier to manage for your team.">
+<span class="offer-module-index">04</span>
+<span class="offer-module-label"><strong>Appointment Booking</strong><small>Move qualified leads onto the calendar.</small></span>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
+<button class="offer-module-tab" id="offer-tab-nurture" type="button" role="tab" aria-selected="false" aria-controls="offer-module-panel" tabindex="-1" data-offer-tab data-icon="sync" data-kicker="Module 05 / Momentum" data-title="Lead Nurturing Workflows" data-summary="Multi-step sequences keep useful communication moving when a lead is interested but not yet ready to book." data-input="Open conversation" data-process="Nurture sequence" data-output="Continued momentum" data-handles="Multi-step sequences|Helpful touchpoints|Next-step prompts" data-impact="Keep leads engaged between the first inquiry and the right next step.">
+<span class="offer-module-index">05</span>
+<span class="offer-module-label"><strong>Lead Nurturing Workflows</strong><small>Keep warm opportunities moving.</small></span>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
+<button class="offer-module-tab" id="offer-tab-support" type="button" role="tab" aria-selected="false" aria-controls="offer-module-panel" tabindex="-1" data-offer-tab data-icon="support" data-kicker="Module 06 / Reliability" data-title="Optimization &amp; Support" data-summary="Testing, refinement, and ongoing support keep the system clear, dependable, and aligned as your workflow changes." data-input="Live system" data-process="Testing + refinement" data-output="Better reliability" data-handles="System testing|Workflow refinement|Ongoing support" data-impact="Keep the system useful after launch instead of letting it become another neglected tool.">
+<span class="offer-module-index">06</span>
+<span class="offer-module-label"><strong>Optimization &amp; Support</strong><small>Keep the system useful after launch.</small></span>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
 </div>
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">CRM &amp; Pipeline Setup</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Organized pipelines that track every lead, stage, and conversation in one place.</p>
-</div>
-<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
-<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
-<span class="material-symbols-outlined">bolt</span>
-</div>
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Automated Follow-Up</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Instant SMS and email workflows that respond to leads automatically.</p>
-</div>
-<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
-<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
-<span class="material-symbols-outlined">event</span>
-</div>
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Appointment Booking System</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Integrated calendars, confirmations, reminders, and no-show reduction systems.</p>
-</div>
-<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
-<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
-<span class="material-symbols-outlined">sync</span>
-</div>
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Lead Nurturing Workflows</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Multi-step automation sequences that keep leads engaged and moving forward.</p>
-</div>
-<div class="offer-card-glow bg-surface rounded-2xl p-8 shadow-sm border border-transparent flex flex-col items-start cursor-default">
-<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-6">
-<span class="material-symbols-outlined">support</span>
-</div>
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Optimization &amp; Support</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Ongoing refinement, testing, support, and system improvements.</p>
+<div class="offer-module-panel" id="offer-module-panel" role="tabpanel" aria-labelledby="offer-tab-capture" tabindex="0" data-offer-panel>
+<div>
+<div class="offer-panel-heading">
+<span class="offer-panel-icon"><span class="material-symbols-outlined" aria-hidden="true" data-offer-icon>ads_click</span></span>
+<div>
+<span class="offer-panel-kicker" data-offer-kicker>Module 01 / Entry point</span>
+<h3 data-offer-title>Funnel &amp; Lead Capture</h3>
 </div>
 </div>
-<div class="mt-20 pt-10 border-t border-outline-variant/30">
-<p class="text-center font-label-md text-label-md text-primary tracking-widest uppercase mb-8">What This Helps You Do</p>
-<div class="flex flex-wrap justify-center gap-x-12 gap-y-6">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
-<span class="font-body-md text-on-surface">Respond faster</span>
+<p class="offer-panel-summary" data-offer-summary>Landing pages and forms give the right prospects a clear way to raise their hand and enter your system.</p>
+<div class="offer-flow" aria-label="Selected module flow">
+<div class="offer-flow-node" data-offer-input>New inquiry</div>
+<span class="offer-flow-arrow" aria-hidden="true"><span class="material-symbols-outlined">arrow_forward</span></span>
+<div class="offer-flow-node offer-flow-node--active" data-offer-process>Landing page + form</div>
+<span class="offer-flow-arrow offer-flow-arrow--delayed" aria-hidden="true"><span class="material-symbols-outlined">arrow_forward</span></span>
+<div class="offer-flow-node" data-offer-output>Captured lead</div>
 </div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
-<span class="font-body-md text-on-surface">Stay organized</span>
 </div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
-<span class="font-body-md text-on-surface">Book more appointments</span>
+<div class="offer-panel-details">
+<div>
+<h4>What it handles</h4>
+<div class="offer-panel-tags" data-offer-handles>
+<span>Landing pages</span><span>Lead forms</span><span>Clear entry points</span>
 </div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
-<span class="font-body-md text-on-surface">Reduce manual work</span>
 </div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary font-bold text-lg">check</span>
-<span class="font-body-md text-on-surface">Improve lead visibility</span>
+<div class="offer-panel-impact">
+<h4>Practical effect</h4>
+<p data-offer-impact>Make it easier for the right prospects to take the next step.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="offer-outcomes" aria-label="System outcomes">
+<div class="offer-outcome"><span class="material-symbols-outlined" aria-hidden="true">speed</span>Respond faster</div>
+<div class="offer-outcome"><span class="material-symbols-outlined" aria-hidden="true">account_tree</span>Stay organized</div>
+<div class="offer-outcome"><span class="material-symbols-outlined" aria-hidden="true">event_available</span>Book appointments</div>
+<div class="offer-outcome"><span class="material-symbols-outlined" aria-hidden="true">automation</span>Reduce manual work</div>
+<div class="offer-outcome"><span class="material-symbols-outlined" aria-hidden="true">visibility</span>Improve lead visibility</div>
 </div>
 </div>
 </div>
@@ -3647,6 +4104,73 @@ Book a Strategy Call
     window.addEventListener('resize', requestSolutionUpdate);
     desktopOrbit.addEventListener?.('change', requestSolutionUpdate);
   }
+
+  document.querySelectorAll('[data-offer-system]').forEach((offerSystem) => {
+    const tabs = [...offerSystem.querySelectorAll('[data-offer-tab]')];
+    const panel = offerSystem.querySelector('[data-offer-panel]');
+    const icon = offerSystem.querySelector('[data-offer-icon]');
+    const kicker = offerSystem.querySelector('[data-offer-kicker]');
+    const title = offerSystem.querySelector('[data-offer-title]');
+    const summary = offerSystem.querySelector('[data-offer-summary]');
+    const input = offerSystem.querySelector('[data-offer-input]');
+    const process = offerSystem.querySelector('[data-offer-process]');
+    const output = offerSystem.querySelector('[data-offer-output]');
+    const handles = offerSystem.querySelector('[data-offer-handles]');
+    const impact = offerSystem.querySelector('[data-offer-impact]');
+
+    if (!panel || !tabs.length) return;
+
+    const selectOfferTab = (tab, moveFocus = false) => {
+      tabs.forEach((candidate) => {
+        const isSelected = candidate === tab;
+        candidate.setAttribute('aria-selected', String(isSelected));
+        candidate.tabIndex = isSelected ? 0 : -1;
+      });
+
+      panel.setAttribute('aria-labelledby', tab.id);
+      if (icon) icon.textContent = tab.dataset.icon;
+      if (kicker) kicker.textContent = tab.dataset.kicker;
+      if (title) title.textContent = tab.dataset.title;
+      if (summary) summary.textContent = tab.dataset.summary;
+      if (input) input.textContent = tab.dataset.input;
+      if (process) process.textContent = tab.dataset.process;
+      if (output) output.textContent = tab.dataset.output;
+      if (impact) impact.textContent = tab.dataset.impact;
+
+      if (handles) {
+        handles.replaceChildren(...tab.dataset.handles.split('|').map((label) => {
+          const tag = document.createElement('span');
+          tag.textContent = label;
+          return tag;
+        }));
+      }
+
+      if (!reducedMotion.matches) {
+        panel.animate([
+          { opacity: 0.72, transform: 'translateY(5px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ], { duration: 220, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+      }
+
+      if (moveFocus) tab.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectOfferTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = index;
+
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabs.length - 1;
+        if (nextIndex === index) return;
+
+        event.preventDefault();
+        selectOfferTab(tabs[nextIndex], true);
+      });
+    });
+  });
 
   document.querySelectorAll('[data-faq-list]').forEach((faqList) => {
     const items = faqList.querySelectorAll('details');
