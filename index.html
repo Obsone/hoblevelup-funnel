@@ -727,12 +727,6 @@
             font-size: 15px;
             font-weight: normal;
         }
-        .cta-ambient {
-            background:
-                radial-gradient(circle at 18% 24%, rgba(218, 225, 255, 0.58), rgba(218, 225, 255, 0) 34%),
-                radial-gradient(circle at 78% 68%, rgba(0, 80, 203, 0.12), rgba(0, 80, 203, 0) 38%),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(242, 243, 255, 0.58));
-        }
         .comparison-section {
             padding: clamp(88px, 9vw, 136px) 0;
             overflow: hidden;
@@ -2477,6 +2471,592 @@
                 width: 100%;
             }
         }
+        .about-section {
+            position: relative;
+            overflow: hidden;
+            padding: 112px 0;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.22);
+            background: rgb(var(--color-surface-container-low));
+        }
+        .about-inner {
+            width: min(calc(100% - 64px), 1280px);
+            margin: 0 auto;
+        }
+        .about-layout {
+            display: grid;
+            grid-template-areas:
+                "visual copy"
+                "visual principles";
+            grid-template-columns: minmax(390px, 0.92fr) minmax(0, 1.08fr);
+            align-items: center;
+            gap: 38px 76px;
+        }
+        .about-copy {
+            grid-area: copy;
+        }
+        .about-eyebrow {
+            display: block;
+            margin-bottom: 16px;
+            color: rgb(var(--color-primary));
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .about-copy h2 {
+            max-width: 680px;
+            color: rgb(var(--color-on-surface));
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+        .about-copy h2 span {
+            display: block;
+        }
+        .about-story {
+            display: grid;
+            gap: 16px;
+            max-width: 660px;
+            margin-top: 28px;
+        }
+        .about-story p {
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 16px;
+            line-height: 1.72;
+        }
+        .about-story p:first-child {
+            color: rgb(var(--color-on-surface));
+            font-size: 18px;
+        }
+        .about-visual {
+            position: relative;
+            display: grid;
+            min-width: 0;
+            grid-area: visual;
+            place-items: center;
+        }
+        .about-visual-frame {
+            position: relative;
+            width: min(100%, 570px);
+            aspect-ratio: 1;
+            border-right: 1px solid rgb(var(--color-primary) / 0.18);
+            border-left: 1px solid rgb(var(--color-primary) / 0.18);
+        }
+        .about-visual-frame::before,
+        .about-visual-frame::after {
+            position: absolute;
+            z-index: 2;
+            width: 64px;
+            height: 64px;
+            border-color: rgb(var(--color-primary) / 0.5);
+            content: "";
+            pointer-events: none;
+        }
+        .about-visual-frame::before {
+            top: 12px;
+            left: -1px;
+            border-top: 2px solid rgb(var(--color-primary) / 0.5);
+            border-left: 2px solid rgb(var(--color-primary) / 0.5);
+        }
+        .about-visual-frame::after {
+            right: -1px;
+            bottom: 12px;
+            border-right: 2px solid rgb(var(--color-primary) / 0.5);
+            border-bottom: 2px solid rgb(var(--color-primary) / 0.5);
+        }
+        .about-founder-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 24px 38px rgb(var(--color-primary) / 0.12));
+            animation: founderVisualDrift 7s ease-in-out infinite;
+        }
+        .about-visual-caption {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            z-index: 3;
+            display: inline-flex;
+            min-height: 38px;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 13px;
+            border: 1px solid rgb(var(--color-primary) / 0.22);
+            border-radius: 9999px;
+            background: rgb(var(--color-surface-container-lowest) / 0.88);
+            color: rgb(var(--color-on-surface));
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgb(var(--color-on-surface) / 0.08);
+        }
+        .about-visual-caption::before {
+            width: 8px;
+            height: 8px;
+            flex: 0 0 auto;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 14px rgb(var(--color-primary) / 0.62);
+            content: "";
+        }
+        .about-principles {
+            grid-area: principles;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.42);
+        }
+        .about-principle {
+            display: grid;
+            min-height: 82px;
+            grid-template-columns: 44px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+        }
+        .about-principle-icon {
+            display: grid;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            border: 1px solid rgb(var(--color-primary) / 0.16);
+            border-radius: 8px;
+            background: rgb(var(--color-primary) / 0.08);
+            color: rgb(var(--color-primary));
+        }
+        .about-principle-icon .material-symbols-outlined {
+            font-size: 21px;
+        }
+        .about-principle h3 {
+            color: rgb(var(--color-on-surface));
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: 0;
+        }
+        .about-principle p {
+            margin-top: 3px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .about-principle-number {
+            color: rgb(var(--color-outline));
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+        }
+        @keyframes founderVisualDrift {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @media (max-width: 1199px) and (min-width: 981px) {
+            .about-layout {
+                gap: 38px 52px;
+            }
+            .about-copy h2 {
+                font-size: 46px;
+            }
+        }
+        @media (max-width: 980px) {
+            .about-section {
+                padding: 96px 0;
+            }
+            .about-inner {
+                width: min(calc(100% - 40px), 760px);
+            }
+            .about-layout {
+                grid-template-areas:
+                    "copy"
+                    "visual"
+                    "principles";
+                grid-template-columns: minmax(0, 1fr);
+                gap: 42px;
+            }
+            .about-copy {
+                text-align: center;
+            }
+            .about-copy h2 {
+                font-size: 44px;
+            }
+            .about-copy h2,
+            .about-story {
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .about-visual-frame {
+                width: min(100%, 520px);
+            }
+        }
+        @media (max-width: 599px) {
+            .about-section {
+                padding: 80px 0;
+            }
+            .about-inner {
+                width: calc(100% - 32px);
+            }
+            .about-layout {
+                gap: 34px;
+            }
+            .about-copy h2 {
+                font-size: 38px;
+            }
+            .about-story {
+                margin-top: 22px;
+            }
+            .about-story p,
+            .about-story p:first-child {
+                font-size: 16px;
+                line-height: 1.68;
+            }
+            .about-visual-frame {
+                width: min(100%, 390px);
+            }
+            .about-visual-frame::before,
+            .about-visual-frame::after {
+                width: 44px;
+                height: 44px;
+            }
+            .about-visual-caption {
+                right: 12px;
+                bottom: 12px;
+                min-height: 34px;
+                padding: 7px 10px;
+                font-size: 10px;
+            }
+            .about-principle {
+                min-height: 90px;
+                grid-template-columns: 42px minmax(0, 1fr);
+                gap: 13px;
+            }
+            .about-principle-icon {
+                width: 42px;
+                height: 42px;
+            }
+            .about-principle-number {
+                display: none;
+            }
+        }
+        .closing-section {
+            position: relative;
+            overflow: hidden;
+            padding: 112px 0;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.24);
+            background: rgb(var(--color-surface-container-lowest));
+        }
+        .closing-inner {
+            width: min(calc(100% - 64px), 1280px);
+            margin: 0 auto;
+        }
+        .closing-grid {
+            display: grid;
+            grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+            align-items: start;
+        }
+        .closing-cta {
+            position: sticky;
+            top: 112px;
+            padding-right: 72px;
+        }
+        .closing-eyebrow,
+        .faq-eyebrow {
+            display: block;
+            margin-bottom: 16px;
+            color: rgb(var(--color-primary));
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .closing-cta h2 {
+            max-width: 540px;
+            color: rgb(var(--color-on-surface));
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0;
+        }
+        .closing-copy {
+            max-width: 540px;
+            margin-top: 24px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .closing-action {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 32px;
+        }
+        .closing-button {
+            display: inline-flex;
+            min-height: 54px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            color: rgb(var(--color-on-primary));
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 14px 34px rgb(var(--color-primary) / 0.2);
+            transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .closing-button:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+            box-shadow: 0 18px 38px rgb(var(--color-primary) / 0.28);
+        }
+        .closing-button:focus-visible {
+            outline: 3px solid rgb(var(--color-primary) / 0.26);
+            outline-offset: 4px;
+        }
+        .closing-button .material-symbols-outlined {
+            font-size: 19px;
+        }
+        .closing-note {
+            max-width: 440px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 13px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .closing-benefits {
+            max-width: 540px;
+            margin-top: 38px;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.42);
+        }
+        .closing-benefit {
+            display: flex;
+            min-height: 54px;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            color: rgb(var(--color-on-surface));
+            font-size: 13px;
+            font-weight: 650;
+        }
+        .closing-benefit .material-symbols-outlined {
+            display: grid;
+            width: 30px;
+            height: 30px;
+            place-items: center;
+            border-radius: 6px;
+            background: rgb(var(--color-primary) / 0.08);
+            color: rgb(var(--color-primary));
+            font-size: 17px;
+        }
+        .faq-column {
+            min-width: 0;
+            padding-left: 72px;
+            border-left: 1px solid rgb(var(--color-outline-variant) / 0.42);
+        }
+        .faq-intro {
+            margin-bottom: 30px;
+        }
+        .faq-intro h2 {
+            color: rgb(var(--color-on-surface));
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.14;
+            letter-spacing: 0;
+        }
+        .faq-intro p {
+            max-width: 600px;
+            margin-top: 14px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 16px;
+            line-height: 1.65;
+        }
+        .faq-list {
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.5);
+        }
+        .faq-item {
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.5);
+            background: transparent;
+            transition: background-color 0.22s ease;
+        }
+        .faq-item[open] {
+            background: rgb(var(--color-primary) / 0.045);
+        }
+        .faq-summary {
+            display: grid;
+            min-height: 76px;
+            grid-template-columns: 34px minmax(0, 1fr) 38px;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 12px;
+            color: rgb(var(--color-on-surface));
+            cursor: pointer;
+            list-style: none;
+        }
+        .faq-summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-summary:focus-visible {
+            outline: 3px solid rgb(var(--color-primary) / 0.24);
+            outline-offset: -3px;
+        }
+        .faq-index {
+            color: rgb(var(--color-outline));
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+        .faq-summary h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: 0;
+            transition: color 0.2s ease;
+        }
+        .faq-item[open] .faq-summary h3,
+        .faq-summary:hover h3 {
+            color: rgb(var(--color-primary));
+        }
+        .faq-toggle {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            justify-self: end;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.54);
+            border-radius: 9999px;
+            color: rgb(var(--color-on-surface-variant));
+            transition: border-color 0.22s ease, background-color 0.22s ease, color 0.22s ease, transform 0.28s ease;
+        }
+        .faq-toggle .material-symbols-outlined {
+            font-size: 19px;
+        }
+        .faq-item[open] .faq-toggle {
+            border-color: rgb(var(--color-primary));
+            background: rgb(var(--color-primary));
+            color: rgb(var(--color-on-primary));
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 64px 24px 60px;
+        }
+        .faq-answer p {
+            max-width: 630px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 15px;
+            line-height: 1.68;
+        }
+        @media (max-width: 1100px) {
+            .closing-section {
+                padding: 96px 0;
+            }
+            .closing-inner {
+                width: min(calc(100% - 40px), 820px);
+            }
+            .closing-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 64px;
+            }
+            .closing-cta {
+                position: static;
+                padding-right: 0;
+                text-align: center;
+            }
+            .closing-cta h2,
+            .closing-copy,
+            .closing-note,
+            .closing-benefits {
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .closing-action {
+                align-items: center;
+            }
+            .closing-benefits {
+                display: grid;
+                max-width: 760px;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            }
+            .closing-benefit {
+                min-height: 64px;
+                justify-content: center;
+                border-bottom: 0;
+            }
+            .closing-benefit + .closing-benefit {
+                border-left: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            }
+            .faq-column {
+                padding-top: 56px;
+                padding-left: 0;
+                border-top: 1px solid rgb(var(--color-outline-variant) / 0.42);
+                border-left: 0;
+            }
+            .faq-intro {
+                text-align: center;
+            }
+            .faq-intro p {
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+        @media (max-width: 599px) {
+            .closing-section {
+                padding: 80px 0;
+            }
+            .closing-inner {
+                width: calc(100% - 32px);
+            }
+            .closing-grid {
+                gap: 52px;
+            }
+            .closing-cta h2 {
+                font-size: 38px;
+            }
+            .closing-copy {
+                font-size: 16px;
+            }
+            .closing-button {
+                width: 100%;
+            }
+            .closing-benefits {
+                display: block;
+                border-bottom: 0;
+            }
+            .closing-benefit {
+                min-height: 54px;
+                justify-content: flex-start;
+                border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            }
+            .closing-benefit + .closing-benefit {
+                border-left: 0;
+            }
+            .faq-column {
+                padding-top: 46px;
+            }
+            .faq-intro h2 {
+                font-size: 36px;
+            }
+            .faq-summary {
+                min-height: 72px;
+                grid-template-columns: 26px minmax(0, 1fr) 34px;
+                gap: 10px;
+                padding: 13px 4px;
+            }
+            .faq-summary h3 {
+                font-size: 15px;
+            }
+            .faq-toggle {
+                width: 32px;
+                height: 32px;
+            }
+            .faq-answer {
+                padding: 0 4px 22px 40px;
+            }
+            .faq-answer p {
+                font-size: 14px;
+            }
+        }
         .brand-logo {
             display: block;
             width: 210px;
@@ -3599,6 +4179,18 @@
             80%, 100% { opacity: 0; transform: scale(1.65); }
         }
         @media (prefers-reduced-motion: reduce) {
+            .closing-button,
+            .faq-item,
+            .faq-summary h3,
+            .faq-toggle {
+                transition: none !important;
+            }
+            .closing-button:hover {
+                transform: none !important;
+            }
+            .about-founder-image {
+                animation: none !important;
+            }
             .project-tab,
             .project-tab::after,
             .projects-cta-link {
@@ -4764,176 +5356,98 @@ Book a Strategy Call
 </a>
 </div>
 </div>
-</section><section id="about" class="py-32 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<!-- Left Column: Visual Composition -->
-<div class="relative flex justify-center lg:justify-start">
-<div class="relative z-10 w-full max-w-lg transform hover:scale-[1.02] transition-transform duration-500">
-<div class="absolute inset-0 bg-primary/10 blur-[80px] -z-10 rounded-full scale-75 opacity-50"></div>
-<img alt="Founder visual composition" class="w-full h-auto block relative z-10" src="assets/images/founder-visual.png">
+</section><section id="about" class="about-section" aria-labelledby="about-title">
+<div class="about-inner">
+<div class="about-layout">
+<header class="about-copy">
+<span class="about-eyebrow">The Builder</span>
+<h2 id="about-title"><span>Systems First.</span><span>Software Second.</span></h2>
+<div class="about-story">
+<p>My background in engineering, customer support, and technical operations shapes how I approach automation. I start by understanding how leads enter your business, where follow-up breaks down, and what your team needs to manage day to day.</p>
+<p>Then I use GoHighLevel to connect funnels, CRM workflows, and follow-up into one clear system - helping your business respond faster, stay organized, and spend less time manually chasing leads.</p>
+</div>
+</header>
+<div class="about-visual">
+<div class="about-visual-frame">
+<img alt="Hoblevelup founder surrounded by email, calendar, dashboard, and pipeline system signals" class="about-founder-image" src="assets/images/founder-visual.png">
+<span class="about-visual-caption">Hoblevelup</span>
 </div>
 </div>
-<!-- Right Column: Content -->
-<div class="flex flex-col items-start">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase font-bold mb-4">
-                    The Builder
-                </span>
-<h2 class="font-headline-xl text-on-surface mb-8 max-w-xl">
-                    Built By Someone Who Understands Systems - Not Just Software
-                </h2>
-<div class="space-y-6 mb-12">
-<p class="font-body-lg text-on-surface-variant">
-                        Engineering graduate turned AI automation specialist helping service-based businesses streamline follow-ups, automate repetitive processes, and organize their sales systems using GoHighLevel CRM.
-                    </p>
-<p class="font-body-lg text-on-surface-variant">
-                        Built from a background in customer support and technical operations, I understand both the technical side of automation - and the customer experience behind it.
-                    </p>
-<p class="font-body-lg text-on-surface-variant">
-                        Today, I build funnels, workflows, and CRM systems designed to help businesses respond faster, stay organized, and operate with less manual work.
-                    </p>
+<div class="about-principles" aria-label="Builder focus areas">
+<div class="about-principle">
+<span class="about-principle-icon"><span class="material-symbols-outlined" aria-hidden="true">hub</span></span>
+<div><h3>Systems Thinking</h3><p>Built around workflow clarity and operational structure.</p></div>
+<span class="about-principle-number" aria-hidden="true">01</span>
 </div>
-<!-- Credibility Cards -->
-<div class="grid grid-cols-1 gap-4 w-full">
-<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center gap-5 hover:border-primary/30 transition-colors group">
-<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
-<span class="material-symbols-outlined">hub</span>
+<div class="about-principle">
+<span class="about-principle-icon"><span class="material-symbols-outlined" aria-hidden="true">person_celebrate</span></span>
+<div><h3>Customer Experience</h3><p>Focused on smoother lead journeys and faster response times.</p></div>
+<span class="about-principle-number" aria-hidden="true">02</span>
 </div>
-<div>
-<h4 class="font-label-md font-bold text-on-surface">Systems Thinking</h4>
-<p class="text-xs text-on-surface-variant">Built around workflow clarity and operational structure.</p>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center gap-5 hover:border-primary/30 transition-colors group">
-<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
-<span class="material-symbols-outlined">person_celebrate</span>
-</div>
-<div>
-<h4 class="font-label-md font-bold text-on-surface">Customer Experience</h4>
-<p class="text-xs text-on-surface-variant">Focused on smoother lead journeys and faster response times.</p>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center gap-5 hover:border-primary/30 transition-colors group">
-<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
-<span class="material-symbols-outlined">auto_mode</span>
-</div>
-<div>
-<h4 class="font-label-md font-bold text-on-surface">Automation Focused</h4>
-<p class="text-xs text-on-surface-variant">Funnels, CRM systems, workflows, and follow-up automation.</p>
-</div>
-</div>
+<div class="about-principle">
+<span class="about-principle-icon"><span class="material-symbols-outlined" aria-hidden="true">auto_mode</span></span>
+<div><h3>Automation Focused</h3><p>Funnels, CRM systems, workflows, and follow-up automation.</p></div>
+<span class="about-principle-number" aria-hidden="true">03</span>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section class="relative py-24 lg:py-28 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
-<div class="absolute inset-0 cta-ambient opacity-70 -z-10"></div>
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-14 lg:gap-16 items-start">
-<div class="flex flex-col items-center text-center lg:items-start lg:text-left lg:pr-10">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 font-bold">
-                Ready To Simplify Your Sales Process?
-            </span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold leading-tight">
-                Let's Build A System Your Business Can Actually Rely On.
-            </h2>
-<p class="font-body-lg text-on-surface-variant mb-10 max-w-xl">
-                We'll review your current workflow, identify bottlenecks, and map out the right automation system to help you respond faster, stay organized, and book more appointments.
-            </p>
-<div class="flex flex-col items-center lg:items-start gap-5">
-<a class="inline-flex items-center justify-center px-9 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:shadow-[0_0_30px_rgba(0,80,203,0.3)] transition-all duration-300 shadow-xl" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-                    Book a Strategy Call
-                </a>
-<p class="font-body-md text-on-surface-variant/80 text-sm italic max-w-md">
-                    No pressure. No complicated tech talk. Just clarity on what's slowing your system down.
-                </p>
+<section id="faq" class="closing-section" aria-labelledby="closing-title">
+<div class="closing-inner">
+<div class="closing-grid">
+<div class="closing-cta">
+<span class="closing-eyebrow">Ready To Simplify Your Sales Process?</span>
+<h2 id="closing-title">Let's Build A System Your Business Can Actually Rely On.</h2>
+<p class="closing-copy">We'll review your current workflow, identify bottlenecks, and map out the right automation system to help you respond faster, stay organized, and book more appointments.</p>
+<div class="closing-action">
+<a class="closing-button" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
+<span>Book a Strategy Call</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</a>
+<p class="closing-note">No pressure. No complicated tech talk. Just clarity on what's slowing your system down.</p>
 </div>
-<div class="mt-12 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4 pt-8 border-t border-outline-variant/20 w-full max-w-2xl">
-<div class="flex items-center justify-center lg:justify-start gap-2">
-<span class="material-symbols-outlined text-primary text-lg">bolt</span>
-<span class="font-label-md text-on-surface font-semibold">Faster Follow-Ups</span>
-</div>
-<div class="flex items-center justify-center lg:justify-start gap-2">
-<span class="material-symbols-outlined text-primary text-lg">hub</span>
-<span class="font-label-md text-on-surface font-semibold">Organized Pipelines</span>
-</div>
-<div class="flex items-center justify-center lg:justify-start gap-2">
-<span class="material-symbols-outlined text-primary text-lg">event_available</span>
-<span class="font-label-md text-on-surface font-semibold">More Booked Calls</span>
+<div class="closing-benefits" aria-label="Potential system outcomes">
+<div class="closing-benefit"><span class="material-symbols-outlined" aria-hidden="true">bolt</span><span>Faster Follow-Ups</span></div>
+<div class="closing-benefit"><span class="material-symbols-outlined" aria-hidden="true">hub</span><span>Organized Pipelines</span></div>
+<div class="closing-benefit"><span class="material-symbols-outlined" aria-hidden="true">event_available</span><span>More Booked Calls</span></div>
 </div>
 </div>
-</div>
-<div class="pt-12 lg:pt-0 lg:pl-16 border-t lg:border-t-0 lg:border-l border-outline-variant/20">
-<div class="mb-10 text-center lg:text-left">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Frequently Asked Questions</span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-5 font-bold">Before Getting Started</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Some common questions to help you move forward with confidence.</p>
-</div>
-<div class="space-y-4" data-faq-list>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">Do I need a GoHighLevel account?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">Not right away. The first step is understanding where your business is now, how leads are coming in, and what kind of follow-up system actually makes sense. If GoHighLevel is the right fit, I can guide you through the setup. If you already have tools in place, we will look at the cleanest path forward first.</p>
-</div>
+<div class="faq-column">
+<header class="faq-intro">
+<span class="faq-eyebrow">Frequently Asked Questions</span>
+<h2>Before Getting Started</h2>
+<p>Some common questions to help you move forward with confidence.</p>
+</header>
+<div class="faq-list" data-faq-list>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">01</span><h3>Do I need a GoHighLevel account?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>Not right away. The first step is understanding where your business is now, how leads are coming in, and what kind of follow-up system actually makes sense. If GoHighLevel is the right fit, I can guide you through the setup. If you already have tools in place, we will look at the cleanest path forward first.</p></div>
 </details>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">What types of businesses do you work with?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">I specialize in helping high-ticket service providers, coaches, and consultants who manage a high volume of leads and appointments.</p>
-</div>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">02</span><h3>What types of businesses do you work with?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>I specialize in helping high-ticket service providers, coaches, and consultants who manage a high volume of leads and appointments.</p></div>
 </details>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">Can you work with my existing GoHighLevel setup?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">Yes. I can review your current GoHighLevel setup, identify what is working, clean up what is causing friction, and rebuild only the parts that need improvement. That may include pipelines, calendars, forms, workflows, automations, tags, or follow-up sequences, depending on what your business actually needs.</p>
-</div>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">03</span><h3>Can you work with my existing GoHighLevel setup?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>Yes. I can review your current GoHighLevel setup, identify what is working, clean up what is causing friction, and rebuild only the parts that need improvement. That may include pipelines, calendars, forms, workflows, automations, tags, or follow-up sequences, depending on what your business actually needs.</p></div>
 </details>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">How long does a typical system build take?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">Most builds are completed within 2-4 weeks, depending on the complexity of your current workflows and required integrations.</p>
-</div>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">04</span><h3>How long does a typical system build take?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>Most builds are completed within 2-4 weeks, depending on the complexity of your current workflows and required integrations.</p></div>
 </details>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">What happens during the discovery call?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">It's a low-pressure conversation to audit your current lead process, identify where you're losing revenue, and see if a custom system is the right fit.</p>
-</div>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">05</span><h3>What happens during the discovery call?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>It's a low-pressure conversation to audit your current lead process, identify where you're losing revenue, and see if a custom system is the right fit.</p></div>
 </details>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">Do you provide support after the launch?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">Absolutely. I provide documentation and a free 10-day hand-off training period for your team. For ongoing optimization, I also offer monthly retainer packages with continuous improvements and priority support.</p>
-</div>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">06</span><h3>Do you provide support after the launch?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>Absolutely. I provide documentation and a free 10-day hand-off training period for your team. For ongoing optimization, I also offer monthly retainer packages with continuous improvements and priority support.</p></div>
 </details>
-<details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface group-open:text-primary transition-colors">What if I need help that you do not offer?</h3>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2">
-<p class="font-body-md text-on-surface-variant">I still encourage you to book a call. From there, I can understand what kind of support you need, point you toward the right specialist or tool if needed, and make sure any outside work fits into your system instead of adding more confusion.</p>
-</div>
+<details class="faq-item">
+<summary class="faq-summary"><span class="faq-index" aria-hidden="true">07</span><h3>What if I need help that you do not offer?</h3><span class="faq-toggle"><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></span></summary>
+<div class="faq-answer"><p>I still encourage you to book a call. From there, I can understand what kind of support you need, point you toward the right specialist or tool if needed, and make sure any outside work fits into your system instead of adding more confusion.</p></div>
 </details>
+</div>
 </div>
 </div>
 </div>
