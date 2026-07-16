@@ -1650,43 +1650,446 @@
                 border-left: 0;
             }
         }
-        .process-connector {
-            background: rgba(194, 198, 216, 0.55);
-            overflow: hidden;
-        }
-        .process-signal {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 14px;
-            height: 14px;
-            border-radius: 9999px;
-            background: #0066ff;
-            box-shadow: 0 0 0 5px rgba(0, 102, 255, 0.12), 0 0 22px 5px rgba(0, 102, 255, 0.7);
-            transform: translate(-50%, -50%);
-            animation: processSignal 5.6s linear infinite;
-        }
-        .process-signal::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: 50%;
-            width: 56px;
-            height: 4px;
-            transform: translateY(-50%);
-            background: linear-gradient(90deg, rgba(0, 102, 255, 0), rgba(0, 102, 255, 0.72));
-            filter: blur(1px);
-        }
-        .phase-card {
+        .process-section {
             position: relative;
-            border-color: rgba(0, 80, 203, 0.16);
-            box-shadow: 0 16px 30px -24px rgba(0, 80, 203, 0.42), 0 0 22px rgba(0, 80, 203, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            padding: 128px 0;
+            overflow: hidden;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.3);
+            background: rgb(var(--color-surface));
         }
-        .phase-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 80, 203, 0.38);
-            box-shadow: 0 20px 34px -22px rgba(0, 80, 203, 0.48), 0 0 28px rgba(0, 80, 203, 0.15);
+        .process-inner {
+            width: min(calc(100% - 40px), 1280px);
+            margin: 0 auto;
+        }
+        .process-intro {
+            max-width: 850px;
+            margin: 0 auto 64px;
+            text-align: center;
+        }
+        .process-intro h2 {
+            margin-top: 16px;
+            color: rgb(var(--color-on-surface));
+            font-size: clamp(40px, 4.4vw, 64px);
+            font-weight: 700;
+            line-height: 1.08;
+        }
+        .process-intro p {
+            max-width: 720px;
+            margin: 22px auto 0;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 18px;
+            line-height: 1.65;
+        }
+        .process-board {
+            overflow: hidden;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.58);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container-lowest));
+            box-shadow: 0 28px 74px -56px rgb(var(--color-primary) / 0.46);
+        }
+        .process-board-bar {
+            display: flex;
+            min-height: 58px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 22px;
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.42);
+            background: rgb(var(--color-surface-container-low) / 0.64);
+        }
+        .process-board-bar strong {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgb(var(--color-on-surface));
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .process-board-bar strong::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 0 5px rgb(var(--color-primary) / 0.1);
+            content: "";
+        }
+        .process-legend {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 11px;
+            font-weight: 650;
+        }
+        .process-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .process-legend i {
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: rgb(var(--color-primary) / 0.78);
+        }
+        .process-legend span:first-child i {
+            height: 0;
+            border-top: 1px dashed rgb(var(--color-primary) / 0.72);
+            background: transparent;
+        }
+        .process-rail {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        .process-track {
+            position: absolute;
+            top: 116px;
+            right: calc(25% - 56px);
+            left: 56px;
+            z-index: 1;
+            height: 2px;
+            overflow: visible;
+            transform-origin: left;
+        }
+        .process-track-blueprint,
+        .process-track-build {
+            position: absolute;
+            top: 0;
+            height: 1px;
+        }
+        .process-track-blueprint {
+            left: 0;
+            width: 66.666%;
+            border-top: 2px dashed rgb(var(--color-primary) / 0.58);
+        }
+        .process-track-build {
+            left: 66.666%;
+            width: 33.334%;
+            height: 2px;
+            background: rgb(var(--color-primary) / 0.58);
+        }
+        .process-traveler {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            width: 54px;
+            height: 5px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, transparent, rgb(var(--color-primary)));
+            opacity: 0;
+            transform: translate(-100%, -2px);
+        }
+        .process-traveler::after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 9px;
+            height: 9px;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 15px 4px rgb(var(--color-primary) / 0.55);
+            content: "";
+            transform: translate(50%, -50%);
+        }
+        .process-phase {
+            position: relative;
+            z-index: 2;
+            min-width: 0;
+            padding: 34px 28px 36px;
+        }
+        .process-phase + .process-phase {
+            border-left: 1px solid rgb(var(--color-outline-variant) / 0.32);
+        }
+        .process-phase-head {
+            display: flex;
+            min-height: 38px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .process-phase-label,
+        .process-phase-mode {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .process-phase-label {
+            display: inline-flex;
+            min-height: 26px;
+            align-items: center;
+            padding: 5px 9px;
+            border: 1px solid rgb(var(--color-primary) / 0.2);
+            border-radius: 9999px;
+            background: rgb(var(--color-primary) / 0.08);
+            color: rgb(var(--color-primary));
+        }
+        .process-phase-mode {
+            color: rgb(var(--color-outline));
+        }
+        .process-node {
+            display: inline-flex;
+            width: 56px;
+            height: 56px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 16px;
+            border: 1px solid rgb(var(--color-primary) / 0.28);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container-lowest));
+            color: rgb(var(--color-primary));
+            box-shadow: 0 12px 26px -22px rgb(var(--color-primary) / 0.72);
+            transition: border-color 0.28s ease, background-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+        }
+        .process-node .material-symbols-outlined {
+            font-size: 24px;
+        }
+        .process-phase:hover .process-node {
+            border-color: rgb(var(--color-primary) / 0.58);
+            background: rgb(var(--color-primary) / 0.09);
+            box-shadow: 0 0 22px rgb(var(--color-primary) / 0.2);
+            transform: translateY(-2px);
+        }
+        .process-phase-content {
+            margin-top: 28px;
+        }
+        .process-phase-content h3 {
+            color: rgb(var(--color-on-surface));
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .process-phase-content p {
+            min-height: 116px;
+            margin-top: 12px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .process-deliverables {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 20px;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.3);
+        }
+        .process-deliverables span {
+            display: inline-flex;
+            min-height: 30px;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 9999px;
+            background: rgb(var(--color-surface-container-low));
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .process-section.is-motion-ready:not(.is-visible) .process-track {
+            clip-path: inset(0 100% 0 0);
+        }
+        .process-section.is-motion-ready:not(.is-visible) .process-phase {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+        .process-section.is-visible .process-track {
+            animation: processPathReveal 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .process-section.is-visible .process-traveler {
+            animation: processTraveler 4.5s cubic-bezier(0.45, 0, 0.2, 1) 0.35s infinite both;
+        }
+        .process-section.is-visible .process-phase {
+            animation: processPhaseReveal 0.62s cubic-bezier(0.22, 1, 0.36, 1) var(--phase-delay) both;
+        }
+        .process-section.is-visible .process-node {
+            animation: processNodeIlluminate 4.5s ease-in-out var(--node-delay) infinite both;
+        }
+        @keyframes processPathReveal {
+            from { clip-path: inset(0 100% 0 0); }
+            to { clip-path: inset(0 0 0 0); }
+        }
+        @keyframes processTraveler {
+            0% { left: 0; opacity: 0; }
+            4%, 9% { left: 0; opacity: 1; }
+            24%, 29% { left: 33.333%; opacity: 1; }
+            44%, 49% { left: 66.666%; opacity: 1; }
+            64%, 72% { left: 100%; opacity: 1; }
+            76% { left: 100%; opacity: 0; }
+            100% { left: 0; opacity: 0; }
+        }
+        @keyframes processPhaseReveal {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes processNodeIlluminate {
+            0%, 16%, 100% {
+                border-color: rgb(var(--color-primary) / 0.28);
+                background: rgb(var(--color-surface-container-lowest));
+                box-shadow: 0 12px 26px -22px rgb(var(--color-primary) / 0.72);
+            }
+            8% {
+                border-color: rgb(var(--color-primary) / 0.78);
+                background: rgb(var(--color-primary) / 0.13);
+                box-shadow: 0 0 26px rgb(var(--color-primary) / 0.34);
+            }
+        }
+        @media (max-width: 999px) {
+            .process-section {
+                padding: 104px 0;
+            }
+            .process-inner {
+                width: min(calc(100% - 40px), 900px);
+            }
+            .process-intro {
+                margin-bottom: 52px;
+            }
+            .process-rail {
+                display: block;
+            }
+            .process-track {
+                top: 54px;
+                right: auto;
+                bottom: 54px;
+                left: 51px;
+                width: 2px;
+                height: auto;
+                transform-origin: top;
+            }
+            .process-track-blueprint,
+            .process-track-build {
+                left: 0;
+                width: 1px;
+                height: auto;
+            }
+            .process-track-blueprint {
+                top: 0;
+                bottom: 33.333%;
+                border-top: 0;
+                border-left: 1px dashed rgb(var(--color-primary) / 0.52);
+            }
+            .process-track-build {
+                top: 66.666%;
+                bottom: 0;
+                background: rgb(var(--color-primary) / 0.52);
+            }
+            .process-traveler {
+                top: 0;
+                left: 0;
+                width: 5px;
+                height: 48px;
+                background: linear-gradient(180deg, transparent, rgb(var(--color-primary)));
+                transform: translate(-2px, -100%);
+            }
+            .process-traveler::after {
+                top: auto;
+                right: 50%;
+                bottom: 0;
+                transform: translate(50%, 50%);
+            }
+            .process-phase {
+                display: grid;
+                min-height: 220px;
+                grid-template-columns: 76px minmax(0, 1fr);
+                grid-template-rows: auto auto;
+                column-gap: 20px;
+                padding: 30px 30px 30px 24px;
+            }
+            .process-phase + .process-phase {
+                border-top: 1px solid rgb(var(--color-outline-variant) / 0.32);
+                border-left: 0;
+            }
+            .process-phase-head,
+            .process-phase-content {
+                grid-column: 2;
+            }
+            .process-node {
+                grid-row: 1 / span 2;
+                margin: 2px 0 0;
+            }
+            .process-phase-content {
+                margin-top: 20px;
+            }
+            .process-phase-content p {
+                min-height: 0;
+                margin-bottom: 20px;
+            }
+            .process-section.is-visible .process-traveler {
+                animation-name: processTravelerVertical;
+            }
+            .process-section.is-motion-ready:not(.is-visible) .process-track {
+                clip-path: inset(0 0 100% 0);
+            }
+            .process-section.is-visible .process-track {
+                animation-name: processPathRevealVertical;
+            }
+        }
+        @media (max-width: 599px) {
+            .process-section {
+                padding: 88px 0;
+            }
+            .process-inner {
+                width: calc(100% - 24px);
+            }
+            .process-intro {
+                margin-bottom: 40px;
+                padding: 0 8px;
+            }
+            .process-intro h2 {
+                font-size: clamp(36px, 10.5vw, 44px);
+            }
+            .process-intro p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            .process-board-bar {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 16px;
+            }
+            .process-legend {
+                gap: 14px;
+            }
+            .process-track {
+                top: 48px;
+                bottom: 48px;
+                left: 42px;
+            }
+            .process-phase {
+                min-height: 0;
+                grid-template-columns: 58px minmax(0, 1fr);
+                column-gap: 14px;
+                padding: 26px 18px;
+            }
+            .process-phase-head {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .process-node {
+                width: 48px;
+                height: 48px;
+            }
+            .process-phase-content h3 {
+                font-size: 18px;
+            }
+            .process-phase-content p {
+                font-size: 14px;
+            }
+        }
+        @keyframes processPathRevealVertical {
+            from { clip-path: inset(0 0 100% 0); }
+            to { clip-path: inset(0 0 0 0); }
+        }
+        @keyframes processTravelerVertical {
+            0% { top: 0; opacity: 0; }
+            4%, 9% { top: 0; opacity: 1; }
+            24%, 29% { top: 33.333%; opacity: 1; }
+            44%, 49% { top: 66.666%; opacity: 1; }
+            64%, 72% { top: 100%; opacity: 1; }
+            76% { top: 100%; opacity: 0; }
+            100% { top: 0; opacity: 0; }
         }
         .brand-logo {
             display: block;
@@ -2785,12 +3188,6 @@
             from { stroke-dashoffset: 1; }
             to { stroke-dashoffset: 0; }
         }
-        @keyframes processSignal {
-            0% { left: 0%; opacity: 0; }
-            5% { opacity: 1; }
-            95% { opacity: 1; }
-            100% { left: 100%; opacity: 0; }
-        }
         @keyframes problemSignalTravel {
             from { stroke-dashoffset: 1; }
             to { stroke-dashoffset: 0; }
@@ -2816,7 +3213,10 @@
             80%, 100% { opacity: 0; transform: scale(1.65); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .process-signal,
+            .process-track,
+            .process-traveler,
+            .process-phase,
+            .process-node,
             .journey-signal,
             .offer-flow-arrow .material-symbols-outlined,
             .comparison-track--manual .journey-step:nth-child(3) .journey-node::after,
@@ -2828,9 +3228,14 @@
             .hero-reveal {
                 animation: none;
             }
-            .process-signal {
-                left: 50%;
-                opacity: 1;
+            .process-section .process-track,
+            .process-section .process-phase {
+                clip-path: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .process-traveler {
+                display: none;
             }
             .hero-reveal {
                 opacity: 1;
@@ -3822,97 +4227,75 @@ Book a Strategy Call
 </div>
 </div>
 </section>
-<!-- Refined How I Work Section -->
-<section id="process" class="py-32 bg-surface overflow-hidden border-t border-outline-variant/30">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<!-- Section Header -->
-<div class="max-w-3xl mx-auto text-center mb-20">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">How I Work</span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">First the Blueprint. Then the Build.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">Every project starts with understanding how your business currently operates so the final system feels organized, efficient, and built around your actual workflow.</p>
+<section class="process-section" id="process" aria-labelledby="process-title" data-process-section>
+<div class="process-inner">
+<div class="process-intro">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">How I Work</span>
+<h2 id="process-title">First the Blueprint. Then the Build.</h2>
+<p>I start by understanding how your business works today, then map, build, test, and hand off a system shaped around the way your team actually operates.</p>
 </div>
-<!-- 4-Step Process Visual -->
-<div class="relative">
-<!-- Horizontal Connector Line (Desktop Only) -->
-<div class="process-connector hidden lg:block absolute top-[52px] left-0 w-full h-[1px] z-0"><span class="process-signal" aria-hidden="true"></span></div>
-<!-- Step Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
-<!-- Step 1 -->
-<div class="group relative flex flex-col items-start">
-<!-- Phase Badge & Icon Node -->
-<div class="flex flex-col items-start gap-4 mb-8">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 01</span>
-<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
-<span class="material-symbols-outlined text-2xl">phone_in_talk</span>
+<div class="process-board">
+<div class="process-board-bar">
+<strong>Project Execution Path</strong>
+<div class="process-legend" aria-label="Process path legend">
+<span><i aria-hidden="true"></i>Blueprint</span>
+<span><i aria-hidden="true"></i>Build</span>
 </div>
 </div>
-<!-- Content -->
-<div class="phase-card bg-surface-container-lowest p-8 rounded-3xl border shadow-sm flex flex-col flex-1 w-full">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">Discovery Call</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">We uncover bottlenecks, missed opportunities, current workflows, and what success looks like so the right system gets built.</p>
-<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Workflow Review</span>
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Business Goals</span>
+<div class="process-rail">
+<div class="process-track" aria-hidden="true">
+<span class="process-track-blueprint"></span>
+<span class="process-track-build"></span>
+<span class="process-traveler"></span>
 </div>
+<article class="process-phase" style="--phase-delay: 0.18s; --node-delay: 0.52s;">
+<div class="process-phase-head">
+<span class="process-phase-label">Phase 01</span>
+<span class="process-phase-mode">Understand</span>
 </div>
+<div class="process-node"><span class="material-symbols-outlined" aria-hidden="true">phone_in_talk</span></div>
+<div class="process-phase-content">
+<h3>Discovery Call</h3>
+<p>I uncover bottlenecks, missed opportunities, current workflows, and the outcome the system needs to support.</p>
+<div class="process-deliverables"><span>Workflow Review</span><span>Business Goals</span></div>
 </div>
-<!-- Step 2 -->
-<div class="group relative flex flex-col items-start">
-<!-- Phase Badge & Icon Node -->
-<div class="flex flex-col items-start gap-4 mb-8">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 02</span>
-<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
-<span class="material-symbols-outlined text-2xl">account_tree</span>
+</article>
+<article class="process-phase" style="--phase-delay: 0.38s; --node-delay: 1.28s;">
+<div class="process-phase-head">
+<span class="process-phase-label">Phase 02</span>
+<span class="process-phase-mode">Map</span>
 </div>
+<div class="process-node"><span class="material-symbols-outlined" aria-hidden="true">account_tree</span></div>
+<div class="process-phase-content">
+<h3>System Architecture</h3>
+<p>I map the customer journey, pipeline, and automation logic before implementation begins.</p>
+<div class="process-deliverables"><span>Process Mapping</span><span>System Planning</span></div>
 </div>
-<!-- Content -->
-<div class="phase-card bg-surface-container-lowest p-8 rounded-3xl border shadow-sm flex flex-col flex-1 w-full">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">System Architecture</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">I visually map the entire system before implementation begins so you clearly understand the process and customer journey.</p>
-<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Process Mapping</span>
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">System Planning</span>
+</article>
+<article class="process-phase" style="--phase-delay: 0.58s; --node-delay: 2.04s;">
+<div class="process-phase-head">
+<span class="process-phase-label">Phase 03</span>
+<span class="process-phase-mode">Build</span>
 </div>
+<div class="process-node"><span class="material-symbols-outlined" aria-hidden="true">construction</span></div>
+<div class="process-phase-content">
+<h3>Build &amp; Implementation</h3>
+<p>I configure the CRM, workflows, automations, and approved integrations from the system plan.</p>
+<div class="process-deliverables"><span>CRM Setup</span><span>Automations</span></div>
 </div>
+</article>
+<article class="process-phase" style="--phase-delay: 0.78s; --node-delay: 2.8s;">
+<div class="process-phase-head">
+<span class="process-phase-label">Phase 04</span>
+<span class="process-phase-mode">Launch</span>
 </div>
-<!-- Step 3 -->
-<div class="group relative flex flex-col items-start">
-<!-- Phase Badge & Icon Node -->
-<div class="flex flex-col items-start gap-4 mb-8">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 03</span>
-<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
-<span class="material-symbols-outlined text-2xl">construction</span>
+<div class="process-node"><span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span></div>
+<div class="process-phase-content">
+<h3>Launch &amp; Support</h3>
+<p>I test, refine, document, and hand off the system so your team can use it confidently.</p>
+<div class="process-deliverables"><span>Optimization</span><span>Support</span></div>
 </div>
-</div>
-<!-- Content -->
-<div class="phase-card bg-surface-container-lowest p-8 rounded-3xl border shadow-sm flex flex-col flex-1 w-full">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">Build &amp; Implementation</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">I build and configure the CRM, automations, workflows, and integrations based on the approved system plan.</p>
-<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">CRM Setup</span>
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Automations</span>
-</div>
-</div>
-</div>
-<!-- Step 4 -->
-<div class="group relative flex flex-col items-start">
-<!-- Phase Badge & Icon Node -->
-<div class="flex flex-col items-start gap-4 mb-8">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary shadow-sm">Phase 04</span>
-<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary shadow-md group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300 relative z-20">
-<span class="material-symbols-outlined text-2xl">rocket_launch</span>
-</div>
-</div>
-<!-- Content -->
-<div class="phase-card bg-surface-container-lowest p-8 rounded-3xl border shadow-sm flex flex-col flex-1 w-full">
-<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-3">Launch &amp; Support</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">I test, optimize, and document the system to ensure your team understands how to use it confidently from day one.</p>
-<div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-outline-variant/10">
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Optimization</span>
-<span class="px-2 py-1 bg-surface-container rounded-md text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Support</span>
-</div>
-</div>
-</div>
+</article>
 </div>
 </div>
 </div>
@@ -4208,6 +4591,7 @@ Book a Strategy Call
   const heroVisual = document.querySelector('[data-hero-visual]');
   const problemSection = document.querySelector('[data-problem-section]');
   const solutionOrbit = document.querySelector('[data-solution-orbit]');
+  const processSection = document.querySelector('[data-process-section]');
   const themeToggle = document.querySelector('[data-theme-toggle]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -4308,6 +4692,25 @@ Book a Strategy Call
       }, { rootMargin: '0px 0px -14% 0px', threshold: 0.18 });
 
       problemObserver.observe(problemSection);
+    }
+  }
+
+  if (processSection) {
+    const revealProcessSection = () => processSection.classList.add('is-visible');
+
+    if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+      revealProcessSection();
+    } else {
+      processSection.classList.add('is-motion-ready');
+
+      const processObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+
+        revealProcessSection();
+        observer.disconnect();
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
+
+      processObserver.observe(processSection);
     }
   }
 
