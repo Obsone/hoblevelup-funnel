@@ -2091,6 +2091,392 @@
             76% { top: 100%; opacity: 0; }
             100% { top: 0; opacity: 0; }
         }
+        .projects-section {
+            position: relative;
+            overflow: hidden;
+            padding: 104px 0;
+            background: rgb(var(--color-surface-container-low));
+        }
+        .projects-inner {
+            width: min(calc(100% - 64px), 1280px);
+            margin: 0 auto;
+        }
+        .projects-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+            align-items: end;
+            gap: 64px;
+            margin-bottom: 40px;
+        }
+        .projects-eyebrow {
+            display: block;
+            margin-bottom: 16px;
+            color: rgb(var(--color-primary));
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .projects-intro h2 {
+            max-width: 560px;
+            color: rgb(var(--color-on-surface));
+            font-size: clamp(38px, 3.8vw, 52px);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+        .projects-intro p {
+            max-width: 560px;
+            padding-left: 28px;
+            border-left: 1px solid rgb(var(--color-outline-variant) / 0.48);
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .project-switcher {
+            position: relative;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.38);
+            border-radius: 8px;
+            background: rgb(var(--color-surface-container-lowest));
+            box-shadow: 0 1px 3px rgb(var(--color-on-surface) / 0.02), 0 18px 48px rgb(var(--color-on-surface) / 0.05);
+        }
+        .project-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            padding: 8px;
+            border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.34);
+            background: rgb(var(--color-surface-container-high));
+        }
+        .project-tab {
+            position: relative;
+            display: inline-flex;
+            min-width: 0;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.32);
+            border-radius: 6px;
+            background: rgb(var(--color-surface-container-lowest) / 0.58);
+            color: rgb(var(--color-on-surface));
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0;
+            transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+        }
+        .project-tab::after {
+            position: absolute;
+            right: 22px;
+            bottom: -1px;
+            left: 22px;
+            height: 2px;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            content: "";
+            opacity: 0;
+            transform: scaleX(0.45);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .project-tab[aria-selected="true"] {
+            border-color: rgb(var(--color-primary) / 0.58);
+            background: rgb(var(--color-primary) / 0.14);
+            color: rgb(var(--color-primary));
+            box-shadow: inset 0 0 0 1px rgb(var(--color-primary) / 0.08), 0 8px 20px rgb(var(--color-primary) / 0.12);
+        }
+        .project-tab[aria-selected="true"]::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+        .project-tab:hover {
+            border-color: rgb(var(--color-primary) / 0.38);
+            background: rgb(var(--color-primary) / 0.08);
+            color: rgb(var(--color-primary));
+        }
+        .project-tab:focus-visible {
+            outline: 3px solid rgb(var(--color-primary) / 0.24);
+            outline-offset: 2px;
+        }
+        .project-tab .material-symbols-outlined {
+            flex: 0 0 auto;
+            font-size: 18px;
+        }
+        .project-panel {
+            display: grid;
+            min-height: 400px;
+            grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+            background: rgb(var(--color-surface-container-lowest));
+        }
+        .project-panel[hidden] {
+            display: none;
+        }
+        .project-panel.is-active {
+            animation: projectPanelIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .project-preview {
+            position: relative;
+            display: flex;
+            min-width: 0;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            border-right: 1px solid rgb(var(--color-outline-variant) / 0.3);
+            background: rgb(var(--color-surface-container));
+        }
+        .project-preview img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 352px;
+            border: 1px solid rgb(var(--color-outline-variant) / 0.38);
+            border-radius: 6px;
+            object-fit: contain;
+            box-shadow: 0 20px 54px rgb(var(--color-on-surface) / 0.12);
+        }
+        .project-status {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            display: inline-flex;
+            min-height: 30px;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 10px;
+            border: 1px solid rgb(var(--color-primary) / 0.2);
+            border-radius: 9999px;
+            background: rgb(var(--color-surface-container-lowest) / 0.88);
+            color: rgb(var(--color-on-surface));
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            backdrop-filter: blur(12px);
+        }
+        .project-status::before {
+            width: 7px;
+            height: 7px;
+            flex: 0 0 auto;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            box-shadow: 0 0 12px rgb(var(--color-primary) / 0.5);
+            content: "";
+        }
+        .project-status--queued::before {
+            background: rgb(var(--color-outline));
+            box-shadow: none;
+        }
+        .project-details {
+            display: flex;
+            min-width: 0;
+            justify-content: center;
+            flex-direction: column;
+            padding: 40px 42px;
+        }
+        .project-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 13px;
+            color: rgb(var(--color-primary));
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .project-meta span:last-child {
+            color: rgb(var(--color-outline));
+            text-align: right;
+        }
+        .project-details h3 {
+            color: rgb(var(--color-on-surface));
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0;
+        }
+        .project-details p {
+            max-width: 650px;
+            margin-top: 12px;
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+        }
+        .project-tags li {
+            display: inline-flex;
+            min-height: 29px;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 9999px;
+            background: rgb(var(--color-surface-container-low));
+            color: rgb(var(--color-on-surface-variant));
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .projects-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgb(var(--color-outline-variant) / 0.46);
+        }
+        .projects-cta-copy span {
+            display: block;
+            margin-bottom: 5px;
+            color: rgb(var(--color-primary));
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .projects-cta-copy p {
+            color: rgb(var(--color-on-surface));
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .projects-cta-link {
+            display: inline-flex;
+            min-height: 52px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 24px;
+            border-radius: 9999px;
+            background: rgb(var(--color-primary));
+            color: rgb(var(--color-on-primary));
+            font-size: 14px;
+            font-weight: 700;
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+        .projects-cta-link:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+        }
+        .projects-cta-link:focus-visible {
+            outline: 3px solid rgb(var(--color-primary) / 0.28);
+            outline-offset: 4px;
+        }
+        .projects-cta-link .material-symbols-outlined {
+            font-size: 19px;
+        }
+        @keyframes projectPanelIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 900px) {
+            .projects-section {
+                padding: 96px 0;
+            }
+            .projects-inner {
+                width: min(calc(100% - 40px), 920px);
+            }
+            .projects-intro {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 36px;
+            }
+            .projects-intro p {
+                max-width: 680px;
+                padding-left: 0;
+                border-left: 0;
+            }
+            .project-panel {
+                min-height: 0;
+                grid-template-columns: 1fr;
+            }
+            .project-preview {
+                min-height: 0;
+                aspect-ratio: 16 / 9;
+                padding: 18px;
+                border-right: 0;
+                border-bottom: 1px solid rgb(var(--color-outline-variant) / 0.3);
+            }
+            .project-preview img {
+                max-height: none;
+            }
+            .project-details {
+                min-height: 300px;
+                padding: 32px;
+            }
+        }
+        @media (max-width: 599px) {
+            .projects-section {
+                padding: 80px 0;
+            }
+            .projects-inner {
+                width: calc(100% - 24px);
+            }
+            .projects-intro {
+                gap: 18px;
+                margin-bottom: 32px;
+                padding: 0 8px;
+                text-align: center;
+            }
+            .projects-intro h2 {
+                font-size: clamp(36px, 10vw, 42px);
+            }
+            .projects-intro p {
+                padding: 0;
+                border-left: 0;
+                font-size: 16px;
+            }
+            .project-tabs {
+                gap: 4px;
+                padding: 6px;
+            }
+            .project-tab {
+                min-height: 42px;
+                gap: 5px;
+                padding: 7px 5px;
+                font-size: 11px;
+            }
+            .project-tab .material-symbols-outlined {
+                font-size: 16px;
+            }
+            .project-preview {
+                padding: 12px;
+            }
+            .project-details {
+                min-height: 330px;
+                padding: 24px 22px 26px;
+            }
+            .project-details h3 {
+                font-size: 24px;
+            }
+            .project-status {
+                top: 12px;
+                left: 12px;
+            }
+            .projects-cta {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 24px;
+                margin-top: 40px;
+                padding: 28px 8px 0;
+                text-align: center;
+            }
+            .projects-cta-link {
+                width: 100%;
+            }
+        }
         .brand-logo {
             display: block;
             width: 210px;
@@ -3213,6 +3599,17 @@
             80%, 100% { opacity: 0; transform: scale(1.65); }
         }
         @media (prefers-reduced-motion: reduce) {
+            .project-tab,
+            .project-tab::after,
+            .projects-cta-link {
+                transition: none !important;
+            }
+            .project-panel {
+                animation: none !important;
+            }
+            .projects-cta-link:hover {
+                transform: none !important;
+            }
             .process-track,
             .process-traveler,
             .process-phase,
@@ -4299,62 +4696,72 @@ Book a Strategy Call
 </div>
 </div>
 </div>
-</section><section id="results" class="py-32 bg-surface-container-low overflow-hidden">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<!-- Section Header -->
-<div class="max-w-3xl mx-auto text-center mb-20">
-<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Project Showcase</span>
-<h2 class="font-display-lg-mobile md:font-headline-xl text-display-lg-mobile md:text-headline-xl text-on-surface mb-6 font-bold">Funnels &amp; Systems Built For Modern Service Businesses</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">From lead capture funnels to automated appointment booking systems, every build is designed to create a smoother customer journey and a more organized sales process.</p>
+</section><section id="results" class="projects-section" aria-labelledby="projects-title">
+<div class="projects-inner">
+<header class="projects-intro">
+<div>
+<span class="projects-eyebrow">Project Showcase</span>
+<h2 id="projects-title">Selected Funnel Builds</h2>
 </div>
-<!-- Project Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<!-- Card 1 -->
-<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/20">
-<div class="aspect-video relative overflow-hidden bg-surface-container">
-<img alt="Gym Coach Funnel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/thumb-gym-coach-funnel.svg">
-<div class="absolute top-4 left-4">
-<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">Demo Funnel Project</span>
+<p>Each build connects the visible funnel with the follow-up, booking, and organization happening behind it.</p>
+</header>
+<div class="project-switcher">
+<div class="project-tabs" role="tablist" aria-label="Project showcase">
+<button class="project-tab" id="project-tab-hoblevelup" type="button" role="tab" aria-selected="true" aria-controls="project-panel-hoblevelup" tabindex="0" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">dashboard_customize</span><span>Hoblevelup</span></button>
+<button class="project-tab" id="project-tab-gym" type="button" role="tab" aria-selected="false" aria-controls="project-panel-gym" tabindex="-1" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">fitness_center</span><span>Gym Coach</span></button>
+<button class="project-tab" id="project-tab-next" type="button" role="tab" aria-selected="false" aria-controls="project-panel-next" tabindex="-1" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">schedule</span><span>Coming Soon</span></button>
 </div>
+<article class="project-panel is-active" id="project-panel-hoblevelup" role="tabpanel" aria-labelledby="project-tab-hoblevelup" tabindex="0" data-project-panel>
+<div class="project-preview">
+<img alt="Hoblevelup sales funnel homepage preview" src="assets/images/thumb-hoblevelup-funnel.svg">
+<span class="project-status">Live Brand Build</span>
 </div>
-<div class="p-8">
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Gym Coach Funnel</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Lead generation and appointment booking funnel designed for fitness coaches looking to automate lead follow-up and client booking.</p>
+<div class="project-details">
+<div class="project-meta"><span>01 / Current Website</span><span>Hoblevelup</span></div>
+<h3>Hoblevelup Sales Funnel</h3>
+<p>The live funnel for Hoblevelup, shaped to turn a technical automation service into a clear journey from problem awareness to strategy-call inquiry.</p>
+<ul class="project-tags" aria-label="Hoblevelup project focus areas">
+<li>Positioning</li><li>Lead Capture</li><li>GoHighLevel Form</li>
+</ul>
 </div>
+</article>
+<article class="project-panel" id="project-panel-gym" role="tabpanel" aria-labelledby="project-tab-gym" tabindex="0" data-project-panel hidden>
+<div class="project-preview">
+<img alt="Gym coach lead generation funnel concept preview" src="assets/images/thumb-gym-coach-funnel.svg">
+<span class="project-status">Concept Build</span>
 </div>
-<!-- Card 2 -->
-<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/20">
-<div class="aspect-video relative overflow-hidden bg-surface-container">
-<img alt="Hoblevelup Funnel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/thumb-hoblevelup-funnel.svg">
-<div class="absolute top-4 left-4">
-<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">Portfolio Funnel</span>
+<div class="project-details">
+<div class="project-meta"><span>02 / Funnel Concept</span><span>Fitness Coach</span></div>
+<h3>Gym Coach Funnel</h3>
+<p>A focused concept showing how an offer, qualification path, and appointment booking can work as one customer journey.</p>
+<ul class="project-tags" aria-label="Gym coach project focus areas">
+<li>Funnel Strategy</li><li>Booking Flow</li><li>Follow-Up Concept</li>
+</ul>
 </div>
+</article>
+<article class="project-panel" id="project-panel-next" role="tabpanel" aria-labelledby="project-tab-next" tabindex="0" data-project-panel hidden>
+<div class="project-preview">
+<img alt="Placeholder preview for an upcoming service automation project" src="assets/images/thumb-coming-soon.svg">
+<span class="project-status project-status--queued">Build Queue</span>
 </div>
-<div class="p-8">
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Hoblevelup Funnel</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">The complete lead capture and booking funnel built by yours truly.</p>
+<div class="project-details">
+<div class="project-meta"><span>03 / In Development</span><span>Coming Next</span></div>
+<h3>Next System in Progress</h3>
+<p>The next service-business workflow will join the showcase once its complete funnel and automation path are ready.</p>
+<ul class="project-tags" aria-label="Upcoming project stages">
+<li>Research</li><li>System Mapping</li><li>Build Queue</li>
+</ul>
 </div>
+</article>
 </div>
-<!-- Card 3 -->
-<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/20">
-<div class="aspect-video relative overflow-hidden bg-surface-container">
-<img alt="Coming Soon" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/thumb-coming-soon.svg">
-<div class="absolute top-4 left-4">
-<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">Upcoming Build</span>
+<div class="projects-cta">
+<div class="projects-cta-copy">
+<span>Planning a similar system?</span>
+<p>Bring me the messy workflow. We will map the next move.</p>
 </div>
-</div>
-<div class="p-8">
-<h3 class="font-headline-lg text-xl font-bold text-on-surface mb-3">Coming Soon</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">More funnel systems and automation projects are currently being designed and added.</p>
-</div>
-</div>
-</div>
-<!-- Section CTA -->
-<div class="mt-20 flex flex-col items-center">
-<a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:scale-[0.98] hover:brightness-110 transition-all duration-200 shadow-xl mb-6" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
-        Book a Strategy Call
-      </a>
-<p class="font-label-md text-label-md text-on-surface-variant text-center opacity-70 italic">Simple systems built for clarity, automation, and growth.</p>
+<a class="projects-cta-link" href="https://links.hoblevelup.work/widget/form/aqOUp7g78oQVFP5e5mza" target="_blank" rel="noopener noreferrer">
+<span>Book a Strategy Call</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</a>
 </div>
 </div>
 </section><section id="about" class="py-32 bg-surface-container-low overflow-hidden border-t border-outline-variant/10">
@@ -4592,6 +4999,8 @@ Book a Strategy Call
   const problemSection = document.querySelector('[data-problem-section]');
   const solutionOrbit = document.querySelector('[data-solution-orbit]');
   const processSection = document.querySelector('[data-process-section]');
+  const projectTabs = [...document.querySelectorAll('[data-project-tab]')];
+  const projectPanels = [...document.querySelectorAll('[data-project-panel]')];
   const themeToggle = document.querySelector('[data-theme-toggle]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -4712,6 +5121,42 @@ Book a Strategy Call
 
       processObserver.observe(processSection);
     }
+  }
+
+  if (projectTabs.length && projectPanels.length) {
+    const activateProject = (activeTab, moveFocus = false) => {
+      const activePanelId = activeTab.getAttribute('aria-controls');
+
+      projectTabs.forEach((tab) => {
+        const isActive = tab === activeTab;
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.tabIndex = isActive ? 0 : -1;
+      });
+
+      projectPanels.forEach((panel) => {
+        const isActive = panel.id === activePanelId;
+        panel.hidden = !isActive;
+        panel.classList.toggle('is-active', isActive);
+      });
+
+      if (moveFocus) activeTab.focus();
+    };
+
+    projectTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateProject(tab));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = null;
+
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % projectTabs.length;
+        if (event.key === 'ArrowLeft') nextIndex = (index - 1 + projectTabs.length) % projectTabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = projectTabs.length - 1;
+        if (nextIndex === null) return;
+
+        event.preventDefault();
+        activateProject(projectTabs[nextIndex], true);
+      });
+    });
   }
 
   if (solutionOrbit) {
