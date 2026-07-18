@@ -578,7 +578,7 @@ Book a Strategy Call
 <div class="project-tabs" role="tablist" aria-label="Project showcase">
 <button class="project-tab" id="project-tab-hoblevelup" type="button" role="tab" aria-selected="true" aria-controls="project-panel-hoblevelup" tabindex="0" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">dashboard_customize</span><span>Hoblevelup</span></button>
 <button class="project-tab" id="project-tab-gym" type="button" role="tab" aria-selected="false" aria-controls="project-panel-gym" tabindex="-1" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">fitness_center</span><span>Gym Coach</span></button>
-<button class="project-tab" id="project-tab-next" type="button" role="tab" aria-selected="false" aria-controls="project-panel-next" tabindex="-1" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">schedule</span><span>Coming Soon</span></button>
+<button class="project-tab" id="project-tab-dcgarage" type="button" role="tab" aria-selected="false" aria-controls="project-panel-dcgarage" tabindex="-1" data-project-tab><span class="material-symbols-outlined" aria-hidden="true">car_repair</span><span>DCgarage</span></button>
 </div>
 <article class="project-panel is-active" id="project-panel-hoblevelup" role="tabpanel" aria-labelledby="project-tab-hoblevelup" tabindex="0" data-project-panel>
 <div class="project-preview">
@@ -608,18 +608,21 @@ Book a Strategy Call
 </ul>
 </div>
 </article>
-<article class="project-panel" id="project-panel-next" role="tabpanel" aria-labelledby="project-tab-next" tabindex="0" data-project-panel hidden>
-<div class="project-preview">
-<img alt="Placeholder preview for an upcoming service automation project" src="assets/images/thumb-coming-soon.svg">
-<span class="project-status project-status--queued">Build Queue</span>
+<article class="project-panel" id="project-panel-dcgarage" role="tabpanel" aria-labelledby="project-tab-dcgarage" tabindex="0" data-project-panel hidden>
+<div class="project-preview project-preview--dcgarage">
+<img alt="DCgarage preventive maintenance concept showing its service offer and booking call to action" src="assets/images/case-studies/dcgarage/dcgarage-offer.png">
+<span class="project-status">Independent Concept</span>
 </div>
 <div class="project-details">
-<div class="project-meta"><span>03 / In Development</span><span>Coming Next</span></div>
-<h3>Next System in Progress</h3>
-<p>The next service-business workflow will join the showcase once its complete funnel and automation path are ready.</p>
-<ul class="project-tags" aria-label="Upcoming project stages">
-<li>Research</li><li>System Mapping</li><li>Build Queue</li>
+<div class="project-meta"><span>03 / Concept Case Study</span><span>Auto Service</span></div>
+<h3>DCgarage PMS Booking System</h3>
+<p>A mobile-first concept that turns a preventive maintenance offer into a clearer path from service education to appointment request.</p>
+<ul class="project-tags" aria-label="DCgarage project focus areas">
+<li>Offer Positioning</li><li>Booking UX</li><li>System Mapping</li>
 </ul>
+<button class="project-explore" type="button" aria-haspopup="dialog" aria-controls="dcgarage-case-study" data-case-study-open="dcgarage-case-study">
+<span>Explore Case Study</span><span class="material-symbols-outlined" aria-hidden="true">open_in_full</span>
+</button>
 </div>
 </article>
 </div>
@@ -633,7 +636,91 @@ Book a Strategy Call
 </a>
 </div>
 </div>
-</section><section id="about" class="about-section" aria-labelledby="about-title">
+</section>
+<dialog class="case-study-dialog" id="dcgarage-case-study" aria-labelledby="dcgarage-case-study-title" aria-describedby="dcgarage-case-study-intro" data-case-study-dialog>
+<div class="case-study-scroll">
+<header class="case-study-header">
+<div>
+<span class="case-study-badge">Independent Concept</span>
+<h2 id="dcgarage-case-study-title">DCgarage PMS Booking System</h2>
+<p id="dcgarage-case-study-intro">An independent concept inspired by the common challenge of managing service inquiries through scattered messages and manual appointment records. The demo explores how a clear PMS offer, guided booking flow, and organized follow-up system could create a smoother customer journey.</p>
+</div>
+<button class="case-study-close" type="button" aria-label="Close case study" title="Close case study" data-case-study-close>
+<span class="material-symbols-outlined" aria-hidden="true">close</span>
+</button>
+</header>
+<div class="case-study-layout">
+<section class="case-study-gallery" aria-labelledby="dcgarage-gallery-title">
+<div class="case-study-gallery-head">
+<h3 id="dcgarage-gallery-title">Visual Scan</h3>
+<span aria-live="polite" aria-atomic="true" data-gallery-counter>1 / 4</span>
+</div>
+<div class="case-study-viewport" tabindex="0" aria-label="DCgarage case study images. Use the left and right arrow keys to browse." data-case-study-gallery>
+<figure class="case-study-slide">
+<img alt="DCgarage hero explaining the preventive maintenance offer and starting price" src="assets/images/case-studies/dcgarage/dcgarage-offer.png">
+<figcaption><span>01</span>Offer positioning and hero</figcaption>
+</figure>
+<figure class="case-study-slide">
+<img alt="DCgarage service checks and sample preventive maintenance package" src="assets/images/case-studies/dcgarage/dcgarage-pms-package.png" loading="lazy">
+<figcaption><span>02</span>PMS package and practical checks</figcaption>
+</figure>
+<figure class="case-study-slide">
+<img alt="DCgarage four-stage journey from booking through the service update" src="assets/images/case-studies/dcgarage/dcgarage-service-journey.png" loading="lazy">
+<figcaption><span>03</span>Four-step customer journey</figcaption>
+</figure>
+<figure class="case-study-slide">
+<img alt="DCgarage appointment request form collecting customer and vehicle details" src="assets/images/case-studies/dcgarage/dcgarage-booking-form.png" loading="lazy">
+<figcaption><span>04</span>Appointment booking form</figcaption>
+</figure>
+</div>
+<div class="case-study-gallery-controls">
+<button type="button" aria-label="Previous case study image" title="Previous image" data-gallery-previous>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+</button>
+<button type="button" aria-label="Next case study image" title="Next image" data-gallery-next>
+<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+</button>
+</div>
+</section>
+<div class="case-study-story">
+<section>
+<span class="case-study-section-label">The Challenge</span>
+<h3>Turn scattered requests into a visible service journey.</h3>
+<p>Messages, appointments, and follow-ups can become difficult to track when they depend on separate conversations and handwritten records.</p>
+</section>
+<section>
+<span class="case-study-section-label">The Proposed System</span>
+<h3>A clearer path from interest to appointment.</h3>
+<p>A mobile-first funnel that explains the PMS offer, guides customers toward booking, and creates a foundation for organized follow-up.</p>
+</section>
+<section>
+<span class="case-study-section-label">System Opportunities</span>
+<ul class="case-study-opportunities">
+<li><span class="material-symbols-outlined" aria-hidden="true">inbox</span>Inquiry capture</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>Appointment scheduling</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">notifications_active</span>Confirmations and reminders</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">directions_car</span>Customer and vehicle records</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">cycle</span>Future service follow-up</li>
+</ul>
+</section>
+<aside class="case-study-prototype-note">
+<span class="material-symbols-outlined" aria-hidden="true">experiment</span>
+<div>
+<strong>Prototype Status</strong>
+<p>Front-end concept with browser-validated booking behavior; no live CRM integration or claimed business results.</p>
+</div>
+</aside>
+</div>
+</div>
+<footer class="case-study-footer">
+<p>Independent concept project inspired by my experience as a car owner navigating manual booking and service follow-up. Not commissioned by or affiliated with a real repair shop.</p>
+<a href="https://dcgarage-pms-laguna.obsone.chatgpt.site/" target="_blank" rel="noopener noreferrer">
+<span>View Full Live Demo</span><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+</a>
+</footer>
+</div>
+</dialog>
+<section id="about" class="about-section" aria-labelledby="about-title">
 <div class="about-inner">
 <div class="about-layout">
 <header class="about-copy">

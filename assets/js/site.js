@@ -7,6 +7,8 @@ const siteHeader = document.querySelector('[data-site-header]');
   const processSection = document.querySelector('[data-process-section]');
   const projectTabs = [...document.querySelectorAll('[data-project-tab]')];
   const projectPanels = [...document.querySelectorAll('[data-project-panel]')];
+  const caseStudyDialogs = [...document.querySelectorAll('[data-case-study-dialog]')];
+  const caseStudyTriggers = [...document.querySelectorAll('[data-case-study-open]')];
   const themeToggle = document.querySelector('[data-theme-toggle]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -161,6 +163,119 @@ const siteHeader = document.querySelector('[data-site-header]');
 
         event.preventDefault();
         activateProject(projectTabs[nextIndex], true);
+      });
+    });
+  }
+
+  if (caseStudyDialogs.length && caseStudyTriggers.length) {
+    let lastCaseStudyTrigger = null;
+
+    const setCaseStudyScrollLock = () => {
+      document.documentElement.classList.toggle(
+        'case-study-open',
+        caseStudyDialogs.some((dialog) => dialog.open)
+      );
+    };
+
+    caseStudyDialogs.forEach((dialog) => {
+      const closeButton = dialog.querySelector('[data-case-study-close]');
+      const gallery = dialog.querySelector('[data-case-study-gallery]');
+      const slides = gallery ? [...gallery.querySelectorAll('.case-study-slide')] : [];
+      const previousButton = dialog.querySelector('[data-gallery-previous]');
+      const nextButton = dialog.querySelector('[data-gallery-next]');
+      const counter = dialog.querySelector('[data-gallery-counter]');
+      let activeSlide = 0;
+      let galleryFramePending = false;
+
+      const updateGallery = () => {
+        galleryFramePending = false;
+        if (!gallery || !slides.length) return;
+
+        activeSlide = Math.min(
+          slides.length - 1,
+          Math.max(0, Math.round(gallery.scrollLeft / Math.max(1, gallery.clientWidth)))
+        );
+
+        if (counter) counter.textContent = `${activeSlide + 1} / ${slides.length}`;
+        if (previousButton) previousButton.disabled = activeSlide === 0;
+        if (nextButton) nextButton.disabled = activeSlide === slides.length - 1;
+      };
+
+      const requestGalleryUpdate = () => {
+        if (galleryFramePending) return;
+        galleryFramePending = true;
+        window.requestAnimationFrame(updateGallery);
+      };
+
+      const showSlide = (index) => {
+        if (!gallery || !slides.length) return;
+
+        activeSlide = Math.min(slides.length - 1, Math.max(0, index));
+        gallery.scrollTo({
+          left: activeSlide * gallery.clientWidth,
+          behavior: reducedMotion.matches ? 'auto' : 'smooth'
+        });
+        updateGallery();
+      };
+
+      previousButton?.addEventListener('click', () => showSlide(activeSlide - 1));
+      nextButton?.addEventListener('click', () => showSlide(activeSlide + 1));
+      gallery?.addEventListener('scroll', requestGalleryUpdate, { passive: true });
+      gallery?.addEventListener('keydown', (event) => {
+        let nextSlide = null;
+
+        if (event.key === 'ArrowRight') nextSlide = activeSlide + 1;
+        if (event.key === 'ArrowLeft') nextSlide = activeSlide - 1;
+        if (event.key === 'Home') nextSlide = 0;
+        if (event.key === 'End') nextSlide = slides.length - 1;
+        if (nextSlide === null) return;
+
+        event.preventDefault();
+        showSlide(nextSlide);
+      });
+
+      closeButton?.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.addEventListener('close', () => {
+        setCaseStudyScrollLock();
+        lastCaseStudyTrigger?.focus();
+        lastCaseStudyTrigger = null;
+      });
+
+      const galleryResizeObserver = 'ResizeObserver' in window
+        ? new ResizeObserver(() => {
+          if (!gallery) return;
+          gallery.scrollLeft = activeSlide * gallery.clientWidth;
+          updateGallery();
+        })
+        : null;
+
+      if (gallery) galleryResizeObserver?.observe(gallery);
+      updateGallery();
+
+      dialog.resetCaseStudyGallery = () => {
+        if (!gallery) return;
+        activeSlide = 0;
+        gallery.scrollLeft = 0;
+        updateGallery();
+      };
+    });
+
+    caseStudyTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const dialog = document.getElementById(trigger.dataset.caseStudyOpen);
+        if (!(dialog instanceof HTMLDialogElement)) return;
+
+        lastCaseStudyTrigger = trigger;
+        dialog.resetCaseStudyGallery?.();
+        dialog.showModal();
+        setCaseStudyScrollLock();
+
+        window.requestAnimationFrame(() => {
+          dialog.querySelector('[data-case-study-close]')?.focus();
+        });
       });
     });
   }
