@@ -5,6 +5,7 @@ const siteHeader = document.querySelector('[data-site-header]');
   const problemSection = document.querySelector('[data-problem-section]');
   const solutionOrbit = document.querySelector('[data-solution-orbit]');
   const processSection = document.querySelector('[data-process-section]');
+  const videoWalkthroughs = [...document.querySelectorAll('[data-video-walkthrough]')];
   const projectTabs = [...document.querySelectorAll('[data-project-tab]')];
   const projectPanels = [...document.querySelectorAll('[data-project-panel]')];
   const caseStudyDialogs = [...document.querySelectorAll('[data-case-study-dialog]')];
@@ -130,6 +131,40 @@ const siteHeader = document.querySelector('[data-site-header]');
       processObserver.observe(processSection);
     }
   }
+
+  videoWalkthroughs.forEach((walkthrough) => {
+    const player = walkthrough.querySelector('[data-video-player]');
+    const playButton = walkthrough.querySelector('[data-video-play]');
+    const status = walkthrough.querySelector('[data-video-status]');
+
+    if (!player || !playButton || !player.dataset.videoSrc) return;
+
+    const loadWalkthrough = () => {
+      if (player.classList.contains('is-loaded')) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.className = 'walkthrough-iframe';
+      iframe.src = player.dataset.videoSrc;
+      iframe.title = 'Hoblevelup GoHighLevel CRM system walkthrough';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+
+      player.classList.add('is-loaded');
+      player.replaceChildren(iframe);
+
+      if (status) status.textContent = 'System walkthrough video loaded.';
+      window.requestAnimationFrame(() => iframe.focus());
+    };
+
+    playButton.addEventListener('click', loadWalkthrough);
+    playButton.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+
+      event.preventDefault();
+      loadWalkthrough();
+    });
+  });
 
   if (projectTabs.length && projectPanels.length) {
     const activateProject = (activeTab, moveFocus = false) => {
