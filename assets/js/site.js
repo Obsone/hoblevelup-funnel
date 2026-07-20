@@ -65,9 +65,9 @@ const siteHeader = document.querySelector('[data-site-header]');
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && menuToggle?.getAttribute('aria-expanded') === 'true') {
       setMenuOpen(false);
-      menuToggle?.focus();
+      menuToggle.focus();
     }
   });
 
@@ -270,6 +270,12 @@ const siteHeader = document.querySelector('[data-site-header]');
       });
 
       closeButton?.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+
+        event.preventDefault();
+        dialog.close();
+      });
       dialog.addEventListener('click', (event) => {
         if (event.target === dialog) dialog.close();
       });
