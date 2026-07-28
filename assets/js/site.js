@@ -1,6 +1,7 @@
 const siteHeader = document.querySelector('[data-site-header]');
   const menuToggle = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.querySelector('[data-mobile-menu]');
+  const scrollCtas = [...document.querySelectorAll('[data-scroll-cta]')];
   const heroVisual = document.querySelector('[data-hero-visual]');
   const problemSection = document.querySelector('[data-problem-section]');
   const solutionOrbit = document.querySelector('[data-solution-orbit]');
@@ -72,7 +73,11 @@ const siteHeader = document.querySelector('[data-site-header]');
   });
 
   const updateHeader = () => {
-    siteHeader?.classList.toggle('is-scrolled', window.scrollY > 24);
+    const isScrolled = window.scrollY > 24;
+    siteHeader?.classList.toggle('is-scrolled', isScrolled);
+    scrollCtas.forEach((cta) => {
+      cta.hidden = isScrolled;
+    });
   };
 
   updateHeader();

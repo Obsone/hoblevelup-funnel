@@ -452,6 +452,9 @@
             align-items: center;
             gap: 8px;
         }
+        [data-scroll-cta][hidden] {
+            display: none !important;
+        }
         .theme-toggle {
             display: inline-flex;
             width: 44px;
