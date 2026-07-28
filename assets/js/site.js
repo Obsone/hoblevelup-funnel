@@ -73,7 +73,7 @@ const siteHeader = document.querySelector('[data-site-header]');
   });
 
   const updateHeader = () => {
-    const isScrolled = window.scrollY > 24;
+    const isScrolled = window.scrollY > 500;
     siteHeader?.classList.toggle('is-scrolled', isScrolled);
     scrollCtas.forEach((cta) => {
       cta.hidden = isScrolled;
