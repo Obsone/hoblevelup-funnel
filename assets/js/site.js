@@ -499,3 +499,118 @@ const siteHeader = document.querySelector('[data-site-header]');
       });
     });
   });
+
+  document.querySelectorAll('[data-stack-rail]').forEach((rail) => {
+    const marquee = rail.querySelector('[data-stack-marquee]');
+    const track = rail.querySelector('[data-marquee-track]');
+    const sourceGroup = rail.querySelector('[data-marquee-group]');
+
+    if (!marquee || !track || !sourceGroup) return;
+
+    const clone = sourceGroup.cloneNode(true);
+    clone.removeAttribute('data-marquee-group');
+    clone.setAttribute('aria-hidden', 'true');
+    track.append(clone);
+
+    const direction = Number(marquee.dataset.direction) || -1;
+    const speed = Number(marquee.dataset.speed) || 24;
+    let loopWidth = 0;
+    let offset = 0;
+    let previousTime = performance.now();
+    let hovering = false;
+    let focusWithin = false;
+    let dragging = false;
+    let pointerStart = 0;
+    let offsetStart = 0;
+    let resumeAt = 0;
+
+    const normalizeOffset = () => {
+      if (!loopWidth) return;
+      while (offset <= -loopWidth) offset += loopWidth;
+      while (offset > 0) offset -= loopWidth;
+    };
+
+    const render = () => {
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    };
+
+    const measure = () => {
+      loopWidth = sourceGroup.getBoundingClientRect().width;
+      if (direction > 0 && offset === 0) offset = -loopWidth;
+      normalizeOffset();
+      render();
+    };
+
+    const isPaused = (now) => (
+      reducedMotion.matches ||
+      hovering ||
+      focusWithin ||
+      dragging ||
+      document.hidden ||
+      now < resumeAt
+    );
+
+    const animate = (now) => {
+      const elapsed = Math.min((now - previousTime) / 1000, .05);
+      previousTime = now;
+      if (!isPaused(now) && loopWidth) {
+        offset += direction * speed * elapsed;
+        normalizeOffset();
+        render();
+      }
+      requestAnimationFrame(animate);
+    };
+
+    rail.addEventListener('mouseenter', () => { hovering = true; });
+    rail.addEventListener('mouseleave', () => { hovering = false; });
+    rail.addEventListener('focusin', () => { focusWithin = true; });
+    rail.addEventListener('focusout', (event) => {
+      if (!rail.contains(event.relatedTarget)) focusWithin = false;
+    });
+
+    marquee.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      dragging = true;
+      pointerStart = event.clientX;
+      offsetStart = offset;
+      marquee.classList.add('is-dragging');
+      marquee.setPointerCapture(event.pointerId);
+    });
+
+    marquee.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      offset = offsetStart + event.clientX - pointerStart;
+      normalizeOffset();
+      render();
+      event.preventDefault();
+    });
+
+    const endDrag = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      marquee.classList.remove('is-dragging');
+      if (event.pointerType !== 'mouse') resumeAt = performance.now() + 1200;
+      if (marquee.hasPointerCapture(event.pointerId)) marquee.releasePointerCapture(event.pointerId);
+    };
+
+    marquee.addEventListener('pointerup', endDrag);
+    marquee.addEventListener('pointercancel', endDrag);
+    marquee.addEventListener('lostpointercapture', () => {
+      dragging = false;
+      marquee.classList.remove('is-dragging');
+    });
+
+    marquee.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      offset += event.key === 'ArrowLeft' ? 96 : -96;
+      normalizeOffset();
+      render();
+    });
+
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(sourceGroup);
+    document.fonts?.ready.then(measure);
+    measure();
+    requestAnimationFrame(animate);
+  });
