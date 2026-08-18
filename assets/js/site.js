@@ -13,6 +13,165 @@ const siteHeader = document.querySelector('[data-site-header]');
   const caseStudyTriggers = [...document.querySelectorAll('[data-case-study-open]')];
   const themeToggle = document.querySelector('[data-theme-toggle]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const consentBanner = document.querySelector('[data-consent-banner]');
+  const consentAcceptButtons = [...document.querySelectorAll('[data-consent-accept]')];
+  const consentRejectButtons = [...document.querySelectorAll('[data-consent-reject]')];
+  const consentStatus = document.querySelector('[data-consent-status]');
+  const privacyDialog = document.querySelector('[data-privacy-dialog]');
+  const privacyOpenButtons = [...document.querySelectorAll('[data-privacy-open]')];
+  const privacyCloseButton = document.querySelector('[data-privacy-close]');
+  const cookieSettingsDialog = document.querySelector('[data-cookie-settings-dialog]');
+  const cookieSettingsOpenButton = document.querySelector('[data-cookie-settings-open]');
+  const cookieSettingsCloseButton = document.querySelector('[data-cookie-settings-close]');
+
+  const consentStorageKey = 'hoblevelup-analytics-consent-v1';
+  const clarityProjectId = 'y48ja5ygk9';
+  const clarityCookieNames = ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'];
+  let analyticsConsent = null;
+  let lastDialogTrigger = null;
+
+  const readAnalyticsConsent = () => {
+    try {
+      const savedConsent = localStorage.getItem(consentStorageKey);
+      return savedConsent === 'granted' || savedConsent === 'denied' ? savedConsent : null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const saveAnalyticsConsent = (value) => {
+    try {
+      localStorage.setItem(consentStorageKey, value);
+    } catch (error) {
+      // Consent still applies for this page when browser storage is unavailable.
+    }
+  };
+
+  const queueClarityConsent = (analyticsStorage) => {
+    if (typeof window.clarity !== 'function') return;
+
+    window.clarity('consentv2', {
+      ad_Storage: 'denied',
+      analytics_Storage: analyticsStorage
+    });
+  };
+
+  const loadClarity = () => {
+    if (document.querySelector('[data-clarity-script]')) {
+      queueClarityConsent('granted');
+      return;
+    }
+
+    window.clarity = window.clarity || function () {
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+
+    queueClarityConsent('granted');
+
+    const clarityScript = document.createElement('script');
+    clarityScript.async = true;
+    clarityScript.src = `https://www.clarity.ms/tag/${clarityProjectId}`;
+    clarityScript.dataset.clarityScript = '';
+    document.head.append(clarityScript);
+  };
+
+  const clearClarityCookies = () => {
+    const hostnameParts = window.location.hostname.split('.');
+    const domainCandidates = new Set(['']);
+
+    for (let index = 0; index < hostnameParts.length - 1; index += 1) {
+      domainCandidates.add(`.${hostnameParts.slice(index).join('.')}`);
+    }
+
+    clarityCookieNames.forEach((cookieName) => {
+      domainCandidates.forEach((domain) => {
+        const domainAttribute = domain ? `; domain=${domain}` : '';
+        document.cookie = `${cookieName}=; Max-Age=0; path=/${domainAttribute}; SameSite=Lax`;
+      });
+    });
+  };
+
+  const updateConsentInterface = () => {
+    if (consentBanner) consentBanner.hidden = analyticsConsent !== null;
+    if (consentStatus) {
+      consentStatus.textContent = analyticsConsent === 'granted'
+        ? 'Analytics is currently accepted.'
+        : 'Analytics is currently rejected.';
+    }
+  };
+
+  const closeConsentDialogs = () => {
+    if (privacyDialog?.open) privacyDialog.close();
+    if (cookieSettingsDialog?.open) cookieSettingsDialog.close();
+  };
+
+  const acceptAnalytics = () => {
+    analyticsConsent = 'granted';
+    saveAnalyticsConsent(analyticsConsent);
+    loadClarity();
+    updateConsentInterface();
+    closeConsentDialogs();
+  };
+
+  const rejectAnalytics = () => {
+    const wasGranted = analyticsConsent === 'granted' || Boolean(document.querySelector('[data-clarity-script]'));
+
+    analyticsConsent = 'denied';
+    saveAnalyticsConsent(analyticsConsent);
+    updateConsentInterface();
+
+    if (wasGranted) {
+      queueClarityConsent('denied');
+      clearClarityCookies();
+      window.location.reload();
+      return;
+    }
+
+    closeConsentDialogs();
+  };
+
+  const openDialog = (dialog, trigger) => {
+    if (!(dialog instanceof HTMLDialogElement)) return;
+
+    lastDialogTrigger = trigger;
+    dialog.showModal();
+    document.documentElement.classList.add('consent-dialog-open');
+    dialog.querySelector('[data-privacy-close], [data-cookie-settings-close]')?.focus();
+  };
+
+  const handleDialogClose = () => {
+    if (!privacyDialog?.open && !cookieSettingsDialog?.open) {
+      document.documentElement.classList.remove('consent-dialog-open');
+    }
+    lastDialogTrigger?.focus();
+    lastDialogTrigger = null;
+  };
+
+  analyticsConsent = readAnalyticsConsent();
+  if (analyticsConsent === 'granted') loadClarity();
+  updateConsentInterface();
+
+  consentAcceptButtons.forEach((button) => button.addEventListener('click', acceptAnalytics));
+  consentRejectButtons.forEach((button) => button.addEventListener('click', rejectAnalytics));
+  privacyOpenButtons.forEach((button) => {
+    button.addEventListener('click', () => openDialog(privacyDialog, button));
+  });
+  cookieSettingsOpenButton?.addEventListener('click', () => {
+    updateConsentInterface();
+    openDialog(cookieSettingsDialog, cookieSettingsOpenButton);
+  });
+  privacyCloseButton?.addEventListener('click', () => privacyDialog?.close());
+  cookieSettingsCloseButton?.addEventListener('click', () => cookieSettingsDialog?.close());
+  [privacyDialog, cookieSettingsDialog].forEach((dialog) => {
+    dialog?.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+
+      event.preventDefault();
+      dialog.close();
+    });
+  });
+  privacyDialog?.addEventListener('close', handleDialogClose);
+  cookieSettingsDialog?.addEventListener('close', handleDialogClose);
 
   const setTheme = (theme, persist = true) => {
     const isDark = theme === 'dark';

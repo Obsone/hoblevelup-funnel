@@ -1038,7 +1038,8 @@ Book a Discovery Call
 <div class="footer-meta">
 <div class="footer-legal">
 <span>&copy; 2026 Hoblevelup. All rights reserved.</span>
-<a href="#">Privacy Policy</a>
+<button type="button" data-privacy-open>Privacy &amp; Cookies</button>
+<button type="button" data-cookie-settings-open>Cookie settings</button>
 <a href="#">Terms &amp; Conditions</a>
 </div>
 <a class="footer-back-to-top" href="#main-content" aria-label="Back to top" title="Back to top">
@@ -1048,6 +1049,73 @@ Book a Discovery Call
 </div>
 </footer>
 
+<section class="analytics-consent" aria-labelledby="analytics-consent-title" data-consent-banner hidden>
+<div class="analytics-consent-copy">
+<span class="analytics-consent-kicker">Optional analytics</span>
+<h2 id="analytics-consent-title">Help me improve this homepage.</h2>
+<p>With your permission, optional analytics will help me understand how visitors use this page. Analytics will not load until you accept, and advertising tracking stays off.</p>
+<button class="analytics-consent-details" type="button" data-privacy-open>Read Privacy &amp; Cookies</button>
+</div>
+<div class="analytics-consent-actions">
+<button class="analytics-consent-button analytics-consent-button--secondary" type="button" data-consent-reject>Reject</button>
+<button class="analytics-consent-button analytics-consent-button--primary" type="button" data-consent-accept>Accept analytics</button>
+</div>
+</section>
+
+<dialog class="privacy-dialog" aria-labelledby="privacy-dialog-title" data-privacy-dialog>
+<div class="privacy-dialog-shell">
+<header class="privacy-dialog-header">
+<div>
+<span class="privacy-dialog-kicker">Hoblevelup</span>
+<h2 id="privacy-dialog-title">Privacy &amp; Cookies</h2>
+</div>
+<button class="privacy-dialog-close" type="button" aria-label="Close Privacy and Cookies notice" data-privacy-close>
+<span class="material-symbols-outlined" aria-hidden="true">close</span>
+</button>
+</header>
+<div class="privacy-dialog-content">
+<p class="privacy-dialog-lede">This homepage uses optional Microsoft Clarity analytics only when you choose to accept it.</p>
+<section>
+<h3>What analytics covers</h3>
+<p>Clarity may collect interaction and technical usage information, such as page activity, clicks, scrolling, device details, and session behavior. This helps me understand what is clear and what could be improved.</p>
+</section>
+<section>
+<h3>Your choice</h3>
+<p>Clarity does not load or send information before you accept analytics. If you accept, analytics storage is granted while advertising storage remains denied. You can reject analytics or change your choice later through Cookie settings in the footer.</p>
+</section>
+<section>
+<h3>Scope</h3>
+<p>This consent control applies only to the Hoblevelup homepage. The separate <code>booking/</code> page, its embedded GoHighLevel calendar, and other site routes are outside this Clarity implementation.</p>
+</section>
+<section>
+<h3>Provider and contact</h3>
+<p>Microsoft provides Clarity and processes its analytics data. Review the <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a>. For questions about this notice, email <a href="mailto:jsdcupwork@gmail.com">jsdcupwork@gmail.com</a>.</p>
+</section>
+</div>
+</div>
+</dialog>
+
+<dialog class="cookie-settings-dialog" aria-labelledby="cookie-settings-title" data-cookie-settings-dialog>
+<div class="cookie-settings-shell">
+<header class="cookie-settings-header">
+<div>
+<span class="privacy-dialog-kicker">Your preference</span>
+<h2 id="cookie-settings-title">Cookie settings</h2>
+</div>
+<button class="privacy-dialog-close" type="button" aria-label="Close cookie settings" data-cookie-settings-close>
+<span class="material-symbols-outlined" aria-hidden="true">close</span>
+</button>
+</header>
+<div class="cookie-settings-content">
+<p>Choose whether this homepage may load Microsoft Clarity analytics. Advertising storage always remains off.</p>
+<p class="cookie-settings-status" role="status" aria-live="polite" data-consent-status></p>
+<div class="cookie-settings-actions">
+<button class="analytics-consent-button analytics-consent-button--secondary" type="button" data-consent-reject>Reject analytics</button>
+<button class="analytics-consent-button analytics-consent-button--primary" type="button" data-consent-accept>Accept analytics</button>
+</div>
+</div>
+</div>
+</dialog>
 
 <script src="assets/js/site.js"></script>
 </body></html>
